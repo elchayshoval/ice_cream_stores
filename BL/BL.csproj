@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="ImageAnlyzer.cs" />
+    <Compile Include="NutritionalValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
