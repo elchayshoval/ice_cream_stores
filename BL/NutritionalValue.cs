@@ -65,16 +65,17 @@ namespace BL
             foreach (var item in jobject["foods"])
             {
                 int nutId = (int)item["food"]["nutrients"]["nutrient_id"];
+                int value = (int)item["food"]["nutrients"]["value"];
                 switch (nutId)
                 {
                     case energyId:
-                        nutrition.Energy = nutId;
+                        nutrition.Energy = value;
                         break;
                     case proteinId:
-                        nutrition.Protein = nutId;
+                        nutrition.Protein = value;
                         break;
                     case fatId:
-                        nutrition.Fat = nutId;
+                        nutrition.Fat = value;
                         break;
 
                     default:

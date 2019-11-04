@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{6246
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{5BF4E948-712D-4AEA-BB8A-E33ABC9E7D33}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestIceCream", "TestIceCream\TestIceCream.csproj", "{B6F09D0D-D5E8-416A-8530-248F4607CA57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5BF4E948-712D-4AEA-BB8A-E33ABC9E7D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BF4E948-712D-4AEA-BB8A-E33ABC9E7D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BF4E948-712D-4AEA-BB8A-E33ABC9E7D33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6F09D0D-D5E8-416A-8530-248F4607CA57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F09D0D-D5E8-416A-8530-248F4607CA57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F09D0D-D5E8-416A-8530-248F4607CA57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F09D0D-D5E8-416A-8530-248F4607CA57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
