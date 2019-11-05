@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Enums
+    public class Enums
     {
        public enum users { Admin, User };
        public enum Stars {one,two,three,four,five};
