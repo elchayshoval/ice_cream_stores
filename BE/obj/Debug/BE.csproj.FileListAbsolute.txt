@@ -1,0 +1,8 @@
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BE\bin\Debug\BE.dll
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BE\bin\Debug\BE.pdb
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BE\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BE\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BE\obj\Debug\BE.csprojAssemblyReference.cache
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BE\obj\Debug\BE.csproj.CopyComplete
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BE\obj\Debug\BE.dll
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BE\obj\Debug\BE.pdb

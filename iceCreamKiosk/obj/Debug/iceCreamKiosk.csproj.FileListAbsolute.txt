@@ -1,0 +1,17 @@
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\bin\Debug\iceCreamKiosk.exe.config
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\bin\Debug\iceCreamKiosk.exe
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\bin\Debug\iceCreamKiosk.pdb
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\iceCreamKiosk.csprojAssemblyReference.cache
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\MainWindow.g.cs
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\App.g.cs
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\iceCreamKiosk_MarkupCompile.cache
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\iceCreamKiosk_MarkupCompile.lref
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\MainWindow.baml
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\iceCreamKiosk.g.resources
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\iceCreamKiosk.Properties.Resources.resources
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\iceCreamKiosk.csproj.GenerateResource.cache
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\iceCreamKiosk.csproj.CopyComplete
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\iceCreamKiosk.exe
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\iceCreamKiosk.pdb
