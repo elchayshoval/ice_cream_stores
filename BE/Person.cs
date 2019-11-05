@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Person
+    public class Person
     {
         string id;
         Enums.users type;

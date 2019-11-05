@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Store
+    public class Store
     {
         string name;
         string image;
