@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class FeedBack
+   public class FeedBack
     {
         Enums.Stars feedback;
         string description;
