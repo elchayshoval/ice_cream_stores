@@ -19,7 +19,7 @@ namespace BL
 
         public Boolean IsIceCreamRequested(IceCream iceCream)
         {
-            return false;//TDOD i have to implement
+            return false;//TDOD i have to implement this
         }
     }
 }
