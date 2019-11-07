@@ -17,6 +17,9 @@ namespace BL
         public int? MaxProtein { get; set; }
         public int? MaxFat { get; set; }
 
-
+        public Boolean IsIceCreamRequested(IceCream iceCream)
+        {
+            return false;//TDOD i have to implement
+        }
     }
 }

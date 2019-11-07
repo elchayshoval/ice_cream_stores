@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class IceCream
+    public class IceCream
     {
-        string name;
-        string description;
-        int ntritionalId;
-        Enums.Stars score;
-        string image;
+       
         // clientsFeedBack from BL
 
 
-        public string Name { get => name; set => name = value; }
-        public string Description { get => description; set => description = value; }
-        public int NtritionalId { get => ntritionalId; set => ntritionalId = value; }
-        public string Image { get => image; set => image = value; }
-        internal Enums.Stars Score { get => score; set => score = value; }
+        public string Name { get ; set ; }
+        public string Description { get; set; }
+        public int NtritionalId { get; set; }
+        public string Image { get; set; }
+        public Enums.Stars Score { get; set; }
+
+
     }
 }
