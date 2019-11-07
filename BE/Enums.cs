@@ -9,6 +9,6 @@ namespace BE
     public class Enums
     {
        public enum users { Admin, User };
-       public enum Stars {one,two,three,four,five};
+       public enum Stars {one,two,three,four,five}; // gitkraken check 
     }
 }
