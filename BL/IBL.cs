@@ -8,9 +8,9 @@ namespace BL
 {
     interface IBL
     {
-        void addStore(Store store);
-        void removeStore(Store store);
-        void updateStore(Store store);
+        bool addStore(Store store);
+        bool removeStore(Store store);
+        bool updateStore(Store store);
 
     }
 }

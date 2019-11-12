@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BE
 {
     public class IceCream
     {
-       
-        // clientsFeedBack from BL
 
+        public ClientsFeedback clientsFeedback = new ClientsFeedback();
 
         public string Name { get ; set ; }
         public string Description { get; set; }

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="ClientsFeedback.cs" />
     <Compile Include="Nutrition.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="FeedBack.cs" />

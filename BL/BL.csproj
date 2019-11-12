@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="ClientsFeedback.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="ImageAnlyzer.cs" />

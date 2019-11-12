@@ -3,22 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BE;
 
-namespace BL
+namespace BE
 {
-    class ClientsFeedback
+    public class ClientsFeedback
     {
         List<FeedBack> feedBacks = new List<FeedBack>();
-        public float averageFeedback()
+        public double averageFeedback()
         {
             return 0;
         }
-        public float highFeedback()
+        public double highFeedback()
         {
             return 0;
         }
-        public float lowFeedback()
+        public double lowFeedback()
         {
             return 0;
         }
