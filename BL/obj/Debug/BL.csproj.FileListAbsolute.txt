@@ -10,3 +10,16 @@ C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BL\obj\Debug\BL.cspr
 C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BL\obj\Debug\BL.csproj.CopyComplete
 C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BL\obj\Debug\BL.dll
 C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\BL\obj\Debug\BL.pdb
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\bin\Debug\BL.dll
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\bin\Debug\BL.pdb
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\bin\Debug\BE.dll
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\bin\Debug\DL.dll
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\bin\Debug\BE.pdb
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\bin\Debug\DL.pdb
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\obj\Debug\BL.dll
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\BL\obj\Debug\BL.pdb
