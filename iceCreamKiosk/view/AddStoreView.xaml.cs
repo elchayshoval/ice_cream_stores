@@ -1,5 +1,4 @@
-﻿using iceCreamKiosk.view;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,18 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace iceCreamKiosk
+namespace iceCreamKiosk.view
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddStoreView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddStoreView : UserControl
     {
-        public MainWindow()
+        public AddStoreView()
         {
             InitializeComponent();
-
-            this.Content = new AddStoreView();
         }
+
+        
     }
 }

@@ -12,9 +12,10 @@
   See http://www.galasoft.ch/mvvm
 */
 
+using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
+//using Microsoft.Practices.ServiceLocation;
 
 namespace iceCreamKiosk.ViewModel
 {
@@ -43,6 +44,7 @@ namespace iceCreamKiosk.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<AddStoreVM>();
         }
 
         public MainViewModel Main
@@ -52,7 +54,15 @@ namespace iceCreamKiosk.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
+        public AddStoreVM AddStore
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddStoreVM>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
