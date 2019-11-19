@@ -19,3 +19,9 @@ C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\DL\obj\Debug\DL.csp
 C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\DL\obj\Debug\DL.csproj.CopyComplete
 C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\DL\obj\Debug\DL.dll
 C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\DL\obj\Debug\DL.pdb
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\DL\bin\Debug\DL.dll.config
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\DL\bin\Debug\EntityFramework.dll
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\DL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\DL\bin\Debug\BE.dll.config
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\DL\bin\Debug\EntityFramework.xml
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\DL\bin\Debug\EntityFramework.SqlServer.xml

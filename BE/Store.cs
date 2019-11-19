@@ -8,16 +8,13 @@ namespace BE
 {
     public class Store
     {
-        string name;
-        string image;
-        string address;
-        string phone;
-        List<IceCream> iceCreams = new List<IceCream>();
 
-        public string Name { get => name; set => name = value; }
-        public string Image { get => image; set => image = value; }
-        public string Address { get => address; set => address = value; }
-        public string Phone { get => phone; set => phone = value; }
-        internal List<IceCream> IceCreams { get => iceCreams; set => iceCreams = value; } 
+        public int StoreId { get; set; }
+
+        public string Name { get; set ; }
+        public string Image { get ; set ; }
+        public string Address { get ; set; }
+        public string Phone { get ; set ; }
+        public List<IceCream> IceCreams { get ; set ; } 
     }
 }
