@@ -1,5 +1,4 @@
-﻿using BE;
-using DL;
+﻿using iceCreamKiosk.view;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +26,8 @@ namespace iceCreamKiosk
             
 
             InitializeComponent();
+
+            this.Content = new AddStoreView();
         }
     }
 }
