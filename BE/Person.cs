@@ -8,10 +8,9 @@ namespace BE
 {
     public class Person
     {
-        string id;
-        Enums.users type;
+    
 
-        public string Id { get => id; set => id = value; }
-        internal Enums.users Type { get => type; set => type = value; }
+        public string Id { get; set; }
+        public Enums.users Type { get; set; }
     }
 }

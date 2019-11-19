@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using DL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,8 @@ namespace iceCreamKiosk
     {
         public MainWindow()
         {
+            
+
             InitializeComponent();
         }
     }

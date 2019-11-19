@@ -23,3 +23,10 @@ C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\obj\Debug\PL.csp
 C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\obj\Debug\PL.csproj.CopyComplete
 C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\obj\Debug\PL.dll
 C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\obj\Debug\PL.pdb
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\bin\Debug\PL.dll.config
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\bin\Debug\EntityFramework.dll
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\bin\Debug\BE.dll.config
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\bin\Debug\BL.dll.config
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\bin\Debug\EntityFramework.xml
+C:\Users\elchay\Desktop\ice_Cream_gitkraken\ice_cream_stores\PL\bin\Debug\EntityFramework.SqlServer.xml

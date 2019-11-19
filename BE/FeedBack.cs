@@ -8,12 +8,10 @@ namespace BE
 {
    public class FeedBack
     {
-        Enums.Stars feedback;
-        string description;
-        string image;
 
-        public string Description { get => description; set => description = value; }
-        public string Image { get => image; set => image = value; }
-        internal Enums.Stars Feedback { get => feedback; set => feedback = value; }
+        public int Id { get; set; }
+        public string Description { get; set; }
+        public string Image { get; set; }
+        internal Enums.Stars Feedback { get; set; }
     }
 }
