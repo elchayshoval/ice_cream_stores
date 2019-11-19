@@ -23,6 +23,8 @@ namespace iceCreamKiosk
     {
         public MainWindow()
         {
+            
+
             InitializeComponent();
 
             this.Content = new AddStoreView();

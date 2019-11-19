@@ -9,15 +9,18 @@ namespace BE
 {
     public class IceCream
     {
+        public int IceCreamId { get; set; }
 
-        public ClientsFeedback clientsFeedback = new ClientsFeedback();
+        public ClientsFeedback clientsFeedback { get; set; } = new ClientsFeedback();
 
+        //public ICollection<FeedBack> feedBacks { get; set; }
         public string Name { get ; set ; }
         public string Description { get; set; }
         public int NtritionalId { get; set; }
         public string Image { get; set; }
         public Enums.Stars Score { get; set; }
+        public int StoreId { get; set; }
 
-
+  
     }
 }

@@ -8,7 +8,7 @@ namespace BE
 {
     public class ClientsFeedback
     {
-        List<FeedBack> feedBacks = new List<FeedBack>();
+        public List<FeedBack> feedBacks = new List<FeedBack>();
         public double averageFeedback()
         {
             return 0;
