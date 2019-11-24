@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace iceCreamKiosk.model
 {
-    class MyCommand : ICommand
+    public class MyCommand : ICommand
     {
         private Action execute;
         private Func<bool> canExecute;

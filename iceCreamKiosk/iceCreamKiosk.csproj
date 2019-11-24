@@ -78,11 +78,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\FeedbackModel.cs" />
+    <Compile Include="model\FilterModel.cs" />
     <Compile Include="model\IceCreamModel.cs" />
     <Compile Include="model\MyCommand.cs" />
     <Compile Include="model\StoreModel.cs" />
     <Compile Include="ViewModel\AddStoreVM.cs" />
+    <Compile Include="ViewModel\FilterVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SearchIceCreamVM.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="view\AddStoreView.xaml.cs">
       <DependentUpon>AddStoreView.xaml</DependentUpon>
@@ -135,6 +138,10 @@
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{8257C774-3E8D-4762-B65D-7C3DA5939AE7}</Project>
       <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{5BF4E948-712D-4AEA-BB8A-E33ABC9E7D33}</Project>
+      <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

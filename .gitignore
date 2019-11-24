@@ -1,2 +1,18 @@
 
 .vs/
+
+BE/obj/
+
+BL/bin/
+
+BL/obj/
+
+DL/obj/
+
+iceCreamKiosk/bin/
+
+iceCreamKiosk/obj/
+
+PL/obj/
+
+TestIceCream/obj/
