@@ -57,6 +57,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="IBL.cs" />
+    <Compile Include="IBL_Imlementation.cs" />
     <Compile Include="ImageAnlyzer.cs" />
     <Compile Include="NutritionalValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

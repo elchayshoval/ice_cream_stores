@@ -50,3 +50,4 @@ C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\De
 C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\App.baml
 C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\view\AddStoreView.baml
+C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\bin\Debug\BE.dll.config

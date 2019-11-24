@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
 namespace DL
 {
-    interface IDL
+    public  interface IDL
     {
-        IEquatable<Store> getStore();
-        bool addStore(Store store);
-        bool removeStore(Store store);
-        bool updateStore(Store store);
+        IEnumerable<Store> GetStores();
+        IEnumerable<IceCream> GetIceCreams();
+        Boolean AddStore(Store store);
+        Boolean RemoveStore(Store store);
+        Boolean UpdateStore(Store store);
+        Store GetStoreByID(int id);
     }
 }
