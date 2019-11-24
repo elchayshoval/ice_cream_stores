@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace iceCreamKiosk.model
 {
-    class FeedbackModel:ObservableObject
+    public class FeedbackModel:ObservableObject
     {
+        public FeedBack FeedBack { get; set; }
+
         private Enums.Stars stars;
         private string description;
         private string image;
@@ -17,5 +19,25 @@ namespace iceCreamKiosk.model
         public string Description { get => description; set => Set(ref description, value); }
         public string Image { get => image; set => Set(ref image, value); }
         public Enums.Stars Stars { get => stars; set => Set(ref stars, value); }
+
+        public FeedbackModel(FeedBack feedBack = null)
+        {
+            FeedBack = feedBack;
+            if(FeedBack == null)
+            {
+                FeedBack = new FeedBack();
+            }
+
+        }
+
+        public bool IsAllFeildsClear()
+        {
+            bool result = false;
+            if (string.IsNullOrEmpty(Description))
+            {
+                result = true;
+            }
+            return result;
+        }
     }
 }
