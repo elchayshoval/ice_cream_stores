@@ -8,9 +8,14 @@ namespace BL
 {
     interface IBL
     {
-        bool addStore(Store store);
-        bool removeStore(Store store);
-        bool updateStore(Store store);
+        
+        IEnumerable<Store> GetStores();
+        IEnumerable<IceCream> GetIceCreams();
+        IEnumerable<IceCream> GetIceCreams(Filter filter);
+        Boolean AddStore(Store store);
+        Boolean RemoveStore(Store store);
+        Boolean UpdateStore(Store store);
+        Store GetStoreByID(int id);
 
     }
 }

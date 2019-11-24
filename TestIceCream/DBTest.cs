@@ -13,19 +13,7 @@ namespace TestIceCream
     [TestClass]
     public class DBTest
     {
-        public DBTest()
-        {
-            using (var db = new StoreContext())
-            {
-                // Create and save a new Blog
-                // Console.Write("Enter a name for a new Blog: ");
-                //var name = Console.ReadLine();
-                Store store = new Store() { Address = "a", Image = "b" };
-                db.Stores.Add(store);
-                db.SaveChanges();
-
-            }
-        }
+        
 
         private TestContext testContextInstance;
 
@@ -70,9 +58,18 @@ namespace TestIceCream
         [TestMethod]
         public void TestMethod1()
         {
-            //
-            // TODO: Add test logic here
-            //
+            
+                using (var db = new StoreContext())
+                {
+                    // Create and save a new Blog
+                    // Console.Write("Enter a name for a new Blog: ");
+                    //var name = Console.ReadLine();
+                    Store store = new Store() { Address = "a", Image = "b" };
+                    db.Stores.Add(store);
+                    db.SaveChanges();
+
+                }
+            
         }
     }
 }

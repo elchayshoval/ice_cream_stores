@@ -23,7 +23,7 @@ namespace iceCreamKiosk.ViewModel
             {
                 this.Store = new StoreModel();
 
-
+            }
                 AddStoreCommand = new RelayCommand(ExecuteAddStore, CanExecuteAddStore);
                 DismissCommand = new MyCommand(ExecuteDismiss, CanExecuteDismiss);
                 //DismissCommand.CanExecuteChanged+=
@@ -33,7 +33,7 @@ namespace iceCreamKiosk.ViewModel
                 ////    remove { CommandManager.RequerySuggested -= value; }
                 ////}
                 CancelCommand = new RelayCommand(ExecuteCancel);
-            }
+            
 
         }
 

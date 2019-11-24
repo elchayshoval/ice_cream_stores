@@ -82,9 +82,14 @@
     <Compile Include="model\IceCreamModel.cs" />
     <Compile Include="model\MyCommand.cs" />
     <Compile Include="model\StoreModel.cs" />
+    <Compile Include="ViewModel\AddIceCreamVM.cs" />
     <Compile Include="ViewModel\AddStoreVM.cs" />
+    <Compile Include="ViewModel\FeedbackVM.cs" />
+    <Compile Include="ViewModel\IceCreamForAdminVM.cs" />
     <Compile Include="ViewModel\FilterVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\StoreForAdminVM.cs" />
+    <Compile Include="ViewModel\StoresCollectionForAdminVM.cs" />
     <Compile Include="ViewModel\SearchIceCreamVM.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="view\AddStoreView.xaml.cs">
