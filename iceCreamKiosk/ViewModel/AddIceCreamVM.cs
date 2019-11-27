@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight;
+﻿using BE;
+using BL;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
 using System;
@@ -10,28 +12,24 @@ using System.Windows.Input;
 
 namespace iceCreamKiosk.ViewModel
 {
-    class AddIceCreamVM:ViewModelBase
+    class AddIceCreamVM : ViewModelBase
     {
         public ICommand AddIceCreamCommand { get; set; }
         public ICommand DismissCommand { get; set; }
         public ICommand CancelCommand { get; set; }
-        public IceCreamModel IceCream { get; set; }
-        public AddIceCreamVM()//StoreModel store = null)
-        {
-            //this.Store = store;
-            if (this.IceCream == null)
-            {
-                this.IceCream = new IceCreamModel();
+        public IceCreamModel IceCreamModel { get; set; }
 
-            }
-            AddIceCreamCommand = new RelayCommand(ExecuteAddStore, CanExecuteAddStore);
+        private IceCreamLogic iceCreamLogic = new IceCreamLogic();
+        public AddIceCreamVM(Store store)
+        {
+
+            IceCream iceCream = new IceCream();
+            iceCream.StoreId = store.StoreId;
+            this.IceCreamModel = new IceCreamModel(iceCream);
+
+            AddIceCreamCommand = new MyCommand(ExecuteAddStore, CanExecuteAddStore);
             DismissCommand = new MyCommand(ExecuteDismiss, CanExecuteDismiss);
-            //DismissCommand.CanExecuteChanged+=
-            ////public event EventHandler CanExecuteChanged
-            ////{
-            ////    add { CommandManager.RequerySuggested += value; }
-            ////    remove { CommandManager.RequerySuggested -= value; }
-            ////}
+   
             CancelCommand = new RelayCommand(ExecuteCancel);
 
 
@@ -39,25 +37,28 @@ namespace iceCreamKiosk.ViewModel
 
         public Boolean CanExecuteAddStore()
         {
-            return false;//TDOD I have to omplement this method
+            return IceCreamModel.IsValidate();
         }
 
         public Boolean CanExecuteDismiss()
         {
-            return false;
-            //i have to add this:  return !IceCream.IsAllFeildsClear();
+              return !IceCreamModel.IsAllFeildsClear();
         }
 
         public void ExecuteAddStore()
         {
-            //TDOD I have to implement this moethod
+            IceCream iceCream = IceCreamModel.GetAsStore();
+            iceCream.IceCreamId = Guid.NewGuid();
+            iceCreamLogic.AddIceCream(iceCream);
+            //i have to send message
         }
-        public void ExecuteDismiss() {
-            // i have to add this:  IceCream.ClearAllFeilds(); 
+        public void ExecuteDismiss()
+        {
+            IceCreamModel.ClearAllFeilds();
         }
         public void ExecuteCancel()
         {
-            //TDOD i have to close the window }
+            MessengerInstance.Send<ViewModelBase>(null);
         }
     }
 }

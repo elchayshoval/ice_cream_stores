@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\obj\Debug\
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\
 iceCreamKiosk
 none
 false
 DEBUG;TRACE
-C:\Users\Chayim\Documents\KioskInformation\ice_cream_stores\iceCreamKiosk\App.xaml
-2-2018287237
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\App.xaml
+8551082052
 
-191887290690
-125-1640191519
-MainWindow.xaml;view\AddStoreView.xaml;
+3030522198
+126-1382281079
+MainWindow.xaml;view\AddIceCreamView.xaml;view\AddStoreView.xaml;view\AdminPageView.xaml;view\FeedbackView.xaml;view\IceCreamForAdminView.xaml;view\StoreForAdminView.xaml;view\StoresCollectionForAdminView.xaml;
 
-False
+True
 

@@ -9,12 +9,12 @@ namespace BE
     public class Store
     {
 
-        public int StoreId { get; set; }
+        public Guid StoreId { get; set; } = Guid.NewGuid();
 
         public string Name { get; set ; }
         public string Image { get ; set ; }
         public string Address { get ; set; }
         public string Phone { get ; set ; }
-        public List<IceCream> IceCreams { get ; set ; } 
+        public List<IceCream> IceCreams { get; set; } = new List<IceCream>();
     }
 }

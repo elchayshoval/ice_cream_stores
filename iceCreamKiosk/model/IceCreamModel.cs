@@ -24,8 +24,7 @@ namespace iceCreamKiosk.model
         public string Image { get => image; set => Set(ref image, value); }
         public Enums.Stars Score { get => score; set => Set(ref score, value); }
 
-        public ClientsFeedback clientsFeedback = new ClientsFeedback();
-        public ObservableCollection<FeedBack> FeedBacks { get; set; }
+        public ObservableCollection<FeedBack> Feedbacks { get; set; }
 
         public IceCreamModel(IceCream iceCream= null)
         {
@@ -39,13 +38,39 @@ namespace iceCreamKiosk.model
             this.Description = IceCream.Description;
             this.Image = IceCream.Image;
             this.Score = IceCream.Score;
-            this.clientsFeedback = IceCream.clientsFeedback;
+            this.Feedbacks =new ObservableCollection<FeedBack>( iceCream.Feedbacks);
+            
+        }
+
+        public bool IsValidate()
+        {
+            return !string.IsNullOrWhiteSpace(Name);
+        }
+
+        public IceCream GetAsStore()
+        {
+            IceCream.Name =this.Name;
+            IceCream.Description=this.Description;
+            IceCream.Image=this.Image;
+            IceCream.Score=this.Score;
+            return IceCream;
+        }
+
+        internal bool IsAllFeildsClear()
+        {
+            bool result = false;
+            if (string.IsNullOrEmpty(Name)&& string.IsNullOrEmpty(Description)&& string.IsNullOrEmpty(Image))
+            {
+                result = true;
+            }
+            return result;
         }
 
         public void ClearAllFeilds()
         {
             Name = string.Empty;
             Description = string.Empty;
+            Image = string.Empty;
 
         }
     }

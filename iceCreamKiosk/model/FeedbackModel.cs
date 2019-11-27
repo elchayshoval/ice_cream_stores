@@ -27,6 +27,9 @@ namespace iceCreamKiosk.model
             {
                 FeedBack = new FeedBack();
             }
+            this.Description = feedBack.Description;
+            this.Image = feedBack.Image;
+            this.Stars = feedBack.Stars;
 
         }
 

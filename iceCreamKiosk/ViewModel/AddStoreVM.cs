@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight;
+﻿using BE;
+using BL;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
 using System;
@@ -12,46 +14,44 @@ namespace iceCreamKiosk.ViewModel
 {
     public class AddStoreVM : ViewModelBase
     {
+        private StoreLogic storeLogic = new StoreLogic();
         public ICommand AddStoreCommand { get; set; }
         public ICommand DismissCommand { get; set; }
         public ICommand CancelCommand { get; set; }
-        public StoreModel Store { get; set; }
+        public StoreModel StoreModel { get; set; }
         public AddStoreVM()//StoreModel store = null)
         {
             //this.Store = store;
-            if (this.Store == null)
+            if (this.StoreModel == null)
             {
-                this.Store = new StoreModel();
+                this.StoreModel = new StoreModel(null);
 
             }
-                AddStoreCommand = new RelayCommand(ExecuteAddStore, CanExecuteAddStore);
+                AddStoreCommand = new MyCommand(ExecuteAddStore, CanExecuteAddStore);
                 DismissCommand = new MyCommand(ExecuteDismiss, CanExecuteDismiss);
-                //DismissCommand.CanExecuteChanged+=
-                ////public event EventHandler CanExecuteChanged
-                ////{
-                ////    add { CommandManager.RequerySuggested += value; }
-                ////    remove { CommandManager.RequerySuggested -= value; }
-                ////}
-                CancelCommand = new RelayCommand(ExecuteCancel);
+                CancelCommand = new MyCommand(ExecuteCancel);
             
 
         }
 
         public Boolean CanExecuteAddStore()
         {
-            return false;//TDOD I have to omplement this method
+            return StoreModel.IsValidate();
         }
 
         public Boolean CanExecuteDismiss()
         {
-            return !Store.IsAllFeildsClear();
+            return !StoreModel.IsAllFeildsClear();
         }
 
         public void ExecuteAddStore()
         {
-            //TDOD I have to implement this moethod
+            Store s = StoreModel.GetAsStore();
+            s.StoreId = Guid.NewGuid();
+            storeLogic.AddStore(s);
+            //i have to send message
         }
-        public void ExecuteDismiss() { Store.ClearAllFeilds(); }
+        public void ExecuteDismiss() { StoreModel.ClearAllFeilds(); }
         public void ExecuteCancel()
         {
             //TDOD i have to close the window }

@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="iceCreamKiosk.view.AddIceCreamView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:iceCreamKiosk.view"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Button Command="{Binding AddIceCreamCommand}" Content="Add Ice Cream" HorizontalAlignment="Left" Height="108" Margin="93,56,0,0" VerticalAlignment="Top" Width="291"/>
+        <Button Command="{Binding DismissCommand}" Content="Dismiss" HorizontalAlignment="Left" Height="95" Margin="467,69,0,0" VerticalAlignment="Top" Width="251"/>
+        <TextBox Text="{Binding IceCreamModel.Name}" HorizontalAlignment="Left" Height="31" Margin="145,192,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="558" />
+        <TextBox Text="{Binding IceCreamModel.Description}" HorizontalAlignment="Left" Height="39" Margin="145,242,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="558"/>
+        <Button Command="{Binding CancelCommand}" Content="Cancel" HorizontalAlignment="Left" Height="36" Margin="289,332,0,0" VerticalAlignment="Top" Width="180" />
+
+    </Grid>
+</UserControl>

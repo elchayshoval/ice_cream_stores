@@ -13,36 +13,39 @@ namespace iceCreamKiosk.ViewModel
     class IceCreamForAdminVM:ViewModelBase
     {
         private FeedBack selectedFeedback;
+        //currently not in use
         private ViewModelBase showFeedbackVM;
 
-        public IceCreamModel IceCream { get; set; }
+        public IceCreamModel IceCreamModel { get; set; }
         public FeedBack SelectedFeedback { get => selectedFeedback; set => Set(ref selectedFeedback, value); }
 
 
         public ICommand ShowSelectedCommand { get; set; }
+        
+        //currently not in use
         public ViewModelBase ShowFeedbackVM { get => showFeedbackVM; set => Set(ref showFeedbackVM, value); }
 
         public IceCreamForAdminVM(IceCream iceCream)
         {
             //init IceCreamModel with iceCream
-            
-            ShowSelectedCommand = new MyCommand(executeShowSelectedCommand);
+            IceCreamModel = new IceCreamModel(iceCream);
+            ShowSelectedCommand = new MyCommand(ExecuteShowSelectedCommand);
             
 
         }
 
         
 
-        private void executeShowSelectedCommand()
+        private void ExecuteShowSelectedCommand()
         {
             if (selectedFeedback != null)
             {
-                //I have to assign ShowFeedbackVM with a new ShowFeedbackVM and selected feedback
+                MessengerInstance.Send<ViewModelBase>(new FeedbackVM(SelectedFeedback));
             }
-            // i have to invoke event that change page with IceCreamForAdminVM
+            
         }
 
-        
+        //currently not in use
         private void closeAddVM() { ShowFeedbackVM = null; }//I have to generate event that when invoke will close addvm with this function
 
     }

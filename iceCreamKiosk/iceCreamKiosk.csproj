@@ -84,7 +84,9 @@
     <Compile Include="model\StoreModel.cs" />
     <Compile Include="ViewModel\AddIceCreamVM.cs" />
     <Compile Include="ViewModel\AddStoreVM.cs" />
+    <Compile Include="ViewModel\AdminPageVM.cs" />
     <Compile Include="ViewModel\FeedbackVM.cs" />
+    <Compile Include="ViewModel\HomePage.cs" />
     <Compile Include="ViewModel\IceCreamForAdminVM.cs" />
     <Compile Include="ViewModel\FilterVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -92,8 +94,26 @@
     <Compile Include="ViewModel\StoresCollectionForAdminVM.cs" />
     <Compile Include="ViewModel\SearchIceCreamVM.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="view\AddIceCreamView.xaml.cs">
+      <DependentUpon>AddIceCreamView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\AddStoreView.xaml.cs">
       <DependentUpon>AddStoreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\AdminPageView.xaml.cs">
+      <DependentUpon>AdminPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\FeedbackView.xaml.cs">
+      <DependentUpon>FeedbackView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\IceCreamForAdminView.xaml.cs">
+      <DependentUpon>IceCreamForAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\StoreForAdminView.xaml.cs">
+      <DependentUpon>StoreForAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\StoresCollectionForAdminView.xaml.cs">
+      <DependentUpon>StoresCollectionForAdminView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -107,7 +127,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="view\AddIceCreamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="view\AddStoreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\AdminPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\FeedbackView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\IceCreamForAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\StoreForAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\StoresCollectionForAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
