@@ -12,6 +12,7 @@ namespace DL
     {
 
         public DbSet<Store> Stores { get; set; }
-        //public DbSet<IceCream> IceCreams { get; set; }
+        public DbSet<IceCream> IceCreams { get; set; }
+        public DbSet<FeedBack> Feedbacks { get; set; }
     }
 }

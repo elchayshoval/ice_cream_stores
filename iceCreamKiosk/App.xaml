@@ -1,7 +1,29 @@
- <Application x:Class="iceCreamKiosk.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:iceCreamKiosk" StartupUri="MainWindow.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+ <Application x:Class="iceCreamKiosk.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:local="clr-namespace:iceCreamKiosk" xmlns:view="clr-namespace:iceCreamKiosk.view" xmlns:ViewModel="clr-namespace:iceCreamKiosk.ViewModel" StartupUri="MainWindow.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
   <Application.Resources>
     <ResourceDictionary>
       <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:iceCreamKiosk.ViewModel" />
-    </ResourceDictionary>
+            <DataTemplate  DataType="{x:Type ViewModel:StoresCollectionForAdminVM}">
+                <view:StoresCollectionForAdminView />
+            </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModel:AdminPageVM}">
+                <view:AdminPageView />
+            </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModel:AddStoreVM}">
+                <view:AddStoreView />
+            </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModel:StoreForAdminVM}">
+                <view:StoreForAdminView  />
+            </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModel:AddIceCreamVM}">
+                <view:AddIceCreamView  />
+            </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModel:IceCreamForAdminVM}">
+                <view:IceCreamForAdminView  />
+            </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModel:FeedbackVM}">
+                <view:FeedbackView  />
+            </DataTemplate>
+        </ResourceDictionary>
   </Application.Resources>
 </Application>

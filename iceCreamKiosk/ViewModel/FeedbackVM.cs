@@ -12,12 +12,12 @@ namespace iceCreamKiosk.ViewModel
 {
     class FeedbackVM:ViewModelBase
     {
-        public FeedbackVM FeedbackModel { get; set; }
+        public FeedbackModel FeedbackModel { get; set; }
         public ICommand CancelCommand { get; set; }
 
         public FeedbackVM(FeedBack feedBack)
         {
-            //I have to init FeedbackModel with feedback
+            FeedbackModel = new FeedbackModel(feedBack);
             CancelCommand = new MyCommand(executeCancelCommand);
         }
 

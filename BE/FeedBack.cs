@@ -9,9 +9,10 @@ namespace BE
    public class FeedBack
     {
 
-        public int Id { get; set; }
+        public Guid FeedbackId { get; set; }
+        public Guid IceCreamID { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-        internal Enums.Stars Feedback { get; set; }
+        public Enums.Stars Stars { get; set; }
     }
 }

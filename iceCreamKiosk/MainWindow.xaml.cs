@@ -1,4 +1,5 @@
 ﻿using iceCreamKiosk.view;
+using iceCreamKiosk.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace iceCreamKiosk
 
             InitializeComponent();
 
-            this.Content = new AddStoreView();
+            this.Content = new AdminPageVM();
         }
     }
 }
