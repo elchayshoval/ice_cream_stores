@@ -1,4 +1,5 @@
 ﻿using BE;
+using BL.validations;
 using DL;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace BL
 {
     public class IceCreamLogic
     {
+        public enum Status { Success, NoInternetConnection, DBError, InvalidName }
         private IceCreamService iceCreamService = new IceCreamService();
         public IEnumerable<IceCream> GetIceCreams()
         {
@@ -21,10 +23,62 @@ namespace BL
             iceCreamService.RemoveIceCream(iceCream);
         }
 
-        public bool AddIceCream(IceCream iceCream)
+        public Status AddIceCream(IceCream iceCream)
         {
-            //add some validations
-            return iceCreamService.AddIceCream(iceCream);
+            IceCreamValidation iceCreamValidation = new IceCreamValidation();
+            Status status = Status.Success;
+            iceCream.IceCreamId = Guid.NewGuid();
+            try
+            {
+                if (iceCreamValidation.IsIceCreamValid(iceCream))
+                {
+                    iceCreamService.AddIceCream(iceCream);
+
+                }
+                else
+                {
+                    status = Status.InvalidName;
+                }
+                
+
+            }
+            catch (Exception)
+            {
+
+                status = Status.DBError;
+            }
+            return status;
+        }
+
+        public List<IceCream> GetIceCreamsByStoreId(Guid storeId)
+        {
+            return GetIceCreams().Where(ice => ice.StoreId == storeId).ToList();
+        }
+
+        public Status UpdateIceCream(IceCream iceCream)
+        {
+            IceCreamValidation iceCreamValidation = new IceCreamValidation();
+            Status status = Status.Success;
+            try
+            {
+                if (iceCreamValidation.IsIceCreamValid(iceCream))
+                {
+                    iceCreamService.UpdateIceCream(iceCream);
+
+                }
+                else
+                {
+                    status = Status.InvalidName;
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+                status = Status.DBError;
+            }
+            return status;
         }
     }
 }

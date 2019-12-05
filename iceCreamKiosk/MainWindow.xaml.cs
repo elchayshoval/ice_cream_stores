@@ -28,7 +28,7 @@ namespace iceCreamKiosk
 
             InitializeComponent();
 
-            this.Content = new AdminPageVM();
+            this.Content = new HomePageVM();
         }
     }
 }

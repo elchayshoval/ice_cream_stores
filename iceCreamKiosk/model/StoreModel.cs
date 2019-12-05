@@ -1,4 +1,5 @@
 ﻿using BE;
+using BL;
 using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace iceCreamKiosk.model
 {
-    public class StoreModel:ObservableObject
+    public class StoreModel : ObservableObject
     {
         private string name;
         private string image;
@@ -17,16 +18,18 @@ namespace iceCreamKiosk.model
         private string phone;
         private ObservableCollection<IceCream> iceCreams;
 
+
         public Store Store { get; set; }
         public string Name { get => name; set => Set(ref name, value); }
-        public string Image { get => image; set => Set(ref image, value); }   
+        public string Image { get => image; set => Set(ref image, value); }
         public string Location { get => location; set => Set(ref location, value); }
         public string Phone { get => phone; set => Set(ref phone, value); }
-        
+
+
         //public List<IceCream> iceCreams { get; set; } = new List<IceCream>();
         public ObservableCollection<IceCream> IceCreams { get => iceCreams; set => Set(ref iceCreams, value); }
 
-        public StoreModel(Store store=null)
+        public StoreModel(Store store = null)
         {
             Store = store;
             if (Store == null)
@@ -37,6 +40,7 @@ namespace iceCreamKiosk.model
             Location = Store.Address;
             Image = Store.Image;
             Phone = Store.Phone;
+
             IceCreams = new ObservableCollection<IceCream>(Store.IceCreams);
 
         }
@@ -65,17 +69,22 @@ namespace iceCreamKiosk.model
             Name = string.Empty;
             Location = string.Empty;
             Phone = string.Empty;
-            //TDOD I Have to implement the memthod with iteratinung on all propertys;
+            Image = string.Empty;
         }
 
         public bool IsAllFeildsClear()
         {
             Boolean result = false;
-            if(String.IsNullOrWhiteSpace(Name)&& String.IsNullOrWhiteSpace(Location) && String.IsNullOrWhiteSpace(Phone))
+            if (String.IsNullOrWhiteSpace(Name) && String.IsNullOrWhiteSpace(Location) && String.IsNullOrWhiteSpace(Phone) && String.IsNullOrWhiteSpace(Image))
             {
                 result = true;
             }
             return result;//I have to change and improve the code!!! 
+        }
+
+        public void UpdateIceCreamCollection()
+        {
+            IceCreams = new ObservableCollection<IceCream>(new IceCreamLogic().GetIceCreamsByStoreId(Store.StoreId));
         }
     }
 }

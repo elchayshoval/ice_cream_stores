@@ -1,7 +1,9 @@
 ﻿using BE;
 using BL;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,10 +23,12 @@ namespace iceCreamKiosk.ViewModel
 
         public ICommand AddCommand { get; set; }
         public ICommand ShowSelectedCommand { get; set; }
-        public ICommand RemoveCommand { get; set; }
+
+        public ICommand OpenRemoveDialog { get; set; }
 
         public Store SelectedStore { get => selectedStore; set => Set(ref selectedStore, value); }
         public ObservableCollection<Store> Stores { get => stores; set => Set(ref stores, value); }
+        public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
 
         //currently not in use
         public ViewModelBase AddVM { get => addVM; set => Set(ref addVM, value); }
@@ -33,8 +37,20 @@ namespace iceCreamKiosk.ViewModel
         {
             Stores = new ObservableCollection<Store>(storeLogic.GetStores());
             AddCommand = new MyCommand(ExecuteAddCommand);
-            ShowSelectedCommand = new MyCommand(executeShowSelectedCommand);
-            RemoveCommand = new MyCommand(executeRemoveCommand);
+            ShowSelectedCommand = new RelayCommand<Store>(executeShowSelectedCommand);
+
+            OpenRemoveDialog = new RelayCommand<Store>((s) =>
+            {
+                if (s is Store)
+                {
+                    Store store = (s as Store);
+                    SnackbarMessageQueue.Enqueue(string.Format("Are you sure you want to remove: {0} ?", store.Name), "Yes, Delete", () =>
+                    {
+                        ExecuteRemoveCommand(store);
+                    });
+
+                }
+            });
 
         }
 
@@ -48,21 +64,39 @@ namespace iceCreamKiosk.ViewModel
             Stores = new ObservableCollection<Store>(storeLogic.GetStores());
         }
 
-        private void executeShowSelectedCommand()
+        private void executeShowSelectedCommand(Object store)
         {
-            if (SelectedStore != null)
+
+            if (store is Store)
             {
-                MessengerInstance.Send<ViewModelBase>(new StoreForAdminVM(SelectedStore));
+                MessengerInstance.Send<ViewModelBase>(new StoreForAdminVM(store as Store));
             }
         }
-        private void executeRemoveCommand()
+        private void ExecuteRemoveCommand(Store store)
         {
-            if (SelectedStore != null)
+            if (store != null)
             {
-                storeLogic.RemoveStore(SelectedStore);
+
+                storeLogic.RemoveStore(store);
                 UpdateStoresCollection();
-                //I have notify that action successed
+
+
+                SnackbarMessageQueue.Enqueue(string.Format("Successful remove {0} .", store.Name), "UNDO", () =>
+                {
+                    //Notjice!! dont add back the icecreams and feedbacks!!!!
+                    var status = storeLogic.AddStore(store);
+                    if (status == StoreLogic.Status.Success)
+                    {
+
+                        SnackbarMessageQueue.Enqueue(string.Format("Successful Undo removing {0} .", store.Name));
+                        UpdateStoresCollection();
+                    }
+                }
+                );
+
+
             }
+
         }
 
         //currently not in use

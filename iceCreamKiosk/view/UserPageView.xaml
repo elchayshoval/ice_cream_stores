@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="iceCreamKiosk.view.UserPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:iceCreamKiosk.view"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10*" />
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
+            <Button Command="{Binding BackCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="10 10 10 0" Width="62"  >
+                <materialDesign:PackIcon
+                Kind="NavigateBefore"
+                Width="24"
+                Height="24"/>
+            </Button>
+            <Button Command="{Binding NextCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="10 10 10 0" Width="62"  >
+                <materialDesign:PackIcon
+                Kind="NavigateNext"
+                Width="24"
+                Height="24"/>
+            </Button>
+        </StackPanel>
+        
+        <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Content="{Binding CurrentPage}" Grid.Row="1">
+
+        </ContentControl>
+    </Grid>
+</UserControl>

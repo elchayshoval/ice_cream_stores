@@ -1,7 +1,10 @@
 ﻿using BE;
 using BL;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
+using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,11 +23,16 @@ namespace iceCreamKiosk.ViewModel
         private IceCreamLogic IceCreamLogic = new IceCreamLogic();
 
         public StoreModel StoreModel { get; set; }
+        public ICommand OpenFileCommand { get;  set; }
         public IceCream SelectedIceCream { get => selectedIceCream; set => Set(ref selectedIceCream, value); }
 
         public ICommand AddCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
         public ICommand ShowSelectedCommand { get; set; }
-        public ICommand RemoveCommand { get; set; }
+        public ICommand OpenRemoveDialog { get; set; }
+        public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
+
+
         //currently not in use
         public ViewModelBase AddVM { get => addVM; set => Set(ref addVM, value); }
 
@@ -32,27 +40,93 @@ namespace iceCreamKiosk.ViewModel
         {
             //init storeModel with store
             AddCommand = new MyCommand(ExecuteAddCommand);
-            ShowSelectedCommand = new MyCommand(ExecuteShowSelectedCommand);
-            RemoveCommand = new MyCommand(ExecuteRemoveCommand);
+            ShowSelectedCommand = new RelayCommand<IceCream>(ExecuteShowSelectedCommand);
             StoreModel = new StoreModel(store);
+            OpenFileCommand = new MyCommand(ExcuteBrowseFile);
+            UpdateCommand = new RelayCommand(ExecuteUpdateCommand, CanExecuteUpdateCommand);
+            OpenRemoveDialog = new RelayCommand<IceCream>((ice) =>
+            {
+                if (ice is IceCream)
+                {
+                    IceCream iceCream = (ice as IceCream);
+                    SnackbarMessageQueue.Enqueue(string.Format("Are you sure you want to remove: {0} ?", iceCream.Name), "Yes, Delete", () =>
+                    {
+                        ExecuteRemoveCommand(iceCream);
+                    });
 
+                }
+            });
         }
 
-        private void ExecuteRemoveCommand()
+        private bool CanExecuteUpdateCommand()
         {
-            if (SelectedIceCream != null)
+            return true;
+        }
+
+        private void ExecuteUpdateCommand()
+        {
+            Store store = StoreModel.GetAsStore();
+            if (store != null)
             {
-                IceCreamLogic.RemoveIceCream(SelectedIceCream);
+                StoreLogic storeLogic = new StoreLogic();
+                var res = storeLogic.UpdateStore(store);
+                switch (res)
+                {
+                    
+                    case StoreLogic.Status.DBError:
+                        SnackbarMessageQueue.Enqueue("Error occur, Can not add store now...");
+                        break;
+                    case StoreLogic.Status.Success:
+                        SnackbarMessageQueue.Enqueue(string.Format("{0} Updated successful.", store.Name));
+                        
+                        break;
+
+                }
+
+            }
+
+            
+        }
+
+        void ExcuteBrowseFile()
+        {
+            //Add code here
+            OpenFileDialog d = new OpenFileDialog();
+
+            if (d.ShowDialog() == true)
+            {
+                var path = d.FileName;
+                StoreModel.Image = path;
+            }
+        }
+        private void ExecuteRemoveCommand(IceCream iceCream)
+        {
+            if (iceCream != null)
+            {
+                IceCreamLogic.RemoveIceCream(iceCream);
 
                 UpdateIceCreamsCollection();
+                SnackbarMessageQueue.Enqueue(string.Format("Successful remove {0} .", iceCream.Name), "UNDO", () =>
+                {
+                //Notjice!! dont add back the icecreams and feedbacks!!!!
+                var status = IceCreamLogic.AddIceCream(iceCream);
+                if (status == IceCreamLogic.Status.Success)
+                {
+
+                    SnackbarMessageQueue.Enqueue(string.Format("Successful Undo removing {0} .", iceCream.Name));
+                    UpdateIceCreamsCollection();
+                    }
+                }
+                );
             }
         }
 
-        private void ExecuteShowSelectedCommand()
+        private void ExecuteShowSelectedCommand(IceCream iceCream)
         {
-            if (selectedIceCream != null)
+            if (iceCream != null)
             {
-                MessengerInstance.Send<ViewModelBase>(new IceCreamForAdminVM(SelectedIceCream));
+                MessengerInstance.Send<ViewModelBase>(new IceCreamForAdminVM(iceCream));
+
 
             }
         }
@@ -67,11 +141,14 @@ namespace iceCreamKiosk.ViewModel
 
         internal void UpdateIceCreamsCollection()
         {
-             StoreModel.IceCreams= new ObservableCollection<IceCream>(IceCreamLogic.GetIceCreams());
+            StoreModel.UpdateIceCreamCollection();
         }
 
         //curently not in use
         private void closeAddVM() { AddVM = null; }//I have to generate event that when invoke will close addvm with this function
 
+
+
+        
     }
 }

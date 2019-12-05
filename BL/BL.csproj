@@ -63,6 +63,8 @@
     <Compile Include="NutritionalValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoreLogic.cs" />
+    <Compile Include="validations\IceCreamValidation.cs" />
+    <Compile Include="validations\StoreValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

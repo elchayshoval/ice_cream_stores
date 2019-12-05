@@ -84,9 +84,10 @@ namespace DL
             using (var db = new StoreContext())
             {
                 db.Stores.AddOrUpdate(store);
+                db.SaveChanges();
                 return true;
             }
-            return false;
+            
         }
     }
 }
