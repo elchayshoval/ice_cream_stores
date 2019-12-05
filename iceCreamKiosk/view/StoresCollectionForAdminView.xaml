@@ -4,27 +4,129 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:iceCreamKiosk.view"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="grid" Margin="0,0,0,-0.4">
-        <Button Command="{Binding AddCommand}" Content="Add Store" HorizontalAlignment="Left" Height="108" Margin="93,56,0,0" VerticalAlignment="Top" Width="291"/>
-        <ListBox ItemsSource="{Binding Stores}"  SelectedItem="{Binding SelectedStore}" HorizontalAlignment="Left" Height="384" Margin="389,56,0,0" VerticalAlignment="Top" Width="345">
-            <ListBox.ItemTemplate>
+             d:DesignHeight="450" d:DesignWidth="800"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="77*"/>
+        </Grid.RowDefinitions>
+        <Button Command="{Binding AddCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"  Margin="38.6,4,33,4.8" Width="62"  >
+            <materialDesign:PackIcon
+                Kind="Add"
+                Width="24"
+                Height="24"/>
+        </Button>
+        <ListView  Style="{StaticResource MaterialDesignGridList}" materialDesign:ShadowAssist.ShadowDepth="Depth5" ItemsSource="{Binding Stores}"   Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"  >
+
+            <!-- make margin off--><!--
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>-->
+
+            <ListView.ItemTemplate>
                 <DataTemplate >
+                    <materialDesign:Card  Width="450" Margin="1" materialDesign:ShadowAssist.ShadowDepth="Depth5" materialDesign:ShadowAssist.ShadowEdges="All"  UniformCornerRadius="10" >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="250" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding Image}" Stretch="Fill" Margin="2,0,6.8,0" />
+                            <Button Command="{Binding DataContext.ShowSelectedCommand,
+                                    RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding }" Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20">
+                                Open
+                            </Button>
+                            <StackPanel Grid.Row="1" Margin="8 24 0 0" >
+                                <StackPanel Orientation="Horizontal" Margin="1">
 
-                    <Button Command="{Binding DataContext.ShowSelectedCommand,
-         RelativeSource={RelativeSource AncestorType=ListBox}}"  HorizontalAlignment="Left" Height="108"  VerticalAlignment="Top" Width="291">
-                        <StackPanel>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                            <Button Content="Remove" Command="{Binding DataContext.RemoveCommand,
-         RelativeSource={RelativeSource AncestorType=ListBox}}" ToolTip="Press to Delete"  HorizontalAlignment="Left" Height="108" Margin="93,56,0,0" VerticalAlignment="Top" Width="291"/>
+                                    <materialDesign:PackIcon  Kind="Store" />
 
-                        </StackPanel>
-                    </Button>
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5" >
+
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="1">
+
+                                    <materialDesign:PackIcon  Kind="Location"/>
+
+                                    <TextBlock Text="{Binding Address}" FontWeight="Bold" Margin="5">
+
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="1">
+
+                                    <materialDesign:PackIcon  Kind="Phone"/>
+
+                                    <TextBlock Text="{Binding Phone}" FontWeight="Bold" Margin="5">
+
+                                    </TextBlock>
+                                </StackPanel>
+
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" >
+                               
+                                <Button Margin="10" Command="{Binding DataContext.OpenRemoveDialog, 
+         RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding }"
+                                            
+        Style="{StaticResource MaterialDesignToolButton}"
+        Width="50"
+        Padding="2 0 2 0"
+        materialDesign:RippleAssist.IsCentered="True">
+                                    <materialDesign:PackIcon Width="30" Height="30" 
+          Kind="Delete" />
+                                </Button>
+
+
+
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 </DataTemplate>
 
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <materialDesign:Snackbar
+  HorizontalAlignment="Stretch" MessageQueue="{Binding SnackbarMessageQueue}">
+
+        </materialDesign:Snackbar>
+
     </Grid>
 </UserControl>

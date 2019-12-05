@@ -1,6 +1,7 @@
 ﻿using BE;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,15 @@ namespace DL
             using (var db = new StoreContext())
             {
                 db.IceCreams.Add(iceCream);
+                db.SaveChanges();
+                return true;
+            }
+        }
+        public bool UpdateIceCream(IceCream iceCream)
+        {
+            using (var db = new StoreContext())
+            {
+                db.IceCreams.AddOrUpdate(iceCream);
                 db.SaveChanges();
                 return true;
             }

@@ -1,6 +1,9 @@
 ﻿using BE;
+using BL;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,41 +15,72 @@ namespace iceCreamKiosk.ViewModel
 {
     class IceCreamForAdminVM:ViewModelBase
     {
-        private FeedBack selectedFeedback;
-        //currently not in use
-        private ViewModelBase showFeedbackVM;
-
+        
         public IceCreamModel IceCreamModel { get; set; }
-        public FeedBack SelectedFeedback { get => selectedFeedback; set => Set(ref selectedFeedback, value); }
-
+        
 
         public ICommand ShowSelectedCommand { get; set; }
-        
-        //currently not in use
-        public ViewModelBase ShowFeedbackVM { get => showFeedbackVM; set => Set(ref showFeedbackVM, value); }
+        public ICommand NavigateToStoreCommand { get; set; }
+        public ICommand UpdateCommand { get; set; } 
+        public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
+
 
         public IceCreamForAdminVM(IceCream iceCream)
         {
-            //init IceCreamModel with iceCream
-            IceCreamModel = new IceCreamModel(iceCream);
-            ShowSelectedCommand = new MyCommand(ExecuteShowSelectedCommand);
             
+            IceCreamModel = new IceCreamModel(iceCream);
+            ShowSelectedCommand = new RelayCommand<FeedBack>(ExecuteShowSelectedCommand);
+            UpdateCommand = new RelayCommand(ExecuteUpdateCommand, CanExecuteUpdateCommand);
+            NavigateToStoreCommand = new RelayCommand(ExecuteNavigateToStoreCommand);
+
 
         }
 
-        
-
-        private void ExecuteShowSelectedCommand()
+        private void ExecuteNavigateToStoreCommand()
         {
-            if (selectedFeedback != null)
+            MessengerInstance.Send<ViewModelBase>(new StoreForAdminVM(
+                new StoreLogic().GetStoreByID(IceCreamModel.IceCream.StoreId)));
+        }
+
+        private void ExecuteShowSelectedCommand(FeedBack feedBack)
+        {
+            if (feedBack != null)
             {
-                MessengerInstance.Send<ViewModelBase>(new FeedbackVM(SelectedFeedback));
+                MessengerInstance.Send<ViewModelBase>(new FeedbackVM(feedBack));
             }
             
         }
 
-        //currently not in use
-        private void closeAddVM() { ShowFeedbackVM = null; }//I have to generate event that when invoke will close addvm with this function
 
+
+        private bool CanExecuteUpdateCommand()
+        {
+            return true;
+        }
+
+        private void ExecuteUpdateCommand()
+        {
+            IceCream iceCream = IceCreamModel.GetAsStore();
+            if (iceCream != null)
+            {
+                IceCreamLogic iceCreamLogic = new IceCreamLogic();
+                var res = iceCreamLogic.UpdateIceCream(iceCream);
+                switch (res)
+                {
+
+                    case IceCreamLogic.Status.DBError:
+                        SnackbarMessageQueue.Enqueue("Error occur, Can not Update Ice Cream now...");
+                        break;
+                    case IceCreamLogic.Status.Success:
+                        SnackbarMessageQueue.Enqueue(string.Format("{0} Updated successful.", iceCream.Name));
+
+                        break;
+
+                }
+
+            }
+
+
+        }
     }
 }

@@ -24,5 +24,7 @@ namespace iceCreamKiosk.view
         {
             InitializeComponent();
         }
+
+        
     }
 }

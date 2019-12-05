@@ -3,6 +3,8 @@ using BL;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
+using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +19,11 @@ namespace iceCreamKiosk.ViewModel
         public ICommand AddIceCreamCommand { get; set; }
         public ICommand DismissCommand { get; set; }
         public ICommand CancelCommand { get; set; }
+        public MyCommand OpenFileCommand { get;  set; }
         public IceCreamModel IceCreamModel { get; set; }
 
         private IceCreamLogic iceCreamLogic = new IceCreamLogic();
+        public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
         public AddIceCreamVM(Store store)
         {
 
@@ -29,9 +33,8 @@ namespace iceCreamKiosk.ViewModel
 
             AddIceCreamCommand = new MyCommand(ExecuteAddStore, CanExecuteAddStore);
             DismissCommand = new MyCommand(ExecuteDismiss, CanExecuteDismiss);
-   
             CancelCommand = new RelayCommand(ExecuteCancel);
-
+            OpenFileCommand = new MyCommand(BrowseFile);
 
         }
 
@@ -48,9 +51,26 @@ namespace iceCreamKiosk.ViewModel
         public void ExecuteAddStore()
         {
             IceCream iceCream = IceCreamModel.GetAsStore();
-            iceCream.IceCreamId = Guid.NewGuid();
-            iceCreamLogic.AddIceCream(iceCream);
-            //i have to send message
+            
+            
+
+            
+            var res = iceCreamLogic.AddIceCream(iceCream);
+            switch (res)
+            {
+                case IceCreamLogic.Status.InvalidName:
+                    SnackbarMessageQueue.Enqueue(string.Format("Error,Faild to add. Ice Cream With The Name {0} alredy exist !!!.", iceCream.Name));
+                    break;
+                case IceCreamLogic.Status.DBError:
+                    SnackbarMessageQueue.Enqueue("Error occur, Can not add store now...");
+                    break;
+                case IceCreamLogic.Status.Success:
+                    SnackbarMessageQueue.Enqueue(string.Format("{0} added successful.", iceCream.Name), "Go to new Ice Cream", () => {
+                        MessengerInstance.Send<ViewModelBase>(new IceCreamForAdminVM(iceCream));
+                    });
+                    break;
+
+            }
         }
         public void ExecuteDismiss()
         {
@@ -59,6 +79,18 @@ namespace iceCreamKiosk.ViewModel
         public void ExecuteCancel()
         {
             MessengerInstance.Send<ViewModelBase>(null);
+        }
+
+        void BrowseFile()
+        {
+            //Add code here
+            OpenFileDialog d = new OpenFileDialog();
+
+            if (d.ShowDialog() == true)
+            {
+                var path = d.FileName;
+                IceCreamModel.Image = path;
+            }
         }
     }
 }

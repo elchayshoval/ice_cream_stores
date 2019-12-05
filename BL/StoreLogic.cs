@@ -1,4 +1,5 @@
 ﻿using BE;
+using BL.validations;
 using DL;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,32 @@ namespace BL
 {
     public class StoreLogic
     {
+        public enum Status { Success, NoInternetConnection, DBError, InvalidNameOrLocation }
         private StoreService storeService = new StoreService();
-        public bool AddStore(Store store)
+        public Status AddStore(Store store)
         {
-            //add some validations
-            return storeService.AddStore(store);
+            StoreValidation storeValidation = new StoreValidation();
+            Status status = Status.Success;
+            store.StoreId = Guid.NewGuid();
+            try
+            {
+                if (storeValidation.IsStoreValid(store))
+                {
+                    storeService.AddStore(store);
+
+                }
+                else
+                {
+                    status = Status.InvalidNameOrLocation;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                status = Status.DBError;
+            }
+            return status;
         }
 
         public Store GetStoreByID(Guid id)
@@ -36,10 +58,25 @@ namespace BL
         /// </summary>
         /// <param name="store">the store to update, don't update inner collections</param>
         /// <returns></returns>
-        public bool UpdateStore(Store store)
+        public Status UpdateStore(Store store)
         {
+            StoreValidation storeValidation = new StoreValidation();
+            Status status = Status.Success;
+            
+            try
+            {
+               //vlidation for update needed
+                    storeService.UpdateStore(store);
 
-            return storeService.UpdateStore(store);
+                
+            }
+            catch (Exception)
+            {
+
+                status = Status.DBError;
+            }
+            return status;
+
         }
     }
 }

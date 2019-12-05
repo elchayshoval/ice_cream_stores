@@ -23,6 +23,7 @@ namespace iceCreamKiosk.view
         public StoreForAdminView()
         {
             InitializeComponent();
+            //webBrowser.Navigate(@"C:\Users\Chayim\Documents\KioskInformation\Pictures\a567b913a9aefd5a3e408b49d2cd8e61.jpg");
         }
     }
 }

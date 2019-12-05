@@ -17,13 +17,13 @@ namespace iceCreamKiosk.model
         private string description;        
         private string image;
         private Enums.Stars score;
-
+        private int nutritionalID;
 
         public string Name { get=> name; set => Set(ref name, value); }
         public string Description { get => description; set => Set(ref description, value); }
         public string Image { get => image; set => Set(ref image, value); }
         public Enums.Stars Score { get => score; set => Set(ref score, value); }
-
+        public int NutritionalID { get => nutritionalID; set => Set(ref nutritionalID, value); }
         public ObservableCollection<FeedBack> Feedbacks { get; set; }
 
         public IceCreamModel(IceCream iceCream= null)
@@ -38,6 +38,7 @@ namespace iceCreamKiosk.model
             this.Description = IceCream.Description;
             this.Image = IceCream.Image;
             this.Score = IceCream.Score;
+            this.NutritionalID = IceCream.NtritionalId;
             this.Feedbacks =new ObservableCollection<FeedBack>( iceCream.Feedbacks);
             
         }
@@ -53,13 +54,14 @@ namespace iceCreamKiosk.model
             IceCream.Description=this.Description;
             IceCream.Image=this.Image;
             IceCream.Score=this.Score;
+            IceCream.NtritionalId = this.NutritionalID;
             return IceCream;
         }
 
         internal bool IsAllFeildsClear()
         {
             bool result = false;
-            if (string.IsNullOrEmpty(Name)&& string.IsNullOrEmpty(Description)&& string.IsNullOrEmpty(Image))
+            if (string.IsNullOrEmpty(Name)&& string.IsNullOrEmpty(Description)&& string.IsNullOrEmpty(Image) && Score==Enums.Stars.one)
             {
                 result = true;
             }
@@ -71,7 +73,8 @@ namespace iceCreamKiosk.model
             Name = string.Empty;
             Description = string.Empty;
             Image = string.Empty;
-
+            Score = Enums.Stars.one;
+            NutritionalID = 0;
         }
     }
 }

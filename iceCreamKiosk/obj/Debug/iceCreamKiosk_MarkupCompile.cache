@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\App.xaml
-8551082052
+10-1984960524
 
-281586187899
-126-1382281079
-MainWindow.xaml;view\AddIceCreamView.xaml;view\AddStoreView.xaml;view\AdminPageView.xaml;view\FeedbackView.xaml;view\IceCreamForAdminView.xaml;view\StoreForAdminView.xaml;view\StoresCollectionForAdminView.xaml;
+33460014252
+1301079985066
+MainWindow.xaml;view\AddIceCreamView.xaml;view\AddStoreView.xaml;view\AdminPageView.xaml;view\FeedbackView.xaml;view\HomePageView.xaml;view\IceCreamForAdminView.xaml;view\StoreForAdminView.xaml;view\StoresCollectionForAdminView.xaml;view\UserPageView.xaml;
 
 False
 

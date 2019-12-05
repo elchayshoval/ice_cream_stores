@@ -3,15 +3,147 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:localConverter="clr-namespace:iceCreamKiosk.converters"
              xmlns:local="clr-namespace:iceCreamKiosk.view"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Button Command="{Binding AddIceCreamCommand}" Content="Add Ice Cream" HorizontalAlignment="Left" Height="108" Margin="93,56,0,0" VerticalAlignment="Top" Width="291"/>
-        <Button Command="{Binding DismissCommand}" Content="Dismiss" HorizontalAlignment="Left" Height="95" Margin="467,69,0,0" VerticalAlignment="Top" Width="251"/>
-        <TextBox Text="{Binding IceCreamModel.Name}" HorizontalAlignment="Left" Height="31" Margin="145,192,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="558" />
-        <TextBox Text="{Binding IceCreamModel.Description}" HorizontalAlignment="Left" Height="39" Margin="145,242,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="558"/>
-        <Button Command="{Binding CancelCommand}" Content="Cancel" HorizontalAlignment="Left" Height="36" Margin="289,332,0,0" VerticalAlignment="Top" Width="180" />
+    <UserControl.Resources>
+        <localConverter:StarConverter x:Key="StarConverter"/>
+    </UserControl.Resources>
+    <Grid Margin="0,0,0,-0.4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <materialDesign:Flipper HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch"  >
+            <materialDesign:Flipper.FrontContent>
+                <Grid HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="35*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding IceCreamModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"
+                        Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                        Margin="2"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Auto"
+                        Text="{Binding IceCreamModel.Description, UpdateSourceTrigger=PropertyChanged}"
+                        materialDesign:HintAssist.Hint="Enter description of the ice cream" />
+                    
+                    
+                    <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                            <Grid>
+                                <Button Command="{Binding OpenFileCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto">
+                                    pick an image
+                                </Button>
+                            </Grid>
 
+                        </materialDesign:Card>
+                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
+
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" materialDesign:HintAssist.Hint="Ice Cream Name" Text="{Binding IceCreamModel.Name, UpdateSourceTrigger=PropertyChanged}" />
+
+                                <materialDesign:RatingBar Grid.Row="1" HorizontalAlignment="Center"
+                                                          x:Name="CustomRatingBar"
+                                                          Max="5"
+                                                          Value="{Binding IceCreamModel.Score, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
+                                                          Orientation="Horizontal">
+                                    <materialDesign:RatingBar.ValueItemTemplate>
+                                        <DataTemplate DataType="system:Int32">
+                                            <Grid>
+                                                <materialDesign:PackIcon
+                                                    Kind="Heart" Height="24" Width="24" />
+                                                <TextBlock Text="{Binding}"
+                                                           HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="8"
+                                                           Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </materialDesign:RatingBar.ValueItemTemplate>
+                                </materialDesign:RatingBar>
+
+                            </Grid>
+                        </materialDesign:Card>
+
+
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="2*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" >
+
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBox Text="{Binding IceCreamModel.NutritionalID, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Nutritional id for API"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" />
+
+                                <materialDesign:PackIcon Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="Nutrition" />
+
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
+                            <Grid>
+
+                                <Button Command="{Binding AddIceCreamCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto">
+                                    Add Ice Cream
+                                    <!--not finnaly-->
+                                </Button>
+                            </Grid>
+
+                        </materialDesign:Card>
+                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Grid.Row="1"
+          Style="{StaticResource MaterialDesignFlatButton}"
+          Command="{Binding DismissCommand}">
+                                    Dismiss
+                                </Button>
+                                <Button Grid.Row="1"
+          Style="{StaticResource MaterialDesignFlatButton}"
+          Command="{Binding CancelCommand}" >
+                                    <materialDesign:PackIcon Kind="ArrowRight" Margin="80 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="auto" Height="auto"></materialDesign:PackIcon>
+                                </Button>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Grid>
+                </Grid>
+            </materialDesign:Flipper.FrontContent>
+        </materialDesign:Flipper>
+
+
+        <materialDesign:Snackbar Grid.ColumnSpan="2"
+  HorizontalAlignment="Stretch" MessageQueue="{Binding SnackbarMessageQueue}">
+
+        </materialDesign:Snackbar>
     </Grid>
 </UserControl>
