@@ -33,3 +33,7 @@ C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\obj\Debug\
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\obj\Debug\BE.dll
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\obj\Debug\BE.pdb
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\obj\Debug\BE.csprojAssemblyReference.cache
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\bin\Debug\GoogleApi.dll
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\bin\Debug\GoogleApi.xml

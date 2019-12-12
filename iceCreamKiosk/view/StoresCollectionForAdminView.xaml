@@ -18,16 +18,23 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="13*"/>
+            <RowDefinition Height="23*"/>
             <RowDefinition Height="77*"/>
         </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="68 0 0 0" VerticalAlignment="Bottom" 
+            Style="{StaticResource MaterialDesignDisplay3TextBlock}" >
+             <Hyperlink
+                IsEnabled="False">
+                Please, Select A Store...
+            </Hyperlink>
+        </TextBlock>
         <Button Command="{Binding AddCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"  Margin="38.6,4,33,4.8" Width="62"  >
             <materialDesign:PackIcon
                 Kind="Add"
                 Width="24"
                 Height="24"/>
         </Button>
-        <ListView  Style="{StaticResource MaterialDesignGridList}" materialDesign:ShadowAssist.ShadowDepth="Depth5" ItemsSource="{Binding Stores}"   Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"  >
+        <ListView Background="Transparent" Style="{StaticResource MaterialDesignGridList}" materialDesign:ShadowAssist.ShadowDepth="Depth5" ItemsSource="{Binding Stores}"   Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"  >
 
             <!-- make margin off--><!--
             <ListBox.ItemContainerStyle>

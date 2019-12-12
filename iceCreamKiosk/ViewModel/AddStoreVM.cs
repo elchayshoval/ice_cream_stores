@@ -3,6 +3,8 @@ using BL;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
+using iceCreamKiosk.placesApi;
+using MaterialDesignExtensions.Model;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
@@ -21,6 +23,7 @@ namespace iceCreamKiosk.ViewModel
         public ICommand DismissCommand { get; set; }
         public ICommand CancelCommand { get; set; }
         public ICommand OpenFileCommand { get; set; }
+        public IAutocompleteSource PredictionList { get; set; } = new PlacesAutoComplete();
         public StoreModel StoreModel { get; set; }
 
         public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
@@ -36,7 +39,9 @@ namespace iceCreamKiosk.ViewModel
                 DismissCommand = new MyCommand(ExecuteDismiss, CanExecuteDismiss);
                 CancelCommand = new MyCommand(ExecuteCancel);
                 OpenFileCommand = new MyCommand(BrowseFile);
-            
+            new DirectionService().GetDirection();
+
+
 
         }
 

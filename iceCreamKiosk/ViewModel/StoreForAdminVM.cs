@@ -17,14 +17,14 @@ namespace iceCreamKiosk.ViewModel
 {
     class StoreForAdminVM : ViewModelBase
     {
-        private IceCream selectedIceCream;
+        //private IceCream selectedIceCream;
         //currently not in use
         private ViewModelBase addVM;
         private IceCreamLogic IceCreamLogic = new IceCreamLogic();
 
         public StoreModel StoreModel { get; set; }
         public ICommand OpenFileCommand { get;  set; }
-        public IceCream SelectedIceCream { get => selectedIceCream; set => Set(ref selectedIceCream, value); }
+        //public IceCream SelectedIceCream { get => selectedIceCream; set => Set(ref selectedIceCream, value); }
 
         public ICommand AddCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
@@ -113,8 +113,8 @@ namespace iceCreamKiosk.ViewModel
                 if (status == IceCreamLogic.Status.Success)
                 {
 
-                    SnackbarMessageQueue.Enqueue(string.Format("Successful Undo removing {0} .", iceCream.Name));
                     UpdateIceCreamsCollection();
+                    SnackbarMessageQueue.Enqueue(string.Format("Successful Undo removing {0} .", iceCream.Name));
                     }
                 }
                 );

@@ -41,3 +41,7 @@ C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\DL\obj\Debug\
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\DL\obj\Debug\DL.csproj.CopyComplete
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\DL\obj\Debug\DL.dll
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\DL\obj\Debug\DL.pdb
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\DL\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\DL\bin\Debug\GoogleApi.dll
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\DL\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\DL\bin\Debug\GoogleApi.xml
