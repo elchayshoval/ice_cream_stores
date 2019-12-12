@@ -121,3 +121,7 @@ C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\view\HomePageView.baml
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\view\UserPageView.g.cs
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\view\UserPageView.baml
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\bin\Debug\GoogleApi.dll
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\bin\Debug\GoogleApi.xml

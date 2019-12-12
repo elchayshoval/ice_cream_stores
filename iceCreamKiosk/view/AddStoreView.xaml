@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:iceCreamKiosk.view"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+              xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="0,0,0,-0.4">
@@ -23,8 +24,8 @@
             <materialDesign:Flipper.FrontContent>
                 <Grid HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="65*"/>
-                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="55*"/>
+                        <ColumnDefinition Width="40*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -75,8 +76,23 @@
                                     <RowDefinition Height="2*"/>
                                     <RowDefinition Height="1*"/>
                                 </Grid.RowDefinitions>
-                                <TextBox Text="{Binding StoreModel.Location, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Store Location"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" />
+                                <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                      HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel HorizontalAlignment="Stretch" Width="auto" Orientation="Vertical">
+                                        <controls:Autocomplete FontSize="12" x:Name="autocomplete" AutocompleteSource="{Binding PredictionList}" Height="auto" Margin="0,16,0,0"
+                                                    SelectedItem="{Binding Path=StoreModel.Location, Mode=TwoWay}">
+                                            <controls:Autocomplete.Hint>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                                    <materialDesign:PackIcon Kind="Magnify" Width="24" Height="24" VerticalAlignment="Center" />
+                                                    <TextBlock Text="Which Location?" FontSize="{Binding Path=FontSize, ElementName=autocomplete}"
+                                       Margin="16,0,0,0" VerticalAlignment="Center" />
+                                                </StackPanel>
+                                            </controls:Autocomplete.Hint>
 
+                                        </controls:Autocomplete>
+
+                                    </StackPanel>
+                                </ScrollViewer>
                                 <materialDesign:PackIcon Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="ArrowLeft" />
 
                             </Grid>

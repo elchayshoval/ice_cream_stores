@@ -25,7 +25,7 @@ namespace DL
         {
             using (var db = new StoreContext())
             {
-                IceCream ice = db.IceCreams.Where(ic => ic.StoreId == iceCream.StoreId).FirstOrDefault();
+                IceCream ice = db.IceCreams.Where(ic => ic.IceCreamId == iceCream.IceCreamId).FirstOrDefault();
                 db.IceCreams.Remove(ice);
                 db.SaveChanges();
 
