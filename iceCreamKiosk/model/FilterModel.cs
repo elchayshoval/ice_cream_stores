@@ -60,7 +60,18 @@ namespace iceCreamKiosk.model
             return result;
         }
 
+        public Filter getAsFilter()
+        {
+            Filter filter = new Filter();
+            filter.IceCreamDescription = this.IceCreanDescription;
+            filter.MaxCal = this.MaxCal;
+            filter.MaxFat = this.TotalFat;
+            filter.MaxProtein = this.MaxProtein;
+            filter.MaxStars = this.MaxStars;
+            filter.MinStars = this.minStars;
 
+            return filter;
+        }
 
 
 
