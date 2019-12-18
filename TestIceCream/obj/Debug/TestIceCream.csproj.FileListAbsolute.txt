@@ -166,3 +166,12 @@ C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\obj\Debug\TestIceCre
 C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\obj\Debug\TestIceCream.csproj.CopyComplete
 C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\obj\Debug\TestIceCream.dll
 C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\obj\Debug\TestIceCream.pdb
+C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\bin\Debug\GoogleApi.dll
+C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\bin\Debug\MaterialDesignExtensions.dll
+C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\bin\Debug\GoogleApi.xml
+C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\bin\Debug\MaterialDesignExtensions.xml
+C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\bin\Debug\de\MaterialDesignExtensions.resources.dll
+C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\bin\Debug\Ru\MaterialDesignExtensions.resources.dll
+C:\Users\elchay\Desktop\clown\ice_cream_stores\TestIceCream\bin\Debug\uz-Latn-UZ\MaterialDesignExtensions.resources.dll

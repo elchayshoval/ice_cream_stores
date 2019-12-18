@@ -58,3 +58,7 @@ C:\Users\elchay\Desktop\clown\ice_cream_stores\DL\obj\Debug\DL.csproj.CoreCompil
 C:\Users\elchay\Desktop\clown\ice_cream_stores\DL\obj\Debug\DL.csproj.CopyComplete
 C:\Users\elchay\Desktop\clown\ice_cream_stores\DL\obj\Debug\DL.dll
 C:\Users\elchay\Desktop\clown\ice_cream_stores\DL\obj\Debug\DL.pdb
+C:\Users\elchay\Desktop\clown\ice_cream_stores\DL\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\elchay\Desktop\clown\ice_cream_stores\DL\bin\Debug\GoogleApi.dll
+C:\Users\elchay\Desktop\clown\ice_cream_stores\DL\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\elchay\Desktop\clown\ice_cream_stores\DL\bin\Debug\GoogleApi.xml

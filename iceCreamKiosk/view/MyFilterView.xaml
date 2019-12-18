@@ -58,12 +58,15 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Margin="0,35,0,0" Text="minimum score:"/>
-                    <!--   Value="{Binding IceCreamModel.Score, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"-->                    
+                    <!--   Value="{Binding IceCreamModel.Score, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"-->
                     <Slider Grid.Column="1" Minimum="1" Maximum="5" Style="{StaticResource MaterialDesignDiscreteSlider}"
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding Filter.minStars, Mode=TwoWay ,Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged}"  Width="200" Margin="-55,0,0,0" />
+                        ToolTip="Min Stars Chearch" Value="{Binding Filter.MinStars, Mode=TwoWay ,Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged}"  Width="200" Margin="-55,0,0,0">
+                        
+                        
+                    </Slider> 
                     <TextBlock Grid.Column="2" Margin="0,35,0,0" Text="maximum score:"/>
                     <Slider Grid.Column="3" Minimum="1" Maximum="5" Style="{StaticResource MaterialDesignDiscreteSlider}"
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding Filter.maxStars,Mode=TwoWay ,Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged}" Width="200" Margin="-55,0,0,0" />
+                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding Filter.MaxStars,Mode=TwoWay ,Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged}" Width="200" Margin="-55,0,0,0" />
                 </Grid>
                 <!-- filter by Nutritional text -->
                 <TextBlock Text="filter by Nutritional :" FontWeight="Bold" FontSize="20" Margin="0,40,0,0"/>

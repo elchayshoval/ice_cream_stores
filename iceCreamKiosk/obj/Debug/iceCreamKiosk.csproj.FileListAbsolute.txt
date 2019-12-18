@@ -198,3 +198,7 @@ C:\Users\elchay\Desktop\clown\ice_cream_stores\iceCreamKiosk\obj\Debug\view\Stor
 C:\Users\elchay\Desktop\clown\ice_cream_stores\iceCreamKiosk\obj\Debug\view\StoreAndIceCreamView.baml
 C:\Users\elchay\Desktop\clown\ice_cream_stores\iceCreamKiosk\obj\Debug\view\MyFeedbackView.g.cs
 C:\Users\elchay\Desktop\clown\ice_cream_stores\iceCreamKiosk\obj\Debug\view\MyFeedbackView.baml
+C:\Users\elchay\Desktop\clown\ice_cream_stores\iceCreamKiosk\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\elchay\Desktop\clown\ice_cream_stores\iceCreamKiosk\bin\Debug\GoogleApi.dll
+C:\Users\elchay\Desktop\clown\ice_cream_stores\iceCreamKiosk\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\elchay\Desktop\clown\ice_cream_stores\iceCreamKiosk\bin\Debug\GoogleApi.xml

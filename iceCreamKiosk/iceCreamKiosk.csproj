@@ -108,6 +108,7 @@
     <Compile Include="ViewModel\AddIceCreamVM.cs" />
     <Compile Include="ViewModel\AddStoreVM.cs" />
     <Compile Include="ViewModel\AdminPageVM.cs" />
+    <Compile Include="ViewModel\FeedbackForUserVM.cs" />
     <Compile Include="ViewModel\FeedbackVM.cs" />
     <Compile Include="ViewModel\HomePageVM.cs" />
     <Compile Include="ViewModel\IceCreamForAdminVM.cs" />

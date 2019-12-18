@@ -15,7 +15,11 @@
             </ResourceDictionary.MergedDictionaries>
 
             <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:iceCreamKiosk.ViewModel" />
-            
+
+            <DataTemplate  DataType="{x:Type ViewModel:FeedbackForUserVM}">
+                <view:MyFeedbackView />
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type ViewModel:StoreAndIceCreamVM}">
                 <view:StoreAndIceCreamView/>
             </DataTemplate>

@@ -1,6 +1,7 @@
 ﻿using BE;
 using BL;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,8 @@ namespace iceCreamKiosk.ViewModel
 {
     public class StoreAndIceCreamVM : ViewModelBase
     {
-        public ICommand AddFeedBack { get; set; }
+        
+        public ICommand ShowFeedbacks { get; set; }
         public StoreModel StoreModel { get; set; }
         public IceCreamLogic IceCreamLogic { get; set; } = new IceCreamLogic();
         public StoreLogic StoreLogic { get; set; } = new StoreLogic();
@@ -29,15 +31,16 @@ namespace iceCreamKiosk.ViewModel
            // Store store = IceCreamLogic.GetStoreById(iceCream.StoreId);
             StoreModel = new StoreModel(store);
             IceCreamModel = new IceCreamModel(iceCream);
-            AddFeedBack = new MyCommand(ExecuteAddFeedBack);
-           
+            ShowFeedbacks = new RelayCommand<IceCream>(ShowFeedbacksCommand);
+
+            
 
         }
+       
 
-        public void ExecuteAddFeedBack()
+        public void ShowFeedbacksCommand(IceCream iceCream)
         {
-            // go to myfeedbackVM
-            //MessengerInstance.Send<ViewModelBase>(new FeedbackVM();
+            MessengerInstance.Send<ViewModelBase>(new FeedbackForUserVM(iceCream));
 
         }
     }
