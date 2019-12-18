@@ -80,5 +80,12 @@ namespace BL
             }
             return status;
         }
+
+        public IEnumerable<IceCream> getFilteredIceCreams(Filter filter)
+        {
+             return GetIceCreams().Where(ice => filter.IsIceCreamRequested(ice)).ToList();
+            
+        }
     }
 }
+

@@ -21,7 +21,7 @@ namespace iceCreamKiosk.ViewModel
 
         public UserPageVM()
         {
-            //CurrentPage = new StoreAndIceCreamVM();
+            CurrentPage = new FilterVM();
             BackCommand = new MyCommand(ExecuteBackCommand, CanExecuteBackCommand);
             NextCommand = new MyCommand(ExecuteNextCommand, CanExecuteNextCommand);
 

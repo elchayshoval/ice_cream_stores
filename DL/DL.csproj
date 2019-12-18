@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="FeedBackService.cs" />
     <Compile Include="IceCreamService.cs" />
     <Compile Include="IDL.cs" />
     <Compile Include="IDL_Impllementation.cs" />
