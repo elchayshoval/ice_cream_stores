@@ -27,10 +27,7 @@ namespace iceCreamKiosk.model
             {
                 FeedBack = new FeedBack();
             }
-            this.Description = feedBack.Description;
-            this.Image = feedBack.Image;
-            this.Stars = feedBack.Stars;
-
+           
         }
 
         public bool IsAllFeildsClear()
@@ -41,6 +38,17 @@ namespace iceCreamKiosk.model
                 result = true;
             }
             return result;
+        }
+
+        public FeedBack getAsFeedBack()
+        {
+            FeedBack feedBack = new FeedBack();
+            feedBack.Description = this.Description;
+            feedBack.FeedbackId = this.FeedBack.FeedbackId;
+            feedBack.IceCreamID = this.FeedBack.IceCreamID;
+            feedBack.Image = this.Image;
+            feedBack.Stars = this.Stars;
+            return feedBack;
         }
     }
 }

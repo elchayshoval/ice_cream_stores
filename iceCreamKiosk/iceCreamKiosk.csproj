@@ -92,6 +92,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -125,11 +127,13 @@
     <Compile Include="ViewModel\AddIceCreamVM.cs" />
     <Compile Include="ViewModel\AddStoreVM.cs" />
     <Compile Include="ViewModel\AdminPageVM.cs" />
+    <Compile Include="ViewModel\FeedbackForUserVM.cs" />
     <Compile Include="ViewModel\FeedbackVM.cs" />
     <Compile Include="ViewModel\HomePageVM.cs" />
     <Compile Include="ViewModel\IceCreamForAdminVM.cs" />
     <Compile Include="ViewModel\FilterVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\StoreAndIceCreamVM.cs" />
     <Compile Include="ViewModel\StoreForAdminVM.cs" />
     <Compile Include="ViewModel\StoresCollectionForAdminVM.cs" />
     <Compile Include="ViewModel\SearchIceCreamVM.cs" />
@@ -152,6 +156,15 @@
     </Compile>
     <Compile Include="view\IceCreamForAdminView.xaml.cs">
       <DependentUpon>IceCreamForAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\MyFeedbackView.xaml.cs">
+      <DependentUpon>MyFeedbackView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\MyFilterView.xaml.cs">
+      <DependentUpon>MyFilterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\StoreAndIceCreamView.xaml.cs">
+      <DependentUpon>StoreAndIceCreamView.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\StoreForAdminView.xaml.cs">
       <DependentUpon>StoreForAdminView.xaml</DependentUpon>
@@ -195,6 +208,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\IceCreamForAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\MyFeedbackView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\MyFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\StoreAndIceCreamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
