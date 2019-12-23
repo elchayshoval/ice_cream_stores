@@ -180,19 +180,9 @@
                     </Grid.RowDefinitions>
                     
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image}"/>
-                    <Grid HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" >
-                        <Grid.Background>
-                            <ImageBrush ImageSource="C:\Users\Chayim\Documents\KioskInformation\Pictures\mapbackgroundicon.jpg" Stretch="Fill"/>
-                        </Grid.Background>
-                    </Grid>
-                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" 
-                           >
-                        <Image.Source>
-                            <BitmapImage UriSource="{}"></BitmapImage>
-                        </Image.Source>
-                        
-                        
-                    </Image>
+
+                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Map}"/>
+
                     <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5*"/>

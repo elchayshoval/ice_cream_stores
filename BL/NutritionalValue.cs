@@ -41,12 +41,12 @@ namespace BL
         {
             using (var client = new HttpClient())
             {
-
-                client.BaseAddress = new Uri(foodDataUrl);
+                string url = "https://api.nal.usda.gov/fdc/v1/" + productId;
+                client.BaseAddress = new Uri(url);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(@"application/json"));
 
-                HttpResponseMessage response = await client.GetAsync(string.Format("reports?ndbno={0}&type=f&format=json&api_key={1}", productId, apiKey));
+                HttpResponseMessage response = await client.GetAsync(string.Format("?api_key={0}", apiKey));
 
                 HttpContent content = response.Content;
 
@@ -62,10 +62,20 @@ namespace BL
             Nutrition nutrition = new Nutrition();
             JObject jobject = JObject.Parse(response);
 
-            foreach (var item in jobject["foods"])
+            foreach (var item in jobject["foodNutrients"])
             {
-                int nutId = (int)item["food"]["nutrients"]["nutrient_id"];
-                int value = (int)item["food"]["nutrients"]["value"];
+                int nutId;
+                int value;
+                try
+                {
+                    nutId = (int)item["nutrient"]["number"];
+                    value = (int)item["amount"];
+                }
+                catch (Exception)
+                {
+
+                    continue;
+                }
                 switch (nutId)
                 {
                     case energyId:

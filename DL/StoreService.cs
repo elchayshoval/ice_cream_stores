@@ -1,6 +1,7 @@
 ﻿using BE;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
@@ -38,14 +39,15 @@ namespace DL
             }
         }
 
-        public IEnumerable<Store> GetStores()
+        public  IEnumerable<Store> GetStores()
         {
             try
             {
                 using (var db = new StoreContext())
                 {
                     //I have to add to include path the follow ".Feedbacks"
-                    return db.Stores.Include("IceCreams.Feedbacks").ToList();
+                    return  db.Stores.Include("IceCreams.Feedbacks").ToList(); 
+                    //return await db.Stores.Include("IceCreams.Feedbacks").ToListAsync(); 
 
                 }
             }

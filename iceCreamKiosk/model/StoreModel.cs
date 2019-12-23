@@ -1,6 +1,7 @@
 ﻿using BE;
 using BL;
 using GalaSoft.MvvmLight;
+using iceCreamKiosk.placesApi;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,13 +18,21 @@ namespace iceCreamKiosk.model
         private string location;
         private string phone;
         private ObservableCollection<IceCream> iceCreams;
+        private byte[] map;
 
 
         public Store Store { get; set; }
         public string Name { get => name; set => Set(ref name, value); }
         public string Image { get => image; set => Set(ref image, value); }
-        public string Location { get => location; set => Set(ref location, value); }
+        public string Location
+        {
+            get => location;
+            set { Set(ref location, value); Map = new MapService().GetMap(value); }
+        }
         public string Phone { get => phone; set => Set(ref phone, value); }
+
+
+        public Byte[] Map { get { return map; } set { Set(ref map, value); } }
 
 
         //public List<IceCream> iceCreams { get; set; } = new List<IceCream>();
@@ -40,6 +49,7 @@ namespace iceCreamKiosk.model
             Location = Store.Address;
             Image = Store.Image;
             Phone = Store.Phone;
+            Map = Store.Map;
 
             IceCreams = new ObservableCollection<IceCream>(Store.IceCreams);
 
@@ -60,6 +70,7 @@ namespace iceCreamKiosk.model
             Store.Image = Image;
             Store.Name = Name;
             Store.Phone = Phone;
+            Store.Map = Map;
             // what is with icecream collection?
             return Store;
         }
