@@ -1,5 +1,7 @@
 ﻿using BE;
+using BL;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
 using System;
 using System.Collections.Generic;
@@ -10,20 +12,34 @@ using System.Windows.Input;
 
 namespace iceCreamKiosk.ViewModel
 {
-    class FeedbackVM:ViewModelBase
+    public  class FeedbackVM : ViewModelBase
     {
+        public FeedBackLogic feedBackLogic = new FeedBackLogic();
         public FeedbackModel FeedbackModel { get; set; }
-        public ICommand CancelCommand { get; set; }
+        public IceCreamModel IceCreamModel { get; set; }
+        public IceCreamLogic IceCreamLogic { get; set; } = new IceCreamLogic();
+
+
+        public ICommand AddFeadback { get; set; }
 
         public FeedbackVM(FeedBack feedBack)
         {
-            FeedbackModel = new FeedbackModel(feedBack);
-            CancelCommand = new MyCommand(executeCancelCommand);
+            // FeedbackModel = new FeedbackModel(feedBack);
+            AddFeadback = new MyCommand(ExecuteAddFeadback);
+            
+          
+        }
+       
+        public void ExecuteAddFeadback()
+        {
+            feedBackLogic.addFeedBack(FeedbackModel.getAsFeedBack());
+
         }
 
         private void executeCancelCommand()
         {
-            //TDOD i have to close the window 
+            feedBackLogic.addFeedBack(FeedbackModel.getAsFeedBack());
+            //MessengerInstance.Send<ViewModelBase>(new StoreAndIceCreamVM(iceCream));
         }
     }
 }

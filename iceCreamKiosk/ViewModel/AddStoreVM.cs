@@ -19,6 +19,8 @@ namespace iceCreamKiosk.ViewModel
     public class AddStoreVM : ViewModelBase
     {
         private StoreLogic storeLogic = new StoreLogic();
+        
+
         public ICommand AddStoreCommand { get; set; }
         public ICommand DismissCommand { get; set; }
         public ICommand CancelCommand { get; set; }
@@ -27,6 +29,7 @@ namespace iceCreamKiosk.ViewModel
         public StoreModel StoreModel { get; set; }
 
         public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
+
         public AddStoreVM()//StoreModel store = null)
         {
             //this.Store = store;
@@ -35,6 +38,7 @@ namespace iceCreamKiosk.ViewModel
                 this.StoreModel = new StoreModel(null);
 
             }
+            
                 AddStoreCommand = new MyCommand(ExecuteAddStore, CanExecuteAddStore);
                 DismissCommand = new MyCommand(ExecuteDismiss, CanExecuteDismiss);
                 CancelCommand = new MyCommand(ExecuteCancel);

@@ -32,7 +32,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="C:\Users\Chayim\Documents\KioskInformation\Pictures\Ice+Cream+Store+Playhouse.jpg" />
+                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Map, UpdateSourceTrigger=PropertyChanged}" />
                     <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5*"/>
@@ -80,7 +80,7 @@
                       HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                     <StackPanel HorizontalAlignment="Stretch" Width="auto" Orientation="Vertical">
                                         <controls:Autocomplete FontSize="12" x:Name="autocomplete" AutocompleteSource="{Binding PredictionList}" Height="auto" Margin="0,16,0,0"
-                                                    SelectedItem="{Binding Path=StoreModel.Location, Mode=TwoWay}">
+                                                    SelectedItem="{Binding Path=StoreModel.Location, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                             <controls:Autocomplete.Hint>
                                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                                                     <materialDesign:PackIcon Kind="Magnify" Width="24" Height="24" VerticalAlignment="Center" />

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+//using Newtonsoft.Json.Linq;
 
 using System.Net.Http;
 using System.Net.Http.Headers;
-
-
-
+using Newtonsoft.Json.Linq;
 
 namespace BL
 {
@@ -18,7 +16,7 @@ namespace BL
         private static readonly string imaggaUrl = "https://api.imagga.com/v2/";
         private static readonly string apiKey = "acc_eed74da3ce61108";
         private static readonly string apiSecret = "0f47674d79b58a8a615d82b4d84e967e";
-        private static readonly string authorization = "YWNjX2VlZDc0ZGEzY2U2MTEwODowZjQ3Njc0ZDc5YjU4YThhNjE1ZDgyYjRkODRlOTY3ZQ==";
+        //private static readonly string authorization = "YWNjX2VlZDc0ZGEzY2U2MTEwODowZjQ3Njc0ZDc5YjU4YThhNjE1ZDgyYjRkODRlOTY3ZQ==";
         private static readonly double CONFIDENT_VALUE=80;
 
         public static Boolean IsIceCreamConfident(string url)

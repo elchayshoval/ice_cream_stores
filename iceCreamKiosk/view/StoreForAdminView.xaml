@@ -180,19 +180,9 @@
                     </Grid.RowDefinitions>
                     
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image}"/>
-                    <Grid HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" >
-                        <Grid.Background>
-                            <ImageBrush ImageSource="C:\Users\Chayim\Documents\KioskInformation\Pictures\mapbackgroundicon.jpg" Stretch="Fill"/>
-                        </Grid.Background>
-                    </Grid>
-                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" 
-                           >
-                        <Image.Source>
-                            <BitmapImage UriSource="{}"></BitmapImage>
-                        </Image.Source>
-                        
-                        
-                    </Image>
+
+                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Map}"/>
+
                     <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5*"/>
@@ -307,7 +297,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="C:\Users\Chayim\Documents\KioskInformation\Pictures\Ice+Cream+Store+Playhouse.jpg" />
+                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="C:\Users\elchay\Desktop\שנה ד\אלול\הנדסת תוכנה לאינטרנט חלק א\תרגילים\my_t_2\t2\public\vered.jpg" /> <!-- sorce = "image.jpg"-->
                     <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5*"/>

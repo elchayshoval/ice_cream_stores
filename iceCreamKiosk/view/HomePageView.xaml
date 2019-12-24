@@ -11,7 +11,7 @@
             
         </Grid.RowDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Chayim\Documents\KioskInformation\Pictures\background3.jpg" Opacity="0.5" />
+            <ImageBrush  Opacity="0.5" />
         </Grid.Background>
         <UserControl Grid.Row="1" Content="{Binding MainPage}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></UserControl>
         <Button Content="Admin Page" Command="{Binding NavigateToAdmin}" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Top" Width="75"/>

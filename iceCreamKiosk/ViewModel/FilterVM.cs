@@ -8,39 +8,41 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
-
+using BE;
+using BL;
 namespace iceCreamKiosk.ViewModel
 {
-    public class FilterVM: ViewModelBase
+    public class FilterVM : ViewModelBase
     {
+        public IceCreamLogic iceCreamLogic = new IceCreamLogic();
         public ICommand SearchCommand { get; set; }
-        public ICommand ShowIceCream { get; set; }
+        public ICommand ShowIceCreams { get; set; }
 
-        public ObservableCollection<IceCreamModel> iceCreamModel { get; set; }
+        private ObservableCollection<IceCream> icecreams;
 
-
-
+        public ObservableCollection<IceCream> iceCreams { get => icecreams; set => Set(ref icecreams, value); }
         public FilterModel Filter { get; set; }
-        public FilterVM(FilterModel filter)
+        public FilterVM()
         {
-            Filter = filter;
-            if(Filter == null)
-            {
-                Filter = new FilterModel();
 
-            }
+            Filter = new FilterModel();
+
+
 
             SearchCommand = new MyCommand(ExecuteSearch);
-            ShowIceCream = new MyCommand(ExecuteShowICream);
+            ShowIceCreams = new RelayCommand<IceCream>(ExecuteShowICream); //MyCommand(ExecuteShowICream);
         }
 
         public void ExecuteSearch()
         {
-
+            iceCreams = new ObservableCollection<IceCream>(iceCreamLogic.getFilteredIceCreams(Filter.getAsFilter()));
         }
-        public void ExecuteShowICream()
+        public void ExecuteShowICream(IceCream iceCream)
         {
-
+            if (iceCream != null)
+            {
+                MessengerInstance.Send<ViewModelBase>(new StoreAndIceCreamVM(iceCream));
+            }
         }
     }
 }

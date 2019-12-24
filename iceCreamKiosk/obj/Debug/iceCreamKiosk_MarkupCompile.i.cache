@@ -4,17 +4,23 @@
 winexe
 C#
 .cs
-C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\
+C:\Users\elchay\Desktop\clown\ice_cream_stores\iceCreamKiosk\obj\Debug\
 iceCreamKiosk
 none
 false
 DEBUG;TRACE
-C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\App.xaml
-10-1984960524
+C:\Users\elchay\Desktop\clown\ice_cream_stores\iceCreamKiosk\App.xaml
+13-1414302391
 
-37-1929901490
-132-1700709916
+<<<<<<< HEAD
+38-1971861233
+138-1918386439
 MainWindow.xaml;view\AddIceCreamView.xaml;view\AddStoreView.xaml;view\AdminPageView.xaml;view\FeedbackView.xaml;view\HomePageView.xaml;view\IceCreamForAdminView.xaml;view\StoreForAdminView.xaml;view\StoresCollectionForAdminView.xaml;view\UserPageView.xaml;
+=======
+42-1064124329
+1341016176917
+MainWindow.xaml;view\AddIceCreamView.xaml;view\AddStoreView.xaml;view\AdminPageView.xaml;view\FeedbackView.xaml;view\HomePageView.xaml;view\IceCreamForAdminView.xaml;view\MyFeedbackView.xaml;view\MyFilterView.xaml;view\StoreAndIceCreamView.xaml;view\StoreForAdminView.xaml;view\StoresCollectionForAdminView.xaml;view\UserPageView.xaml;
+>>>>>>> mastercopy
 
 True
 

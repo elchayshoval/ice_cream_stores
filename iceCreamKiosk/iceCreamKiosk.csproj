@@ -53,6 +53,24 @@
     <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Apis, Version=1.42.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.42.0\lib\net45\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.42.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.42.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.42.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.42.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.42.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.42.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v3, Version=1.42.0.1778, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Drive.v3.1.42.0.1778\lib\net45\Google.Apis.Drive.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.42.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.42.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
     <Reference Include="GoogleApi, Version=3.9.3.0, Culture=neutral, PublicKeyToken=781851e053b06e74, processorArchitecture=MSIL">
       <HintPath>..\packages\GoogleApi.3.9.3\lib\net45\GoogleApi.dll</HintPath>
     </Reference>
@@ -66,7 +84,7 @@
       <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ShowMeTheXAML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ShowMeTheXAML.1.0.12\lib\net45\ShowMeTheXAML.dll</HintPath>
@@ -74,6 +92,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -102,15 +122,18 @@
     <Compile Include="model\MyCommand.cs" />
     <Compile Include="model\StoreModel.cs" />
     <Compile Include="placesApi\DirectionService.cs" />
+    <Compile Include="placesApi\MapService.cs" />
     <Compile Include="placesApi\PlacesAutoComplete.cs" />
     <Compile Include="ViewModel\AddIceCreamVM.cs" />
     <Compile Include="ViewModel\AddStoreVM.cs" />
     <Compile Include="ViewModel\AdminPageVM.cs" />
+    <Compile Include="ViewModel\FeedbackForUserVM.cs" />
     <Compile Include="ViewModel\FeedbackVM.cs" />
     <Compile Include="ViewModel\HomePageVM.cs" />
     <Compile Include="ViewModel\IceCreamForAdminVM.cs" />
     <Compile Include="ViewModel\FilterVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\StoreAndIceCreamVM.cs" />
     <Compile Include="ViewModel\StoreForAdminVM.cs" />
     <Compile Include="ViewModel\StoresCollectionForAdminVM.cs" />
     <Compile Include="ViewModel\SearchIceCreamVM.cs" />
@@ -133,6 +156,15 @@
     </Compile>
     <Compile Include="view\IceCreamForAdminView.xaml.cs">
       <DependentUpon>IceCreamForAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\MyFeedbackView.xaml.cs">
+      <DependentUpon>MyFeedbackView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\MyFilterView.xaml.cs">
+      <DependentUpon>MyFilterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\StoreAndIceCreamView.xaml.cs">
+      <DependentUpon>StoreAndIceCreamView.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\StoreForAdminView.xaml.cs">
       <DependentUpon>StoreForAdminView.xaml</DependentUpon>
@@ -176,6 +208,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\IceCreamForAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\MyFeedbackView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\MyFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\StoreAndIceCreamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
