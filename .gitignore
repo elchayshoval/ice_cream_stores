@@ -41,17 +41,21 @@ bld/
 #wwwroot/
 
 BE/obj/
+BE/bin/
 
 BL/bin/
 
 BL/obj/
 
 DL/obj/
+DL/bin/
 
 iceCreamKiosk/bin/
 
 iceCreamKiosk/obj/
 
 PL/obj/
+PL/bin/
 
 TestIceCream/obj/
+TestIceCream/bin/
