@@ -21,7 +21,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush  ImageSource="C:\Users\elchay\Desktop\שנה ד\אלול\פרוייקט בחלונות\images for project\411972-PD3JAB-846.jpg"/>
+            <ImageBrush  />
         </Grid.Background>
 
 

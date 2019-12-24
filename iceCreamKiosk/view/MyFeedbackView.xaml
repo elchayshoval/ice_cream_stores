@@ -14,7 +14,7 @@
     </UserControl.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush  ImageSource="C:\Users\elchay\Desktop\שנה ד\אלול\פרוייקט בחלונות\images for project\411972-PD3JAB-846.jpg"/>
+            <ImageBrush  />
         </Grid.Background>
 
         
@@ -46,7 +46,7 @@
         </TextBlock>
 
         <!-- left side of the window -->
-        <StackPanel Grid.Row="1" Grid.Column="1">
+        <StackPanel Grid.Row="1" Grid.Column="1" >
         <!-- description , binding?-->
         <TextBox
                     Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Text="{Binding FeedbackModel.Description , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
@@ -86,6 +86,7 @@
             <Button Margin="0,15,0,0" Command="{Binding PickImage}">
                 pick an image
             </Button>
+            <Image Source="{Binding FeedbackModel, UpdateSourceTrigger=PropertyChanged}" />
 
             <Button Margin="0,100,0,0" FontSize="20" Height="74"  Command="{Binding AddFeadback}">
                 Add 
@@ -93,7 +94,7 @@
         </StackPanel>
         
         <!-- right side of the window -->
-        <ListBox Style="{StaticResource MaterialDesignGridList}" ItemsSource="{Binding IceCreamModel.Feedbacks}"  HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Column="2"  Margin="0,0.2,0,0">
+        <ListBox Style="{StaticResource MaterialDesignGridList}" ItemsSource="{Binding IceCreamModel.Feedbacks}"  HorizontalAlignment="Stretch"  VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="2" Grid.RowSpan="3" Margin="0,0.2,0,0">
 
 
             <!--make out margin-->
@@ -182,6 +183,11 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <materialDesign:Snackbar Grid.ColumnSpan="2"
+  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" MessageQueue="{Binding SnackbarMessageQueue}">
+
+        </materialDesign:Snackbar>
 
 
     </Grid>

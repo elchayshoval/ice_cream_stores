@@ -272,6 +272,10 @@
       <Project>{5BF4E948-712D-4AEA-BB8A-E33ABC9E7D33}</Project>
       <Name>BL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DL\DL.csproj">
+      <Project>{CBB8F4CD-4AED-4BB1-AC5A-348411750711}</Project>
+      <Name>DL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
