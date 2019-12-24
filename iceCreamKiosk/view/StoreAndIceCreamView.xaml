@@ -14,7 +14,7 @@
 
     <Grid x:Name="grid" Margin="0,0,0,-0.4">
         <Grid.Background>
-            <ImageBrush  ImageSource="C:\Users\elchay\Desktop\שנה ד\אלול\פרוייקט בחלונות\images for project\411972-PD3JAB-846.jpg"/>
+            <ImageBrush  />
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -299,17 +299,11 @@
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image}"/>
                     <Grid HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" >
                         <Grid.Background>
-                            <ImageBrush ImageSource="C:\Users\elchay\Desktop\שנה ד\אלול\הנדסת תוכנה לאינטרנט חלק א\תרגילים\my_t_2\t2\public\vered.jpg" Stretch="Fill"/>
+                            <ImageBrush  Stretch="Fill"/>
                         </Grid.Background>
                     </Grid>
-                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" 
-                           >
-                        <Image.Source>
-                            <BitmapImage UriSource="{}"></BitmapImage>
-                        </Image.Source>
+                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Map}" />
 
-
-                    </Image>
                     <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5*"/>
@@ -410,7 +404,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="C:\Users\elchay\Desktop\שנה ד\אלול\הנדסת תוכנה לאינטרנט חלק א\תרגילים\my_t_2\t2\public\vered.jpg" />
+                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill"  />
                     <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5*"/>
