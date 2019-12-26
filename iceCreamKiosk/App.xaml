@@ -56,6 +56,9 @@
         <DataTemplate  DataType="{x:Type ViewModel:FeedbackVM}">
                 <view:FeedbackView  />
             </DataTemplate>
+            <DataTemplate  DataType="{x:Type ViewModel:IceCreamCollectionForAdminVM}">
+                <view:IceCreamCollectionForAdminView  />
+            </DataTemplate>
         </ResourceDictionary>
   </Application.Resources>
 </Application>

@@ -31,7 +31,29 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
+                    <materialDesign:ColorZone Margin="1"
+        Mode="PrimaryLight"
+        VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <materialDesign:PackIcon
+          Kind="CameraWirelessOutline"
+          Height="128"
+          Width="128"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                    </materialDesign:ColorZone>
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <materialDesign:ColorZone Margin="1" Grid.Row="1"
+        Mode="PrimaryLight"
+        VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <materialDesign:PackIcon
+          Kind="MapSearch"
+          Height="128"
+          Width="128"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                    </materialDesign:ColorZone>
+
                     <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Map, UpdateSourceTrigger=PropertyChanged}" />
                     <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
                         <Grid.RowDefinitions>

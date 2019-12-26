@@ -15,21 +15,29 @@ namespace iceCreamKiosk.placesApi
     {
         public IEnumerable Search(string searchTerm)
         {
-            if (string.IsNullOrEmpty(searchTerm ))
+            try
             {
-                searchTerm = " ";
+                if (string.IsNullOrEmpty(searchTerm))
+                {
+                    searchTerm = " ";
+                }
+                var request = new PlacesAutoCompleteRequest
+                {
+                    Key = "AIzaSyCepi3EaE4INsbTbIZjPGjCZQyM0ivpAf0",
+                    Input = searchTerm,
+                    Types = new List<RestrictPlaceType> { RestrictPlaceType.Address }
+                };
+                var response = GooglePlaces.AutoComplete.Query(request);
+                //var result = response.Predictions.ToList();
+                var result = from item in response.Predictions
+                             select item.Description;
+                return result;
             }
-            var request = new PlacesAutoCompleteRequest
+            catch (Exception)
             {
-                Key = "AIzaSyCepi3EaE4INsbTbIZjPGjCZQyM0ivpAf0",
-                Input = searchTerm,
-                Types = new List<RestrictPlaceType> { RestrictPlaceType.Address }
-            };
-            var response = GooglePlaces.AutoComplete.Query(request);
-            //var result = response.Predictions.ToList();
-            var result = from  item in response.Predictions
-                       select item.Description;
-            return result;
+
+                return null;
+            }
 
         }
     }

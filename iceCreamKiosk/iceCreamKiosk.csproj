@@ -130,6 +130,7 @@
     <Compile Include="ViewModel\FeedbackForUserVM.cs" />
     <Compile Include="ViewModel\FeedbackVM.cs" />
     <Compile Include="ViewModel\HomePageVM.cs" />
+    <Compile Include="ViewModel\IceCreamCollectionForAdminVM.cs" />
     <Compile Include="ViewModel\IceCreamForAdminVM.cs" />
     <Compile Include="ViewModel\FilterVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -153,6 +154,9 @@
     </Compile>
     <Compile Include="view\HomePageView.xaml.cs">
       <DependentUpon>HomePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\IceCreamCollectionForAdminView.xaml.cs">
+      <DependentUpon>IceCreamCollectionForAdminView.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\IceCreamForAdminView.xaml.cs">
       <DependentUpon>IceCreamForAdminView.xaml</DependentUpon>
@@ -204,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\HomePageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\IceCreamCollectionForAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

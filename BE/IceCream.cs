@@ -20,7 +20,7 @@ namespace BE
         public string Name { get ; set ; }
         public string Description { get; set; }
         public int NtritionalId { get; set; }
-        public string Image { get; set; }
+        public Byte[] Image { get; set; }
         public Enums.Stars Score { get; set; }
         public Guid StoreId { get; set; }
 

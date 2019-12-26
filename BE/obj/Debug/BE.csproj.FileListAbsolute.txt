@@ -28,3 +28,4 @@ C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\bin\Debug\
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\obj\Debug\BE.csproj.CopyComplete
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\obj\Debug\BE.dll
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\obj\Debug\BE.pdb
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\BE\obj\Debug\BE.csprojAssemblyReference.cache

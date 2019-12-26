@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,10 @@ namespace iceCreamKiosk.ViewModel
 
         public ICommand BackCommand { get; set; }
         public ICommand NextCommand { get; set; }
+        public ICommand GoToSearchStoreCommand { get; set; } 
+        public ICommand GoToSearchIceCreamCommand { get; set; }
+        public ICommand GoToAddStoreCommand { get; set; }
+
         public Stack<ViewModelBase> PreviousPages { get; set; } = new Stack<ViewModelBase>();
         public Stack<ViewModelBase> NextPages { get; set; } = new Stack<ViewModelBase>();
         public ViewModelBase CurrentPage { get => currentPage; set => Set(ref currentPage, value); }
@@ -24,6 +29,9 @@ namespace iceCreamKiosk.ViewModel
             CurrentPage = new StoresCollectionForAdminVM();//temp
             BackCommand = new MyCommand(ExecuteBackCommand, CanExecuteBackCommand);
             NextCommand = new MyCommand(ExecuteNextCommand, CanExecuteNextCommand);
+            GoToSearchStoreCommand = new RelayCommand(() => GoNewPage(new StoresCollectionForAdminVM()));
+            GoToSearchIceCreamCommand = new RelayCommand(() => GoNewPage(new IceCreamCollectionForAdminVM()));
+            GoToAddStoreCommand = new RelayCommand(() => GoNewPage(new AddStoreVM()));
 
             MessengerInstance.Register<ViewModelBase>(this, GoNewPage);
 
@@ -54,6 +62,10 @@ namespace iceCreamKiosk.ViewModel
             if (currentPage is StoresCollectionForAdminVM)
             {
                 (currentPage as StoresCollectionForAdminVM).UpdateStoresCollection();
+            }
+            if (currentPage is IceCreamCollectionForAdminVM)
+            {
+                (currentPage as IceCreamCollectionForAdminVM).UpdateIceCreamCollection();
             }
             if (currentPage is StoreForAdminVM)
             {

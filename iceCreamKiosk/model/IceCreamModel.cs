@@ -15,13 +15,13 @@ namespace iceCreamKiosk.model
 
         private string name;
         private string description;        
-        private string image;
+        private Byte[] image;
         private Enums.Stars score;
         private int nutritionalID;
 
         public string Name { get=> name; set => Set(ref name, value); }
         public string Description { get => description; set => Set(ref description, value); }
-        public string Image { get => image; set => Set(ref image, value); }
+        public Byte[] Image { get => image; set => Set(ref image, value); }
         public Enums.Stars Score { get => score; set => Set(ref score, value); }
         public int NutritionalID { get => nutritionalID; set => Set(ref nutritionalID, value); }
         public ObservableCollection<FeedBack> Feedbacks { get; set; }
@@ -61,7 +61,7 @@ namespace iceCreamKiosk.model
         internal bool IsAllFeildsClear()
         {
             bool result = false;
-            if (string.IsNullOrEmpty(Name)&& string.IsNullOrEmpty(Description)&& string.IsNullOrEmpty(Image) && Score==Enums.Stars.one)
+            if (string.IsNullOrEmpty(Name)&& string.IsNullOrEmpty(Description)&& Image==null && Score==Enums.Stars.one)
             {
                 result = true;
             }
@@ -72,7 +72,7 @@ namespace iceCreamKiosk.model
         {
             Name = string.Empty;
             Description = string.Empty;
-            Image = string.Empty;
+            Image = null;
             Score = Enums.Stars.one;
             NutritionalID = 0;
         }

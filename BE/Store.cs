@@ -12,7 +12,7 @@ namespace BE
         public Guid StoreId { get; set; } = Guid.NewGuid();
 
         public string Name { get; set ; }
-        public string Image { get ; set ; }
+        public Byte[] Image { get ; set ; }
         public string Address { get ; set; }
         public string Phone { get ; set ; }
         public Byte[] Map { get; set; }

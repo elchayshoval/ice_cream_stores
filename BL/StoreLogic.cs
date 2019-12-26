@@ -44,9 +44,10 @@ namespace BL
             return storeService.GetStoreByID(id);
         }
 
-        public IEnumerable<Store> GetStores()
+        public IEnumerable<Store> GetStores(string search="")
         {
-            return storeService.GetStores();
+            if (search == null) search = string.Empty;
+            return storeService.GetStores().Where(store => store.Name.Contains(search));
         }
 
         public bool RemoveStore(Store store)

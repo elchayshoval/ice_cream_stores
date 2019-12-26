@@ -9,7 +9,9 @@ using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -26,6 +28,7 @@ namespace iceCreamKiosk.ViewModel
         public ICommand CancelCommand { get; set; }
         public ICommand OpenFileCommand { get; set; }
         public IAutocompleteSource PredictionList { get; set; } = new PlacesAutoComplete();
+        
         public StoreModel StoreModel { get; set; }
 
         public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
@@ -44,6 +47,7 @@ namespace iceCreamKiosk.ViewModel
                 CancelCommand = new MyCommand(ExecuteCancel);
                 OpenFileCommand = new MyCommand(BrowseFile);
             new DirectionService().GetDirection();
+            
 
 
 
@@ -88,7 +92,7 @@ namespace iceCreamKiosk.ViewModel
             if (d.ShowDialog() == true)
             {
                 var path = d.FileName;
-                StoreModel.Image = path;
+                StoreModel.Image = File.ReadAllBytes(path); ;
             }
         }
         public void ExecuteDismiss() { StoreModel.ClearAllFeilds(); }
@@ -96,6 +100,39 @@ namespace iceCreamKiosk.ViewModel
         {
             
             MessengerInstance.Send<ViewModelBase>(null);
+        }
+
+
+        public override void RaisePropertyChanged<T>([CallerMemberName] string propertyName = null, T oldValue = default, T newValue = default, bool broadcast = false)
+        {
+            base.RaisePropertyChanged(propertyName, oldValue, newValue, broadcast);
+            if (propertyName == nameof(PredictionList))
+            {
+                try
+                {
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            if (propertyName == nameof(StoreModel.Location))
+            {
+                try
+                {
+                    if (!string.IsNullOrWhiteSpace(newValue as string))
+                    {
+                        StoreModel.Map = new MapService().GetMap(newValue as string);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    SnackbarMessageQueue.Enqueue("Sorry, It Immposible to add A location now. plreas try latter");
+                }
+            }
         }
 
 

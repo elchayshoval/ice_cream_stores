@@ -7,6 +7,7 @@ using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,7 +90,7 @@ namespace iceCreamKiosk.ViewModel
             if (d.ShowDialog() == true)
             {
                 var path = d.FileName;
-                IceCreamModel.Image = path;
+                IceCreamModel.Image = File.ReadAllBytes(path);
             }
         }
     }

@@ -13,9 +13,10 @@ namespace BL
     {
         public enum Status { Success, NoInternetConnection, DBError, InvalidName }
         private IceCreamService iceCreamService = new IceCreamService();
-        public IEnumerable<IceCream> GetIceCreams()
+        public IEnumerable<IceCream> GetIceCreams(string search="")
         {
-            return iceCreamService.GetIceCreams();
+            if (search == null) search = string.Empty;
+            return iceCreamService.GetIceCreams().Where((ice => ice.Name.Contains(search) || ice.Description.Contains(search)));
         }
 
         public void RemoveIceCream(IceCream iceCream)

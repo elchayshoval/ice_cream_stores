@@ -16,28 +16,27 @@ namespace iceCreamKiosk.ViewModel
 {
     class StoresCollectionForAdminVM : ViewModelBase
     {
-        private Store selectedStore;
-        private ViewModelBase addVM;//currrently not in use
         private StoreLogic storeLogic = new StoreLogic();
         private ObservableCollection<Store> stores;
+        private string search;
 
+        public string Search { get=>search; set { Set(ref search, value); UpdateStoresCollection(value); } }
+        public ObservableCollection<Store> Stores { get => stores; set => Set(ref stores, value); }
+        
         public ICommand AddCommand { get; set; }
         public ICommand ShowSelectedCommand { get; set; }
-
         public ICommand OpenRemoveDialog { get; set; }
 
-        public Store SelectedStore { get => selectedStore; set => Set(ref selectedStore, value); }
-        public ObservableCollection<Store> Stores { get => stores; set => Set(ref stores, value); }
+        
         public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
 
-        //currently not in use
-        public ViewModelBase AddVM { get => addVM; set => Set(ref addVM, value); }
-
+        
         public StoresCollectionForAdminVM()
         {
             Stores = new ObservableCollection<Store>(storeLogic.GetStores());
             AddCommand = new MyCommand(ExecuteAddCommand);
-            ShowSelectedCommand = new RelayCommand<Store>(executeShowSelectedCommand);
+            ShowSelectedCommand = new RelayCommand<Store>(ExecuteShowSelectedCommand);
+            
 
             OpenRemoveDialog = new RelayCommand<Store>((s) =>
             {
@@ -59,12 +58,12 @@ namespace iceCreamKiosk.ViewModel
             MessengerInstance.Send<ViewModelBase>(new AddStoreVM());
         }
 
-        internal void UpdateStoresCollection()
+        public void UpdateStoresCollection(string search="")
         {
-            Stores = new ObservableCollection<Store>(storeLogic.GetStores());
+            Stores = new ObservableCollection<Store>(storeLogic.GetStores(search));
         }
 
-        private void executeShowSelectedCommand(Object store)
+        private void ExecuteShowSelectedCommand(Object store)
         {
 
             if (store is Store)
@@ -99,9 +98,7 @@ namespace iceCreamKiosk.ViewModel
 
         }
 
-        //currently not in use
-        private void closeAddVM() { AddVM = null; }//I have to generate event that when invoke will close addvm with this function
-
+        
 
 
     }

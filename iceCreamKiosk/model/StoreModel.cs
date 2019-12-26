@@ -14,7 +14,7 @@ namespace iceCreamKiosk.model
     public class StoreModel : ObservableObject
     {
         private string name;
-        private string image;
+        private Byte[] image;
         private string location;
         private string phone;
         private ObservableCollection<IceCream> iceCreams;
@@ -23,12 +23,28 @@ namespace iceCreamKiosk.model
 
         public Store Store { get; set; }
         public string Name { get => name; set => Set(ref name, value); }
-        public string Image { get => image; set => Set(ref image, value); }
+        public Byte[] Image { get => image; set => Set(ref image, value); }
         public string Location
         {
             get => location;
-            set { Set(ref location, value); Map = new MapService().GetMap(value); }
+            set { Set(ref location, value); UpdateMap(value); }
         }
+
+        private void UpdateMap(string location)
+        {
+            try
+            {
+                if (location != Store.Address)
+                {
+                    Map = new MapService().GetMap(location);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         public string Phone { get => phone; set => Set(ref phone, value); }
 
 
@@ -77,16 +93,17 @@ namespace iceCreamKiosk.model
 
         public void ClearAllFeilds()
         {
-            Name = string.Empty;
-            Location = string.Empty;
-            Phone = string.Empty;
-            Image = string.Empty;
+            Name = Store.Name;
+            Location = Store.Address;
+            Phone = Store.Phone;
+            Image = Store.Image;
+            Map = Store.Map;
         }
 
         public bool IsAllFeildsClear()
         {
             Boolean result = false;
-            if (String.IsNullOrWhiteSpace(Name) && String.IsNullOrWhiteSpace(Location) && String.IsNullOrWhiteSpace(Phone) && String.IsNullOrWhiteSpace(Image))
+            if (String.IsNullOrWhiteSpace(Name) && String.IsNullOrWhiteSpace(Location) && String.IsNullOrWhiteSpace(Phone) && Image == null)
             {
                 result = true;
             }
