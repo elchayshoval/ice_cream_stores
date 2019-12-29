@@ -9,6 +9,7 @@ using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -86,13 +87,15 @@ namespace iceCreamKiosk.ViewModel
 
         void BrowseFile()
         {
-            //Add code here
+
+            // Process.Start("microsoft.windows.camera:");
+            //var path1 = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             OpenFileDialog d = new OpenFileDialog();
 
             if (d.ShowDialog() == true)
             {
                 var path = d.FileName;
-                StoreModel.Image = File.ReadAllBytes(path); ;
+                StoreModel.Image = File.ReadAllBytes(path);
             }
         }
         public void ExecuteDismiss() { StoreModel.ClearAllFeilds(); }

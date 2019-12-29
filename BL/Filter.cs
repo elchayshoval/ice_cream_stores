@@ -9,6 +9,8 @@ namespace BL
 {
     public class Filter 
     {
+        static int minValue=0;
+        static int maxValue = 1000;
         public string IceCreamDescription { get; set; }
 
         
@@ -16,51 +18,64 @@ namespace BL
         public Enums.Stars MaxStars { get; set; } = Enums.Stars.five;
         public Enums.Stars MinStars { get; set; } = Enums.Stars.one;
 
-        public int? MaxCal { get; set; }
-        public int? MaxProtein { get; set; }
-        public int? MaxFat { get; set; }
+        public int? MaxCal { get; set; } = maxValue;
+        public int? MinCal { get; set; } = minValue;
+        public int? MaxProtein { get; set; } = maxValue;
+        public int? MinProtein { get; set; } = minValue;
+        public int? MaxFat { get; set; } = maxValue;
+        public int? MinFat { get; set; } = minValue;
 
         public Boolean IsIceCreamRequested(IceCream iceCream)
         {
-            return filerByDescription(iceCream) && filerByScors(iceCream);//|| filerByNutrition(iceCream);
+            return filerByDescription(iceCream) && FilerByScors(iceCream)&& filerByNutrition(iceCream);
         }
 
-        public Boolean filerByDescription(IceCream iceCream)
+        private Boolean filerByDescription(IceCream iceCream)
         {
+            Boolean result = true;
             if (IceCreamDescription != null)
             {
-                if (!iceCream.Name.Contains(IceCreamDescription))
-                    return false;
-            }
-            return true;
-        }
-        public Boolean filerByScors(IceCream iceCream)
-        {
-            if (!(iceCream.Score >= MinStars && iceCream.Score <= MaxStars))
-                return false;
+                result = iceCream.Name.Contains(IceCreamDescription) || iceCream.Description.Contains(IceCreamDescription);
 
-            return true;
-        }
-        public Boolean filerByNutrition(IceCream iceCream)
-        {
-            Nutrition Nutrition = (NutritionalValue.getNutritionalValue(iceCream.NtritionalId));
 
-            if (MaxCal != null)
-            {
-                if (Nutrition.Energy > MaxCal)
-                    return false;
             }
-            if (MaxProtein != null)
+            return result;
+        }
+        private Boolean FilerByScors(IceCream iceCream)
+        {
+            return (iceCream.Score >= MinStars && iceCream.Score <= MaxStars);
+        }
+        private Boolean filerByNutrition(IceCream iceCream)
+        {
+            Nutrition nutrition = iceCream.Nutrient;
+            SetDefultValues();
+            Boolean result = true;
+            if (nutrition == null) return false;
+            if(nutrition.Energy<MinCal || nutrition.Energy > MaxCal)
             {
-                if (Nutrition.Protein > MaxProtein)
-                    return false;
+                result= false;
             }
-            if (MaxFat != null)
+            if(nutrition.Protein<MinProtein || nutrition.Protein > MaxProtein)
             {
-                if (Nutrition.Fat > MaxFat)
-                    return false;
+                result= false;
             }
-            return true;
+            if(nutrition.Fat<MinFat || nutrition.Fat > MaxFat)
+            {
+                result= false;
+            }
+
+            return result;
+        }
+
+        private void SetDefultValues()
+        {
+            if (MaxCal == null) MaxCal = maxValue;
+            if (MaxProtein == null) MaxProtein = maxValue;
+            if (MaxFat == null) MaxFat = maxValue;
+            if (MinCal == null) MinCal = minValue;
+            if (MinProtein == null) MinProtein = minValue;
+            if (MinFat == null) MinFat = minValue;
+
         }
     }
 }

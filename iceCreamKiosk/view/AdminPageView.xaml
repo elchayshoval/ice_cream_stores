@@ -91,6 +91,17 @@
                         </StackPanel>
                     </Button>
                     <Button
+        Command="{Binding LogoutCommand}"
+        Margin="4"
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="Logout" Height="64" Width="64" Margin="16"></materialDesign:PackIcon>
+                            <TextBlock Margin="8">Home Page</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
         Margin="4"
         HorizontalAlignment="Center"

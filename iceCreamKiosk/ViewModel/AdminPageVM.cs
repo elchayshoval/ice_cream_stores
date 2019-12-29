@@ -19,6 +19,7 @@ namespace iceCreamKiosk.ViewModel
         public ICommand GoToSearchStoreCommand { get; set; } 
         public ICommand GoToSearchIceCreamCommand { get; set; }
         public ICommand GoToAddStoreCommand { get; set; }
+        public ICommand LogoutCommand { get; set; }
 
         public Stack<ViewModelBase> PreviousPages { get; set; } = new Stack<ViewModelBase>();
         public Stack<ViewModelBase> NextPages { get; set; } = new Stack<ViewModelBase>();
@@ -32,9 +33,15 @@ namespace iceCreamKiosk.ViewModel
             GoToSearchStoreCommand = new RelayCommand(() => GoNewPage(new StoresCollectionForAdminVM()));
             GoToSearchIceCreamCommand = new RelayCommand(() => GoNewPage(new IceCreamCollectionForAdminVM()));
             GoToAddStoreCommand = new RelayCommand(() => GoNewPage(new AddStoreVM()));
+            LogoutCommand = new RelayCommand(logout);
 
             MessengerInstance.Register<ViewModelBase>(this, GoNewPage);
 
+        }
+
+        private void logout()
+        {
+            MessengerInstance.Send(1);
         }
 
         private void GoNewPage(ViewModelBase VM)
@@ -86,11 +93,12 @@ namespace iceCreamKiosk.ViewModel
                 CurrentPage = NextPages.Pop();
                 ExecutePageRequires(CurrentPage);
             }
+            
         }
 
         private bool CanExecuteBackCommand()
         {
-            return PreviousPages.Count > 0;
+            return true;
         }
 
         private void ExecuteBackCommand()
@@ -100,6 +108,10 @@ namespace iceCreamKiosk.ViewModel
                 NextPages.Push(CurrentPage);
                 CurrentPage = PreviousPages.Pop();
                 ExecutePageRequires(CurrentPage);
+            }
+            else
+            {
+                logout();
             }
         }
     }

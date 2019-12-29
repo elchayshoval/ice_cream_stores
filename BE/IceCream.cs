@@ -12,18 +12,14 @@ namespace BE
     {
         public Guid IceCreamId { get; set; } = Guid.NewGuid();
         public List<FeedBack> Feedbacks { get; set; } = new List<FeedBack>();
-
-        [NotMapped]
-        public ClientsFeedback clientsFeedback { get; set; } = new ClientsFeedback();
-
-        //public ICollection<FeedBack> feedBacks { get; set; }
-        public string Name { get ; set ; }
+        public string Name { get; set; }
         public string Description { get; set; }
         public int NtritionalId { get; set; }
+        public Nutrition Nutrient { get; set; }
         public Byte[] Image { get; set; }
         public Enums.Stars Score { get; set; }
         public Guid StoreId { get; set; }
 
-  
+
     }
 }

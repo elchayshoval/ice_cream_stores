@@ -2,6 +2,7 @@
 using BL;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using iceCreamKiosk.model;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace iceCreamKiosk.ViewModel
         private IceCreamLogic iceCreamLogic = new IceCreamLogic();
         private ObservableCollection<IceCream> iceCreams;
         private string search;
+        public FilterModel FilterModel { get; set; }
 
         public string Search { get => search; set { Set(ref search, value); UpdateIceCreamCollection(value); } }
         public ObservableCollection<IceCream> IceCreams { get => iceCreams; set => Set(ref iceCreams, value); }

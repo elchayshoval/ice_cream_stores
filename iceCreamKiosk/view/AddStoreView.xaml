@@ -34,12 +34,19 @@
                     <materialDesign:ColorZone Margin="1"
         Mode="PrimaryLight"
         VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                        <materialDesign:PackIcon
+                        <materialDesign:ColorZone.InputBindings>
+                            <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding OpenFileCommand}" ></MouseBinding>
+                        </materialDesign:ColorZone.InputBindings>
+                        <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
+                            
+                    <materialDesign:PackIcon
           Kind="CameraWirelessOutline"
           Height="128"
           Width="128"
           VerticalAlignment="Center"
           HorizontalAlignment="Center" />
+                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8" Background="Transparent" BorderThickness="0">Dobble Click To Select A Picture</Button>
+                        </Grid>
                     </materialDesign:ColorZone>
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
 

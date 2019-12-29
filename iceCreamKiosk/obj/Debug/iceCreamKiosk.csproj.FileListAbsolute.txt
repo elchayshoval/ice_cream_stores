@@ -95,3 +95,5 @@ C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\bin\Debug\credentials.json
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\view\IceCreamCollectionForAdminView.g.cs
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\view\IceCreamCollectionForAdminView.baml
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\view\LandedView.g.cs
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\view\LandedView.baml

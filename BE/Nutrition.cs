@@ -12,5 +12,6 @@ namespace BE
         public int Protein { get; set; }
         public int Fat { get; set; }
 
+        
     }
 }

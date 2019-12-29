@@ -16,13 +16,21 @@ namespace iceCreamKiosk.ViewModel
         public ICommand NavigateToAdmin { get; set; }
         public ICommand NavigateToUser { get; set; }
         public ViewModelBase MainPage { get => mainPage; set => Set(ref mainPage, value); }
-
+        public ViewModelBase LandedPage { get; set; } = new LandedVM();
 
         public HomePageVM()
         {
+            mainPage=LandedPage;
             NavigateToAdmin = new MyCommand(ExecuteToAdminCommand);
             NavigateToUser = new MyCommand(ExecuteToUserCommand);
+            MessengerInstance.Register<int>(this, (index) => MainPage = new AdminPageVM());
+            //MessengerInstance.Register<ViewModelBase>(this, GoToPage);//to delete
 
+        }
+
+        private void GoToPage(ViewModelBase page)
+        {
+            MainPage = page;
         }
 
         public void ExecuteToAdminCommand()

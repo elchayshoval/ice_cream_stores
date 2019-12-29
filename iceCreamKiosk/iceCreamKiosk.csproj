@@ -133,6 +133,7 @@
     <Compile Include="ViewModel\IceCreamCollectionForAdminVM.cs" />
     <Compile Include="ViewModel\IceCreamForAdminVM.cs" />
     <Compile Include="ViewModel\FilterVM.cs" />
+    <Compile Include="ViewModel\LandedVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\StoreAndIceCreamVM.cs" />
     <Compile Include="ViewModel\StoreForAdminVM.cs" />
@@ -160,6 +161,9 @@
     </Compile>
     <Compile Include="view\IceCreamForAdminView.xaml.cs">
       <DependentUpon>IceCreamForAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\LandedView.xaml.cs">
+      <DependentUpon>LandedView.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\MyFeedbackView.xaml.cs">
       <DependentUpon>MyFeedbackView.xaml</DependentUpon>
@@ -216,6 +220,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\IceCreamForAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\LandedView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
