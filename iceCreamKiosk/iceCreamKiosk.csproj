@@ -115,6 +115,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="converters\BoolToIntConverter.cs" />
     <Compile Include="converters\StarConverter.cs" />
     <Compile Include="model\FeedbackModel.cs" />
     <Compile Include="model\FilterModel.cs" />

@@ -63,7 +63,7 @@ namespace iceCreamKiosk.ViewModel
                     SnackbarMessageQueue.Enqueue(string.Format("Error,Faild to add. Ice Cream With The Name {0} alredy exist !!!.", iceCream.Name));
                     break;
                 case IceCreamLogic.Status.DBError:
-                    SnackbarMessageQueue.Enqueue("Error occur, Can not add store now...");
+                    SnackbarMessageQueue.Enqueue("Error occur, Can not add Ice Cream now...");
                     break;
                 case IceCreamLogic.Status.Success:
                     SnackbarMessageQueue.Enqueue(string.Format("{0} added successful.", iceCream.Name), "Go to new Ice Cream", () => {

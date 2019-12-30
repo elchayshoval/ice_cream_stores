@@ -19,14 +19,14 @@ namespace iceCreamKiosk.ViewModel
         private IceCreamLogic iceCreamLogic = new IceCreamLogic();
         private ObservableCollection<IceCream> iceCreams;
         private string search;
-        public FilterModel FilterModel { get; set; }
+        public FilterModel FilterModel { get; set; } = new FilterModel();
 
         public string Search { get => search; set { Set(ref search, value); UpdateIceCreamCollection(value); } }
         public ObservableCollection<IceCream> IceCreams { get => iceCreams; set => Set(ref iceCreams, value); }
 
         public ICommand ShowSelectedCommand { get; set; }
         public ICommand OpenRemoveDialog { get; set; }
-
+        public ICommand SearchCommand { get; set; }
 
         public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
 
@@ -35,7 +35,7 @@ namespace iceCreamKiosk.ViewModel
         {
             IceCreams = new ObservableCollection<IceCream>(iceCreamLogic.GetIceCreams());
             ShowSelectedCommand = new RelayCommand<IceCream>(ExecuteShowSelectedCommand);
-
+            SearchCommand = new RelayCommand<string>(UpdateIceCreamCollection);
 
             OpenRemoveDialog = new RelayCommand<IceCream>((ice) =>
             {
@@ -55,7 +55,8 @@ namespace iceCreamKiosk.ViewModel
 
         public void UpdateIceCreamCollection(string search = "")
         {
-            IceCreams = new ObservableCollection<IceCream>(iceCreamLogic.GetIceCreams(search));
+            FilterModel.IceCreanDescription = search;
+            IceCreams = new ObservableCollection<IceCream>(iceCreamLogic.getFilteredIceCreams(FilterModel.getAsFilter()));
         }
 
         private void ExecuteShowSelectedCommand(Object iceCream)

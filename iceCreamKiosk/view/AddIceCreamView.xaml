@@ -49,7 +49,7 @@
           Width="128"
           VerticalAlignment="Center"
           HorizontalAlignment="Center" />
-                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8" Background="Transparent" BorderThickness="0">Dobble Click To Select A Picture</Button>
+                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Background="Transparent" BorderThickness="0">Dobble Click To Select A Picture</Button>
                         </Grid>
                     </materialDesign:ColorZone>
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding IceCreamModel.Image, UpdateSourceTrigger=PropertyChanged}"/>

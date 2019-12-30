@@ -19,21 +19,6 @@
             </i:Interaction.Triggers>
         </ContentControl>
 
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Horizontal" >
-            <Button Command="{Binding BackCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="10 10 10 0" Width="62"  >
-                <materialDesign:PackIcon
-                Kind="NavigateBefore"
-                Width="24"
-                Height="24"/>
-            </Button>
-            <Button Command="{Binding NextCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="10 10 10 0" Width="62"  >
-                <materialDesign:PackIcon
-                Kind="NavigateNext"
-                Width="24"
-                Height="24"/>
-            </Button>
-
-        </StackPanel>
             <Button HorizontalAlignment="Right" Margin="10 10 10 0" Command="{Binding LogoutCommand}" Style="{StaticResource MaterialDesignFlatAccentButton}"  VerticalAlignment="Top"    Width="Auto"  >
                 LOGOUT
             </Button>

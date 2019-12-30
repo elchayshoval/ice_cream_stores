@@ -22,12 +22,12 @@
             <RowDefinition Height="23*"/>
             <RowDefinition Height="77*"/>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Stretch" Width="auto" VerticalAlignment="Bottom" Orientation="Vertical" Grid.ColumnSpan="2">
-            <TextBox FontSize="48" x:Name="autocomplete1"  Height="auto" Margin="0,16,0,10" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+        <StackPanel  HorizontalAlignment="Stretch" Width="auto" VerticalAlignment="Bottom" Orientation="Vertical" Grid.ColumnSpan="2">
+            <TextBox Background="MediumPurple" Foreground="MediumPurple" FontSize="48" x:Name="autocomplete1"  Height="auto" Margin="0,16,0,10" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                         Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
                                                     >
                 <materialDesign:HintAssist.Hint>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                         <materialDesign:PackIcon Kind="Magnify" Width="50" Height="50" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="64,0,0,0" />
                         <TextBlock Text="Select a store, Type to search" FontSize="{Binding Path=FontSize, ElementName=autocomplete1}"
                                        Margin="16,0,0,0" VerticalAlignment="Center" />

@@ -22,7 +22,12 @@ namespace iceCreamKiosk.ViewModel
            // GoToSearchStoreCommand = new RelayCommand(() => MessengerInstance.Send(""));//TODO when added the vm we gave to update the send parameter
             GoToSearchIceCreamCommand = new MyCommand(ExecuteGoToSearchIceCreamCommand);
             //GoToAddFeedbackCommand = new RelayCommand(() => MessengerInstance.Send(""));//TODO i have to complete
-            GoToAddAdminCommand = new RelayCommand(() => MessengerInstance.Send<ViewModelBase>(new AdminPageVM()));
+             GoToAddAdminCommand = new RelayCommand(GoToAdminPage);
+        }
+
+        private void GoToAdminPage()
+        {
+            MessengerInstance.Send<ViewModelBase>(new StoresCollectionForAdminVM());
         }
 
         private void ExecuteGoToSearchIceCreamCommand()

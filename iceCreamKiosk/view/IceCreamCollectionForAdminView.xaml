@@ -48,84 +48,7 @@
             </Hyperlink>
         </TextBlock>-->
 
-        <StackPanel Grid.ColumnSpan="2" VerticalAlignment="Top" Grid.Row="1" >
-            <Expander Background="Transparent"
-    HorizontalAlignment="Right" 
-    >
-                <Expander.Header >
-                    <StackPanel Orientation="Horizontal">
-
-                        <TextBlock Text="Filters" VerticalAlignment="Center" />
-                        <materialDesign:PackIcon Margin="8,0,0,0"
-                Kind="FilterVariant"
-                Width="24"
-                Height="24"/>
-                    </StackPanel>
-                </Expander.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Margin="16">
-                        <TextBlock  Text="Max Calories:"/>
-                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MaxCal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
-                    </StackPanel>
-                    <StackPanel Grid.Row="1" Margin="16">
-                        <TextBlock  Text="Min Calories:"/>
-                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MinCal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="1" Margin="16">
-                        <TextBlock  Text="Max Proteins:"/>
-                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MaxProtein, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
-                    </StackPanel>
-                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="16">
-                        <TextBlock  Text="Min Proteins:"/>
-                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MinProtein, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
-                    </StackPanel>
-                    <StackPanel Grid.Column="2" Margin="16">
-                        <TextBlock  Text="Max Fats:"/>
-                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MaxFat, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
-                    </StackPanel>
-                    <StackPanel Grid.Row="1" Grid.Column="2" Margin="16">
-                        <TextBlock  Text="Min Fats:"/>
-                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
-                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MinFat, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="3" Margin="16">
-                        <TextBlock  Text="Max Stars:"/>
-                        <materialDesign:RatingBar
-  Value="{Binding FilterModel.MaxStars, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
-  x:Name="BasicRatingBar"
-  ValueChanged="BasicRatingBar_ValueChanged" />
-                    </StackPanel>
-                    <StackPanel Grid.Row="1" Grid.Column="3" Margin="16">
-                        <TextBlock  Text="Min Stars:"/>
-                        <materialDesign:RatingBar
-  Value="{Binding FilterModel.MinStars, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
-  x:Name="BasicRatingBar2"
-  ValueChanged="BasicRatingBar_ValueChanged" />
-                    </StackPanel>
-
-
-                </Grid>
-            </Expander>
-
-        </StackPanel>
-        <ListView Background="Transparent" Style="{StaticResource MaterialDesignGridList}" materialDesign:ShadowAssist.ShadowDepth="Depth5" ItemsSource="{Binding IceCreams}"   Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"  >
+        <ListView Margin="0,32,0,0" Background="Transparent" Style="{StaticResource MaterialDesignGridList}" materialDesign:ShadowAssist.ShadowDepth="Depth5" ItemsSource="{Binding IceCreams}"   Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"  >
 
             <!-- make margin off-->
             <!--
@@ -216,6 +139,89 @@
 
             </ListView.ItemTemplate>
         </ListView>
+
+
+
+        <StackPanel Grid.ColumnSpan="3" VerticalAlignment="Top" Grid.Row="1" >
+            <Expander  Margin="0,0,0,64"
+    HorizontalAlignment="Stretch" 
+    >
+                <Expander.Header >
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock Text="Filters" VerticalAlignment="Center" />
+                        <materialDesign:PackIcon Margin="8,0,0,0"
+                Kind="FilterVariant"
+                Width="24"
+                Height="24"/>
+                    </StackPanel>
+                </Expander.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="16">
+                        <TextBlock  Text="Max Calories:"/>
+                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
+                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MaxCal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Margin="16">
+                        <TextBlock  Text="Min Calories:"/>
+                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
+                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MinCal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="16">
+                        <TextBlock  Text="Max Proteins:"/>
+                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
+                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MaxProtein, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="16">
+                        <TextBlock  Text="Min Proteins:"/>
+                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
+                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MinProtein, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Margin="16">
+                        <TextBlock  Text="Max Fats:"/>
+                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
+                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MaxFat, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="2" Margin="16">
+                        <TextBlock  Text="Min Fats:"/>
+                        <Slider  Minimum="1" Maximum="1000" Style="{StaticResource MaterialDesignDiscreteSlider}"
+                        ToolTip="MaterialDesignDiscreteSlider" Value="{Binding FilterModel.MinFat, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }" MinWidth="200" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="3" Margin="16">
+                        <TextBlock  Text="Max Stars:"/>
+                        <materialDesign:RatingBar
+  Value="{Binding FilterModel.MaxStars, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
+  x:Name="BasicRatingBar"
+   />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="3" Margin="16">
+                        <TextBlock  Text="Min Stars:"/>
+                        <materialDesign:RatingBar
+  Value="{Binding FilterModel.MinStars, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
+  x:Name="BasicRatingBar2"
+  />
+                    </StackPanel>
+
+                    <Button Grid.Column="3" Grid.RowSpan="2" HorizontalAlignment="Right" Margin="16" Command="{Binding SearchCommand}" CommandParameter="{Binding Search}">
+                        Search
+                    </Button>
+                </Grid>
+            </Expander>
+
+        </StackPanel>
+
 
         <materialDesign:Snackbar
   HorizontalAlignment="Stretch" MessageQueue="{Binding SnackbarMessageQueue}">
