@@ -110,9 +110,10 @@ namespace iceCreamKiosk.model
             return result;//I have to change and improve the code!!! 
         }
 
-        public void UpdateIceCreamCollection()
+        public async void UpdateIceCreamCollection()
         {
-            IceCreams = new ObservableCollection<IceCream>(new IceCreamLogic().GetIceCreamsByStoreId(Store.StoreId));
+            IceCreamLogic iceCreamLogic = new IceCreamLogic();
+            IceCreams = new ObservableCollection<IceCream>(await iceCreamLogic.GetIceCreamsByStoreId(Store.StoreId));
         }
     }
 }

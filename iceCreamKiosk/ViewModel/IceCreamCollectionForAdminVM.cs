@@ -18,6 +18,7 @@ namespace iceCreamKiosk.ViewModel
     {
         private IceCreamLogic iceCreamLogic = new IceCreamLogic();
         private ObservableCollection<IceCream> iceCreams;
+        private IEnumerable<IceCream> allIceCreams;
         private string search;
         public FilterModel FilterModel { get; set; } = new FilterModel();
 
@@ -33,7 +34,7 @@ namespace iceCreamKiosk.ViewModel
 
         public IceCreamCollectionForAdminVM()
         {
-            IceCreams = new ObservableCollection<IceCream>(iceCreamLogic.GetIceCreams());
+            UpdateIceCreamCollection();
             ShowSelectedCommand = new RelayCommand<IceCream>(ExecuteShowSelectedCommand);
             SearchCommand = new RelayCommand<string>(UpdateIceCreamCollection);
 
@@ -53,10 +54,20 @@ namespace iceCreamKiosk.ViewModel
         }
 
 
-        public void UpdateIceCreamCollection(string search = "")
+        public async void UpdateIceCreamCollection(string search = null)
         {
-            FilterModel.IceCreanDescription = search;
-            IceCreams = new ObservableCollection<IceCream>(iceCreamLogic.getFilteredIceCreams(FilterModel.getAsFilter()));
+            if (search == null)
+            {
+                allIceCreams = await iceCreamLogic.GetIceCreams();
+                IceCreams = new ObservableCollection<IceCream>(allIceCreams);
+            }
+            else
+            {
+                FilterModel.IceCreanDescription = search;
+                var iceCreamList = await iceCreamLogic.getFilteredIceCreams(allIceCreams, FilterModel.getAsFilter());
+                IceCreams = new ObservableCollection<IceCream>(iceCreamList);
+            }
+
         }
 
         private void ExecuteShowSelectedCommand(Object iceCream)
@@ -76,17 +87,17 @@ namespace iceCreamKiosk.ViewModel
                 UpdateIceCreamCollection();
 
 
-                SnackbarMessageQueue.Enqueue(string.Format("Successful remove {0} .", iceCream.Name), "UNDO", () =>
-                {
-                    //Notjice!! dont add back the icecreams and feedbacks!!!!
-                    var status = iceCreamLogic.AddIceCream(iceCream);
-                    if (status == IceCreamLogic.Status.Success)
-                    {
+                SnackbarMessageQueue.Enqueue(string.Format("Successful remove {0} .", iceCream.Name), "UNDO", async () =>
+                 {
+                     //Notjice!! dont add back the icecreams and feedbacks!!!!
+                     var status = await iceCreamLogic.AddIceCream(iceCream);
+                     if (status == IceCreamLogic.Status.Success)
+                     {
 
-                        SnackbarMessageQueue.Enqueue(string.Format("Successful Undo removing {0} .", iceCream.Name));
-                        UpdateIceCreamCollection();
-                    }
-                }
+                         SnackbarMessageQueue.Enqueue(string.Format("Successful Undo removing {0} .", iceCream.Name));
+                         UpdateIceCreamCollection();
+                     }
+                 }
                 );
 
 

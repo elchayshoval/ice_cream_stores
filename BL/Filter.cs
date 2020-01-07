@@ -11,7 +11,7 @@ namespace BL
     {
         static int minValue=0;
         static int maxValue = 1000;
-        public string IceCreamDescription { get; set; }
+        public string IceCreamDescription { get; set; } = "";
 
         
   

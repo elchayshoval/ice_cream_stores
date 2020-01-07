@@ -11,49 +11,30 @@ namespace DL
 {
     public class StoreService
     {
-        public bool AddStore(Store store)
+        public async Task AddStore(Store store)
         {
-            try
+            using (var db = new StoreContext())
             {
-                using (var db = new StoreContext())
-                {
-                    db.Stores.Add(store);
-                    db.SaveChanges();
-
-                }
+                db.Stores.Add(store);
+                await db.SaveChangesAsync();
             }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
         }
 
         public Store GetStoreByID(Guid id)
-        {//what is with exeption??????????
+        {
             using (var db = new StoreContext())
             {
                 //I have to add to include path the follow ".Feedbacks"
-                return db.Stores.Include("IceCreams").Where(s=>s.StoreId==id).FirstOrDefault();
-
+                return db.Stores.Include("IceCreams.Feedbacks").Where(s => s.StoreId == id).FirstOrDefault();
             }
         }
 
-        public  IEnumerable<Store> GetStores()
+        public async Task<IEnumerable<Store>> GetStores()
         {
-            try
+            using (var db = new StoreContext())
             {
-                using (var db = new StoreContext())
-                {
-                    //I have to add to include path the follow ".Feedbacks"
-                    return  db.Stores.Include("IceCreams.Feedbacks").ToList(); 
-                    //return await db.Stores.Include("IceCreams.Feedbacks").ToListAsync(); 
-
-                }
-            }
-            catch (Exception)
-            {
-                return null; ;
+                //I have to add to include path the follow ".Feedbacks"
+                return await db.Stores.Include("IceCreams.Feedbacks").ToListAsync();
             }
         }
 
@@ -89,7 +70,7 @@ namespace DL
                 db.SaveChanges();
                 return true;
             }
-            
+
         }
     }
 }

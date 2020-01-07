@@ -38,4 +38,3 @@ C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\PL\obj\Debug\
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\PL\obj\Debug\PL.csproj.CopyComplete
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\PL\obj\Debug\PL.dll
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\PL\obj\Debug\PL.pdb
-C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\PL\bin\Debug\credentials.json

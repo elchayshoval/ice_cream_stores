@@ -22,21 +22,53 @@ namespace BL
         private const  int fatId = 204;
 
 
-        public static Nutrition getNutritionalValue(string productDescription)
+        public static async Task<Nutrition> getNutritionalValue(string productDescription)
         {
-            return null;//TDOD implement please
+            int productId =await getProductId(productDescription);
+            return await getNutritionalValue(productId);
         }
 
-        public static Nutrition getNutritionalValue(int foodId)
+        public static async Task<Nutrition> getNutritionalValue(int foodId)
         {
-            string result = getProductNutrition(foodId).Result;
+            string result =await getProductNutrition(foodId);
             return fetchResponse(result);
         }
 
-        private static async Task<int> getProductId(string productDescription)
+        public static async Task<int> getProductId(string productDescription)
         {
-            return -1;//TDOD Ihave to implement
+            using (var client = new HttpClient())
+            {
+                string url = "https://api.nal.usda.gov/fdc/v1/search" ;
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(@"application/json"));
+
+                HttpResponseMessage response = await client.GetAsync(string.Format("?api_key={0}&generalSearchInput={1}", apiKey,productDescription));
+
+                HttpContent content = response.Content;
+
+
+
+                string result = await content.ReadAsStringAsync();
+
+                return FetchNutrienIdSearchResponse(result); ;
+            }
+            
         }
+
+        private static int FetchNutrienIdSearchResponse(string response)
+        {
+            int result = -1;
+            JObject jobject = JObject.Parse(response);
+
+            foreach (var item in jobject["foods"])
+            {
+                result = (int)item["fdcId"];
+                break;
+            }
+            return result;
+        }
+
         private static async Task<string> getProductNutrition(int productId)
         {
             using (var client = new HttpClient())

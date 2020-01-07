@@ -5,30 +5,116 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:iceCreamKiosk.view"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="10*" />
-        </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
-            <Button Command="{Binding BackCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="10 10 10 0" Width="62"  >
-                <materialDesign:PackIcon
-                Kind="NavigateBefore"
-                Width="24"
-                Height="24"/>
-            </Button>
-            <Button Command="{Binding NextCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="10 10 10 0" Width="62"  >
-                <materialDesign:PackIcon
-                Kind="NavigateNext"
-                Width="24"
-                Height="24"/>
-            </Button>
-        </StackPanel>
-        
-        <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Content="{Binding CurrentPage}" Grid.Row="1">
+        <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Content="{Binding CurrentPage, NotifyOnTargetUpdated=True}">
 
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="TargetUpdated">
+                    <i:InvokeCommandAction Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" 
+                                            />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </ContentControl>
+
+        <!--left side menu-->
+        <materialDesign:DrawerHost
+  Margin="0"
+  HorizontalAlignment="Stretch"
+  VerticalAlignment="Stretch"
+  BorderThickness="2"
+  BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DrawerHost.LeftDrawerContent>
+
+
+                <StackPanel Margin="16" HorizontalAlignment="Stretch" >
+                    <StackPanel.CommandBindings>
+                        <CommandBinding  Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"></CommandBinding>
+                    </StackPanel.CommandBindings>
+                    <TextBlock 
+        Margin="4"
+        HorizontalAlignment="Center">
+        MENU
+                    </TextBlock>
+                    <Button Command="{Binding GoToSearchStoreCommand}"
+        Margin="4"
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="Search" Height="64" Width="64" Margin="16"></materialDesign:PackIcon>
+                            <TextBlock Margin="8">Search Store</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
+        Command="{Binding GoToSearchIceCreamCommand}"
+        Margin="4"
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="Search" Height="64" Width="64" Margin="16"></materialDesign:PackIcon>
+                            <TextBlock Margin="8">Search Ice Cream</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
+        Command="{Binding GoToAddFeedbackCommand}"
+        Margin="4"
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="add" Height="64" Width="64" Margin="16"></materialDesign:PackIcon>
+                            <TextBlock Margin="8">Add Feedback</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
+        Command="{Binding GoHomePageCommand}"
+        Margin="4"
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="Home" Height="64" Width="64" Margin="16"></materialDesign:PackIcon>
+                            <TextBlock Margin="8">Home Page</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
+        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+        Margin="4"
+        HorizontalAlignment="Center"
+        Style="{DynamicResource MaterialDesignFlatButton}">
+                        Close Menu
+                    </Button>
+                </StackPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <Grid
+    MinWidth="480"
+    MinHeight="480">
+                <Grid
+      VerticalAlignment="Center"
+      HorizontalAlignment="Left">
+                    <Button Height="100" Width="50" Padding="0"
+        Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+        CommandParameter="{x:Static Dock.Left}"
+        Margin="0,10,0,10">
+                        <StackPanel Orientation="Vertical">
+
+                            <materialDesign:PackIcon HorizontalAlignment="Center" Width="auto" Height="auto"
+          Kind="MenuRight" />
+
+                        </StackPanel>
+                    </Button>
+
+                </Grid>
+            </Grid>
+        </materialDesign:DrawerHost>
+        <materialDesign:Snackbar Grid.Row="0" Grid.ColumnSpan="4" VerticalAlignment="Top" Panel.ZIndex="100"
+  HorizontalAlignment="Stretch" MessageQueue="{Binding SnackbarMessageQueue}" Margin="0,140,0,-0.4">
+
+        </materialDesign:Snackbar>
+
     </Grid>
 </UserControl>

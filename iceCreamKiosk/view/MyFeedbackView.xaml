@@ -13,9 +13,7 @@
         <localConverter:StarConverter x:Key="StarConverter"/>
     </UserControl.Resources>
     <Grid>
-        <Grid.Background>
-            <ImageBrush  />
-        </Grid.Background>
+        
 
         
         <Grid.RowDefinitions>
@@ -25,12 +23,35 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="4*"/>
+            
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock  HorizontalAlignment="Left" Margin="0 0 0 0" VerticalAlignment="Bottom"  Grid.Column="1"
+        <!--<materialDesign:DialogHost Grid.RowSpan="3" Grid.ColumnSpan="2"
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center"
+  
+  CloseOnClickAway="True">
+            
+            <Border
+    BorderThickness="1"
+    BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+    MinWidth="256"
+    MinHeight="256"
+    ClipToBounds="True">
+                <Button
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center"
+      Command="{Binding OpenSample4DialogCommand}">
+                    RUN
+                </Button>
+            </Border>
+        </materialDesign:DialogHost>-->
+
+
+
+
+        <TextBlock  HorizontalAlignment="Left" Margin="0 0 0 0" VerticalAlignment="Bottom"  
             Style="{StaticResource MaterialDesignDisplay1TextBlock}" >
              <Hyperlink 
                 IsEnabled="False">
@@ -45,8 +66,10 @@
             </Hyperlink>
         </TextBlock>
 
+        <Grid Grid.Row="1">
+            
         <!-- left side of the window -->
-        <StackPanel Grid.Row="1" Grid.Column="1" >
+        <StackPanel  >
         <!-- description , binding?-->
         <TextBox
                     Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Text="{Binding FeedbackModel.Description , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
@@ -62,37 +85,28 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <materialDesign:RatingBar Grid.Column="1" HorizontalAlignment="Center"
-                                                          x:Name="CustomRatingBar"
+                    <materialDesign:RatingBar Grid.Column="1" HorizontalAlignment="Center"
+                                                          x:Name="CustomRatingBar" Foreground="Yellow"
                                                           Max="5"
                                                           Value="{Binding IceCreamModel.Score, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
-                                                          Orientation="Horizontal">
-                    <materialDesign:RatingBar.ValueItemTemplate>
-                        <DataTemplate DataType="system:Int32">
-                            <Grid>
-                                <materialDesign:PackIcon
-                                                    Kind="Heart" Height="24" Width="24" />
-                                <TextBlock Text="{Binding}"
-                                                           HorizontalAlignment="Center"
-                                                           VerticalAlignment="Center"
-                                                           FontSize="8"
-                                                           Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
-                            </Grid>
-                        </DataTemplate>
-                    </materialDesign:RatingBar.ValueItemTemplate>
-                </materialDesign:RatingBar>
+                                                          >
+                    </materialDesign:RatingBar>
                 <TextBlock Grid.Column="0" Text="scors:"  Margin="40,0,0,0"/>
             </Grid>
-            <Button Margin="0,15,0,0" Command="{Binding PickImage}">
+            <Button Margin="0,15,0,0" Command="{Binding PickImage, UpdateSourceTrigger=PropertyChanged}">
                 pick an image
             </Button>
-            <Image Source="{Binding FeedbackModel, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Margin="0,15,0,0" Command="{Binding TakePictureCommand, UpdateSourceTrigger=PropertyChanged}">
+                Take a picture
+            </Button>
+            <Image Source="{Binding FeedbackModel.Image, UpdateSourceTrigger=PropertyChanged}" />
 
             <Button Margin="0,100,0,0" FontSize="20" Height="74"  Command="{Binding AddFeadback}">
                 Add 
             </Button>
         </StackPanel>
         
+        </Grid>
         <!-- right side of the window -->
         <ListBox Style="{StaticResource MaterialDesignGridList}" ItemsSource="{Binding IceCreamModel.Feedbacks}"  HorizontalAlignment="Stretch"  VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="2" Grid.RowSpan="3" Margin="0,0.2,0,0">
 

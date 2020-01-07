@@ -15,7 +15,7 @@ namespace iceCreamKiosk.ViewModel
 {
     public class StoreAndIceCreamVM : ViewModelBase
     {
-        
+        public Store Store { get; set; }
         public ICommand ShowFeedbacks { get; set; }
         public StoreModel StoreModel { get; set; }
         public IceCreamLogic IceCreamLogic { get; set; } = new IceCreamLogic();
@@ -25,18 +25,21 @@ namespace iceCreamKiosk.ViewModel
         private ObservableCollection<FeedBack> feedBacks;
         public ObservableCollection<FeedBack> FeedBacks { get => feedBacks; set => Set(ref feedBacks, value); }
 
-        public StoreAndIceCreamVM(IceCream iceCream)
+        public StoreAndIceCreamVM(IceCream iceCream, Store storeParametr = null)
         {
-            Store store = StoreLogic.GetStoreByID(iceCream.StoreId); // null
-           // Store store = IceCreamLogic.GetStoreById(iceCream.StoreId);
-            StoreModel = new StoreModel(store);
+             Store = storeParametr;
+            if (Store == null)
+            {
+                Store = StoreLogic.GetStoreByID(iceCream.StoreId);
+            }
+            StoreModel = new StoreModel(Store);
             IceCreamModel = new IceCreamModel(iceCream);
             ShowFeedbacks = new RelayCommand<IceCream>(ShowFeedbacksCommand);
 
-            
+
 
         }
-       
+
 
         public void ShowFeedbacksCommand(IceCream iceCream)
         {

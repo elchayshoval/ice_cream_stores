@@ -13,10 +13,10 @@ namespace BL
     {
         public enum Status { Success, NoInternetConnection, DBError, InvalidName }
         private IceCreamService iceCreamService = new IceCreamService();
-        public IEnumerable<IceCream> GetIceCreams(string search="")
+        public async Task<IEnumerable<IceCream>> GetIceCreams()
         {
-            if (search == null) search = string.Empty;
-            return iceCreamService.GetIceCreams().Where((ice => ice.Name.Contains(search) || ice.Description.Contains(search)));
+            
+            return await iceCreamService.GetIceCreams();
         }
 
         public void RemoveIceCream(IceCream iceCream)
@@ -24,7 +24,7 @@ namespace BL
             iceCreamService.RemoveIceCream(iceCream);
         }
 
-        public Status AddIceCream(IceCream iceCream)
+        public async Task<Status> AddIceCream(IceCream iceCream)
         {
             IceCreamValidation iceCreamValidation = new IceCreamValidation();
             Status status = Status.Success;
@@ -33,7 +33,7 @@ namespace BL
             {
                 if (iceCreamValidation.IsIceCreamValid(iceCream))
                 {
-                    iceCreamService.AddIceCream(iceCream);
+                    await iceCreamService.AddIceCream(iceCream);
 
                 }
                 else
@@ -51,9 +51,9 @@ namespace BL
             return status;
         }
 
-        public List<IceCream> GetIceCreamsByStoreId(Guid storeId)
+        public async Task<List<IceCream>> GetIceCreamsByStoreId(Guid storeId)
         {
-            return GetIceCreams().Where(ice => ice.StoreId == storeId).ToList();
+            return (await GetIceCreams()).Where(ice => ice.StoreId == storeId).ToList();
         }
 
         public Status UpdateIceCream(IceCream iceCream)
@@ -82,9 +82,17 @@ namespace BL
             return status;
         }
 
-        public IEnumerable<IceCream> getFilteredIceCreams(Filter filter)
+        public async Task<IEnumerable<IceCream>> getFilteredIceCreams(IEnumerable<IceCream> allIceCreams, Filter filter)
         {
-             return GetIceCreams().Where(ice => filter.IsIceCreamRequested(ice)).ToList();
+            if (allIceCreams == null)
+            {
+                allIceCreams =await GetIceCreams();
+            }
+            if (filter == null)
+            {
+                return allIceCreams;
+            }
+             return allIceCreams.Where(ice => filter.IsIceCreamRequested(ice)).ToList();
             
         }
     }

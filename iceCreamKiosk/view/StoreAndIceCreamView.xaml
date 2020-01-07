@@ -27,28 +27,30 @@
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="{Binding Store.Image}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Cursor="Hand" >
+                <Image.InputBindings>
+                    <MouseBinding Gesture="leftclick" Command="{Binding GoToStore}"/>
+                </Image.InputBindings>
+            </Image>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="24" Orientation="Horizontal">
+                <TextBlock Text="{Binding Store.Name}"  FontSize="24"  FontWeight="Light"/>
 
+                <TextBlock Text="  Store" FontSize="24"  FontWeight="Light" />
+            </StackPanel>
 
-
+        </Grid>
         <TextBlock  HorizontalAlignment="Left" Margin="0 0 0 0" VerticalAlignment="Bottom"  Grid.Column="1"
             Style="{StaticResource MaterialDesignDisplay1TextBlock}" >
              <Hyperlink 
                 IsEnabled="False">
-                Store details
-            </Hyperlink>
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="70 0 0 0" VerticalAlignment="Bottom"  Grid.Column="2" 
-            Style="{StaticResource MaterialDesignDisplay1TextBlock}" >
-             <Hyperlink
-                IsEnabled="False">
-               IceCream details
+                Ice Cream Details
             </Hyperlink>
         </TextBlock>
         
+        
         <!-- right side of the window  ,  ice cream-->
-        <materialDesign:Flipper HorizontalAlignment="Stretch"  Grid.Row="1" Grid.Column="2" VerticalAlignment="Stretch" Margin="10,0,0,0">
-            <materialDesign:Flipper.FrontContent>
-                <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
+                <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="65*"/>
                         <ColumnDefinition Width="35*"/>
@@ -212,278 +214,10 @@
                         </materialDesign:Card>
                     </Grid>
                 </Grid>
-            </materialDesign:Flipper.FrontContent>
-
-
-            <materialDesign:Flipper.BackContent>
-                <Grid HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="65*"/>
-                        <ColumnDefinition Width="35*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding IceCreamModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"
-                        Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
-                        Margin="2"
-                        AcceptsReturn="True"
-                        TextWrapping="Wrap"
-                        VerticalScrollBarVisibility="Auto"
-                        Text="{Binding IceCreamModel.Description, UpdateSourceTrigger=PropertyChanged}"
-                        materialDesign:HintAssist.Hint="Enter description of the ice cream" />
-
-
-                    <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="5*"/>
-                        </Grid.RowDefinitions>
-                        
-                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
-
-                            <Grid >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" materialDesign:HintAssist.Hint="Ice Cream Name" Text="{Binding IceCreamModel.Name, UpdateSourceTrigger=PropertyChanged}" />
-
-                                <materialDesign:RatingBar Grid.Row="1" HorizontalAlignment="Center"
-                                                          x:Name="CustomRatingBaredit"
-                                                          Max="5"
-                                                          Value="{Binding IceCreamModel.Score, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
-                                                          Orientation="Horizontal">
-                                    <materialDesign:RatingBar.ValueItemTemplate>
-                                        <DataTemplate DataType="system:Int32">
-                                            <Grid >
-                                                <materialDesign:PackIcon
-                                                    Kind="Heart" Height="24" Width="24" />
-                                                <TextBlock  Text="{Binding}"
-                                                           HorizontalAlignment="Center"
-                                                           VerticalAlignment="Center"
-                                                           FontSize="8"
-                                                           Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
-                                            </Grid>
-                                        </DataTemplate>
-                                    </materialDesign:RatingBar.ValueItemTemplate>
-                                </materialDesign:RatingBar>
-
-                            </Grid>
-                        </materialDesign:Card>
-
-
-                    </Grid>
-                    
-                </Grid>
-
-            </materialDesign:Flipper.BackContent>
-        </materialDesign:Flipper>
-
+           
 
         <!-- left side of the window , store details -->
-        <materialDesign:Flipper HorizontalAlignment="Stretch"  Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Stretch" Margin="0 10 0 10">
-            <materialDesign:Flipper.FrontContent>
-                <Grid HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="65*"/>
-                        <ColumnDefinition Width="35*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image}"/>
-                    <Grid HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" >
-                        <Grid.Background>
-                            <ImageBrush  Stretch="Fill"/>
-                        </Grid.Background>
-                    </Grid>
-                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Map}" />
-
-                    <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="3*"/>
-
-                        </Grid.RowDefinitions>
-                        <materialDesign:Card Background="DeepSkyBlue" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*"/>
-                                    <ColumnDefinition Width="5*"/>
-                                </Grid.ColumnDefinitions>
-                                <materialDesign:PackIcon Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="IceCream"  />
-                                <materialDesign:PackIcon Grid.Column="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="ArrowRight" />
-                            </Grid>
-
-                        </materialDesign:Card>
-                        <!-- show store name-->
-                        <materialDesign:Card Background="Pink" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
-
-                            <Grid >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" Text="{Binding StoreModel.Name}" />
-
-                                <materialDesign:PackIcon Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="ArrowLeft" />
-
-                            </Grid>
-
-                        </materialDesign:Card>
-
-                        <!-- show store phon-->
-                        <materialDesign:Card  Grid.Row="2" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-
-
-                            <Button Background="DeepPink" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" >
-                                <Button.Content>
-                                    <StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon  Kind="Phone" Margin="0 0 10 0"/>
-                                            <TextBlock Text="{Binding StoreModel.Phone}"></TextBlock>
-                                        </StackPanel>
-                                        <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" >Or Press To Order</TextBlock>
-
-                                    </StackPanel>
-                                </Button.Content>
-                            </Button>
-
-
-
-                        </materialDesign:Card>
-
-
-
-                    </Grid> <!-- show store location-->
-                    <Grid  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" >
-
-                            <Grid  Background="Pink"> 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" Text="{Binding StoreModel.Location}" />
-
-                                <materialDesign:PackIcon Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="ArrowLeft" />
-
-                            </Grid>
-                        </materialDesign:Card>
-                        <materialDesign:Card Background="DeepPink" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
-                            
-
-                        </materialDesign:Card>
-                        <materialDesign:Card Background="Pink" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2">
-
-                        </materialDesign:Card>
-                    </Grid>
-                </Grid>
-            </materialDesign:Flipper.FrontContent>
-
-
-            <materialDesign:Flipper.BackContent>
-                <Grid HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="65*"/>
-                        <ColumnDefinition Width="35*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill"  />
-                    <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="5*"/>
-                        </Grid.RowDefinitions>
-                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-                            <Grid>
-                                <Button Command="{Binding OpenFileCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto">
-                                    pick an image
-                                </Button>
-                            </Grid>
-
-                        </materialDesign:Card>
-                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
-
-                            <Grid >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" Text="{Binding StoreModel.Name, UpdateSourceTrigger=PropertyChanged}" />
-
-                                <TextBox Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" Text="{Binding StoreModel.Phone, UpdateSourceTrigger=PropertyChanged}" />
-
-
-                            </Grid>
-                        </materialDesign:Card>
-
-
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" >
-
-                            <Grid >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <TextBox Text="{Binding StoreModel.Location, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" />
-
-                                <materialDesign:PackIcon Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="ArrowLeft" />
-
-                            </Grid>
-                        </materialDesign:Card>
-                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
-                            <Grid>
-
-                                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto">
-                                    select location
-                                    <!--not finnaly-->
-                                </Button>
-                            </Grid>
-
-                        </materialDesign:Card>
-                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2">
-                            <StackPanel Orientation="Horizontal">
-                                <Button Grid.Row="1"
-          Style="{StaticResource MaterialDesignFlatButton}"
-          Command="{Binding UpdateCommand}">
-                                    Submit
-                                </Button>
-                                <Button Grid.Row="1"
-          Style="{StaticResource MaterialDesignFlatButton}"
-          Command="{x:Static materialDesign:Flipper.FlipCommand}" >
-                                    <materialDesign:PackIcon Kind="ArrowRight" Margin="80 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="auto" Height="auto"></materialDesign:PackIcon>
-                                </Button>
-                            </StackPanel>
-                        </materialDesign:Card>
-                    </Grid>
-                </Grid>
-            </materialDesign:Flipper.BackContent>
-        </materialDesign:Flipper>
-
-
+        
 
         <materialDesign:Snackbar Grid.Row="2" Grid.ColumnSpan="4"
   HorizontalAlignment="Stretch" MessageQueue="{Binding SnackbarMessageQueue}" Margin="0,0,0,-0.4">

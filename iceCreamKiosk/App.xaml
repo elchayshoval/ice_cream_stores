@@ -5,8 +5,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Purple.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Pink.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Pink.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/Generic.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignExtensions;component/Themes/Generic.xaml" />
@@ -17,7 +17,7 @@
             <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:iceCreamKiosk.ViewModel" />
 
             <DataTemplate  DataType="{x:Type ViewModel:FeedbackForUserVM}">
-                <view:MyFeedbackView />
+                <view:AddFeedbackView />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type ViewModel:StoreAndIceCreamVM}">
@@ -61,6 +61,15 @@
             </DataTemplate>
         <DataTemplate  DataType="{x:Type ViewModel:LandedVM}">
                 <view:LandedView  />
+            </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModel:StoresCollectionForUserVM}">
+                <view:StoresCollectionForUserView  />
+            </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModel:IceCreamsCollectionForUserVM}">
+                <view:IceCreamsCollectionForUserView  />
+            </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModel:StoreForUserVM}">
+                <view:StoreForUserView  />
             </DataTemplate>
         </ResourceDictionary>
   </Application.Resources>

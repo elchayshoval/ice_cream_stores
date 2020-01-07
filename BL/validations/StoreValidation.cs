@@ -10,13 +10,13 @@ namespace BL.validations
 {
     class StoreValidation
     {
-        public Boolean IsStoreValid(Store store)
+        public async Task<Boolean> IsStoreValid(Store store)
         {
             StoreService storeService = new StoreService();
             Boolean result = true;
 
-            var list = storeService.GetStores().
-                Where(s =>s.StoreId!=store.StoreId&& s.Name == store.Name && s.Address == store.Address);
+            var list = await storeService.GetStores();
+            list = list.Where(s => s.StoreId != store.StoreId && s.Name == store.Name && s.Address == store.Address);
             if (list.Count() > 0)
             {
                 result = false;
@@ -24,9 +24,9 @@ namespace BL.validations
 
             return result; ;
         }
-            
+
 
 
     }
-    
+
 }

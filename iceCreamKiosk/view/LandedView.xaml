@@ -7,9 +7,9 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="landed"  Background="White"  >
-        
+    <Grid x:Name="landed"    >
         <Grid.RowDefinitions>
+            
             <RowDefinition/>
             <RowDefinition Height="1.5*"/>
             <RowDefinition Height="1.5*"/>
@@ -21,23 +21,22 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <materialDesign:PackIcon Kind="Settings" Height="48" Width="48" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="24">
+        <materialDesign:PackIcon Kind="Settings" Height="48" Width="48" Cursor="Hand"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16,72,0,0">
             <materialDesign:PackIcon.InputBindings>
                 <MouseBinding Gesture="leftClick" Command="{Binding GoToAddAdminCommand}"></MouseBinding>
             </materialDesign:PackIcon.InputBindings>
         </materialDesign:PackIcon>
         <Button  Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" 
                  Style="{StaticResource MaterialDesignRaisedButton}" Height="auto" Width="auto" Margin="4"
-                 Command="{Binding GoToSearchIceCreamCommand}">
-
+                 Command="{Binding GoToSearchIceCreamCommand}" >
             <StackPanel>
-                <materialDesign:PackIcon Kind="IceCream" Height="64" Width="64" Margin="16" HorizontalAlignment="Center"></materialDesign:PackIcon>
+                <materialDesign:PackIcon  Kind="IceCream" Height="64" Width="64" Margin="16" HorizontalAlignment="Center"></materialDesign:PackIcon>
                 <TextBlock Margin="8">Search Ice Cream</TextBlock>
             </StackPanel>
         </Button>
         <Button  Grid.Column="2" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" 
                  Style="{StaticResource MaterialDesignRaisedButton}" Height="auto" Width="auto" Margin="4"
-                 Command="{Binding GoToSearchStoreCommand}">
+                 Command="{Binding GoToSearchStoreCommand}" >
 
             <StackPanel>
                 <materialDesign:PackIcon Kind="Search" Height="64" Width="64" Margin="16" HorizontalAlignment="Center"></materialDesign:PackIcon>
@@ -53,6 +52,11 @@
                 <TextBlock Margin="8">Feedback</TextBlock>
             </StackPanel>
         </Button>
+        <materialDesign:Snackbar Grid.Row="0" Grid.ColumnSpan="4" 
+  HorizontalAlignment="Stretch" MessageQueue="{Binding SnackbarMessageQueue}" >
+
+        </materialDesign:Snackbar>
+
 
     </Grid>
 </UserControl>
