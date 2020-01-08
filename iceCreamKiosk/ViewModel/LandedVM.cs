@@ -14,13 +14,15 @@ namespace iceCreamKiosk.ViewModel
 {
     class LandedVM : ViewModelBase
     {
+        private LoginVM loinDialog;
+
         public ICommand GoToSearchStoreCommand { get; set; }
         public ICommand GoToSearchIceCreamCommand { get; set; }
         public ICommand GoToAddFeedbackCommand { get; set; }
         public ICommand GoToAddAdminCommand { get; set; }
 
         public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
-
+        public LoginVM LoginDialog { get { return loinDialog; } private set { Set(ref loinDialog,value); } }
 
         public LandedVM()
         {
@@ -28,6 +30,15 @@ namespace iceCreamKiosk.ViewModel
             GoToSearchIceCreamCommand = new MyCommand(ExecuteGoToSearchIceCreamCommand);
             GoToAddFeedbackCommand = new RelayCommand(ExecuteAddFeedbackCommand);//TODO i have to complete
             GoToAddAdminCommand = new RelayCommand(GoToAdminPage);
+            MessengerInstance.Register<bool>(this, CloseLoginDialog);
+        }
+
+        private void CloseLoginDialog(bool close)
+        {
+            if (close && LoginDialog != null)
+            {
+                LoginDialog = null;
+            }
         }
 
         private async void ExecuteAddFeedbackCommand()
@@ -40,7 +51,7 @@ namespace iceCreamKiosk.ViewModel
 
         private void GoToAdminPage()
         {
-            MessengerInstance.Send<ViewModelBase>(new StoresCollectionForAdminVM());
+            LoginDialog = new LoginVM();
         }
 
         private void ExecuteGoToSearchIceCreamCommand()

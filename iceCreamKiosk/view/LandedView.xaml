@@ -52,6 +52,8 @@
                 <TextBlock Margin="8">Feedback</TextBlock>
             </StackPanel>
         </Button>
+        <UserControl Grid.ColumnSpan="4" Grid.RowSpan="4" Content="{Binding LoginDialog}"
+                     HorizontalAlignment="Center" VerticalAlignment="Center" />
         <materialDesign:Snackbar Grid.Row="0" Grid.ColumnSpan="4" 
   HorizontalAlignment="Stretch" MessageQueue="{Binding SnackbarMessageQueue}" >
 

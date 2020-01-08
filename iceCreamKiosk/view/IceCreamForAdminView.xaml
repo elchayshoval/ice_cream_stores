@@ -127,7 +127,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <materialDesign:ColorZone Margin="1"
+                    <materialDesign:ColorZone Margin="2"
         Mode="PrimaryLight"
         VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                         <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">

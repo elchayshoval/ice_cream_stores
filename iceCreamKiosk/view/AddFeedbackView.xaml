@@ -89,6 +89,8 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
+                    <materialDesign:ColorZone Mode="Light" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        
                     <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                         Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                                      materialDesign:ColorZoneAssist.Mode="PrimaryDark"
@@ -100,17 +102,15 @@
                         Text="{Binding FeedbackModel.Description, UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Hint="Enter feedback details" />
 
+                    </materialDesign:ColorZone>
 
-                    <materialDesign:Card  Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
-                        <Grid>
+                    
 
-                            <Button Command="{Binding AddFeadback}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto">
+                            <Button Command="{Binding AddFeadback}" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Width="auto" Height="auto">
                                 Add Feedback
                                 <!--not finnaly-->
                             </Button>
-                        </Grid>
-
-                    </materialDesign:Card>
+                        
 
                 </Grid>
                 <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >

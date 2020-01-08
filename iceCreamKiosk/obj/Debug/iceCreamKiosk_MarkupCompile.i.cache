@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\App.xaml
-19-26040354
+20-1448533401
 1-999351230
-561230816982
+58808116601
 1482039398662
-MainWindow.xaml;view\AddFeedbackView.xaml;view\AddIceCreamView.xaml;view\AddStoreView.xaml;view\AdminPageView.xaml;view\FeedbackView.xaml;view\HomePageView.xaml;view\IceCreamCollectionForAdminView.xaml;view\IceCreamForAdminView.xaml;view\IceCreamsCollectionForUserView.xaml;view\LandedView.xaml;view\MyFeedbackView.xaml;view\MyFilterView.xaml;view\StoreAndIceCreamView.xaml;view\StoreForAdminView.xaml;view\StoreForUserView.xaml;view\StoresCollectionForAdminView.xaml;view\StoresCollectionForUserView.xaml;view\UserPageView.xaml;
+MainWindow.xaml;view\AddFeedbackView.xaml;view\AddIceCreamView.xaml;view\AddStoreView.xaml;view\AdminPageView.xaml;view\FeedbackView.xaml;view\HomePageView.xaml;view\IceCreamCollectionForAdminView.xaml;view\IceCreamForAdminView.xaml;view\IceCreamsCollectionForUserView.xaml;view\LandedView.xaml;view\LoginView.xaml;view\MyFeedbackView.xaml;view\MyFilterView.xaml;view\StoreAndIceCreamView.xaml;view\StoreForAdminView.xaml;view\StoreForUserView.xaml;view\StoresCollectionForAdminView.xaml;view\StoresCollectionForUserView.xaml;view\UserPageView.xaml;
 
 True
 

@@ -21,6 +21,7 @@
             <RowDefinition Height="77*"/>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Stretch" Width="auto" VerticalAlignment="Bottom" Orientation="Vertical" Grid.ColumnSpan="2" Height="134"  Grid.RowSpan="1">
+
             <TextBox Background="DeepPink" Foreground="DeepPink" FontSize="48" x:Name="autocomplete"  Height="auto" Margin="0,16,0,10" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                         Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
                                                     >

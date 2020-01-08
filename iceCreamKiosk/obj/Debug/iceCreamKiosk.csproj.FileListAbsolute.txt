@@ -125,3 +125,5 @@ C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\iceCreamKiosk_Content.g.cs
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\bin\Debug\WpfAnimatedGif.dll
 C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\view\LoginView.g.cs
+C:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\obj\Debug\view\LoginView.baml

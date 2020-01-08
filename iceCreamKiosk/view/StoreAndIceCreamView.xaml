@@ -28,11 +28,11 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image Source="{Binding Store.Image}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Cursor="Hand" >
-                <Image.InputBindings>
-                    <MouseBinding Gesture="leftclick" Command="{Binding GoToStore}"/>
-                </Image.InputBindings>
-            </Image>
+            <Grid.InputBindings>
+                <MouseBinding Gesture="leftclick" Command="{Binding GoToStoreCommand}"/>
+            </Grid.InputBindings>
+            <Image Source="{Binding Store.Image}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Cursor="Hand" />
+
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="24" Orientation="Horizontal">
                 <TextBlock Text="{Binding Store.Name}"  FontSize="24"  FontWeight="Light"/>
 
@@ -50,47 +50,61 @@
         
         
         <!-- right side of the window  ,  ice cream-->
-                <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
+        <materialDesign:ColorZone Mode="Light"
+                                  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch">
+            
+        
+                <Grid  HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="65*"/>
                         <ColumnDefinition Width="35*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding IceCreamModel.Image}"/>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <materialDesign:ColorZone Mode="PrimaryMid" HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch">
+                
+            <Image HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" Stretch="Uniform" Source="{Binding IceCream.Image}"/>
+            </materialDesign:ColorZone>
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <!-- description -->
-                        <materialDesign:Card HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2"  >
+                        <materialDesign:ColorZone Mode="PrimaryLight" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2"  >
                             <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                             Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                             Margin="2"
-                                     Background="Pink"
+                                     
                             AcceptsReturn="True"
                             TextWrapping="Wrap"
                             VerticalScrollBarVisibility="Auto"
-                            Text="{Binding IceCreamModel.Description, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{Binding IceCream.Description, UpdateSourceTrigger=PropertyChanged}"
                             materialDesign:HintAssist.Hint="Ice Cream description" />
 
-                        </materialDesign:Card>
-                        <!-- Nutrition values '    we need to do binding ??????????  -->
-                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Grid.Row="1">
-                            <Grid Background="DeepPink">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock>Sum of Coloreis :</TextBlock>
-                                <TextBlock Grid.Row="1">Sum of Protein</TextBlock>
-                                <TextBlock Grid.Row="2">Sum of Fats</TextBlock>
-                            </Grid>
-                        </materialDesign:Card>
+                        </materialDesign:ColorZone>
+                        
+                        <materialDesign:ColorZone Mode="PrimaryMid" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Grid.Row="1">
+                            <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock>Sum of Caloreis :</TextBlock>
+                        <TextBlock Grid.Row="1" Text="Sum of Proteins:"/>
+                        <TextBlock Grid.Row="2">Sum of Fats:</TextBlock>
+                        <TextBlock Grid.Column="1" Text="{Binding IceCream.Nutrient.Energy}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding IceCream.Nutrient.Protein}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding IceCream.Nutrient.Fat}"/>
+                    </Grid>
+                        </materialDesign:ColorZone>
                     </Grid>
 
                     <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
@@ -101,14 +115,17 @@
 
                         </Grid.RowDefinitions>
                         <materialDesign:Card  Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-                            <Grid Background="DeepSkyBlue">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*"/>
-                                    
-                                </Grid.ColumnDefinitions>
-                                <materialDesign:PackIcon  Width="50" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="Feedback" />
-                            
+                    <materialDesign:ColorZone Mode="PrimaryMid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                        
+                            <Grid >
+                                
+                                <StackPanel Orientation="Vertical">
+                                <materialDesign:PackIcon Margin="8"  Width="50" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="Feedback" />
+                                    <TextBlock Text="Ice creams Feedbacks" HorizontalAlignment="Center"/>
+                                    <materialDesign:PackIcon Kind="ArrowRight" Height="30" Width="30" HorizontalAlignment="Center"/>
+                                </StackPanel>
                             </Grid>
+                    </materialDesign:ColorZone>
 
                         </materialDesign:Card>
                         <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
@@ -118,7 +135,7 @@
                                     <RowDefinition Height="2*"/>
                                     <RowDefinition Height="1*"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" Text="{Binding IceCreamModel.Name}" />
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" Text="{Binding IceCream.Name}" />
 
                                 <materialDesign:PackIcon Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="ArrowLeft" />
 
@@ -127,17 +144,16 @@
                         </materialDesign:Card>
 
                         <!-- scors-->
-                        <materialDesign:Card Background="DeepPink" Grid.Row="2" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-
-
-                            <StackPanel>
+                    <materialDesign:ColorZone Background="Pink" Grid.Row="2" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                        <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Saler's Recommend :"></TextBlock>
 
                                 </StackPanel>
                                 <materialDesign:RatingBar Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"
                                                           x:Name="CustomRatingBar"
-                                                          Max="5"
+                                                          Max="3"
+                                                          IsReadOnly="True"
                                                           Value="{Binding IceCreamModel.Score, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
                                                           Orientation="Horizontal">
                                     <materialDesign:RatingBar.ValueItemTemplate>
@@ -159,7 +175,7 @@
 
 
 
-                        </materialDesign:Card>
+                        </materialDesign:ColorZone>
 
 
 
@@ -171,7 +187,7 @@
                             <RowDefinition Height="2*" />
                         </Grid.RowDefinitions>
                         <!-- show arow to description -->
-                        <materialDesign:Card Background="pink" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" >
+                        <materialDesign:ColorZone Mode="PrimaryMid" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" >
 
                             <Grid >
                                 <Grid.RowDefinitions>
@@ -183,7 +199,7 @@
                                 <materialDesign:PackIcon Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="ArrowLeft" />
 
                             </Grid>
-                        </materialDesign:Card>
+                        </materialDesign:ColorZone>
 
                         <materialDesign:Card Background="pink" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
 
@@ -199,25 +215,112 @@
                             </Grid>
                         </materialDesign:Card>
                         <!-- go to feedback command command-->
-                        <materialDesign:Card Background="DeepSkyBlue" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2">
-                            <StackPanel Orientation="Horizontal">
-                              <!-- i need to biding this command-->
-                                <Button Grid.Row="1" Margin="25,0,0,0"
-                                    Style="{StaticResource MaterialDesignFlatButton}"
-                                   Command="{Binding ShowFeedbacks }"  CommandParameter="{Binding IceCreamModel.IceCream}"
-                                        >
-                                    GO TO FEEDBACKS
+
+                                <Button 
+                                    Command="{Binding AddFeesbackCommand }"  CommandParameter="{Binding IceCreamModel.IceCream}"
+                                        Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2"
+                                    Width="auto" Height="auto"    
+                                    >
+                                    Add Feedback
                                 </Button>
 
-                            </StackPanel>
-
-                        </materialDesign:Card>
                     </Grid>
                 </Grid>
-           
+        </materialDesign:ColorZone>
 
-        <!-- left side of the window , store details -->
-        
+        <!-- right side of the window , feedbacks details -->
+        <ListBox Style="{StaticResource MaterialDesignGridList}" ItemsSource="{Binding IceCream.Feedbacks}"  HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="2" Margin="0,0.2,0,0">
+
+
+            <!--make out margin-->
+            <!--
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>-->
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <materialDesign:Card Margin="5 0 5 5" Width="300"   UniformCornerRadius="10" >
+
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="250" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <materialDesign:ColorZone Mode="PrimaryMid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                <Grid>
+                                    
+                                <materialDesign:PackIcon Kind="PhotoCamera" Width="75" Height="75"
+                                                         VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Image Source="{Binding Image}" Stretch="Uniform"  />
+                                </Grid>
+                            </materialDesign:ColorZone>
+                            <Grid Grid.Row="1" HorizontalAlignment="Right" Margin="0 30 35 0">
+                                <materialDesign:RatingBar 
+                                    x:Name="CustomRatingBar"
+                                    Max="5"
+                                    Value="{Binding Stars, Converter={StaticResource StarConverter} }"
+                                    IsReadOnly="True">
+                                    <!--<materialDesign:RatingBar.ValueItemTemplate>
+                                        <DataTemplate
+                                            DataType="system:Int32">
+                                            <Grid>
+                                                <materialDesign:PackIcon
+                                                    Kind="Heart"
+                                                    Height="24"
+                                                    Width="24" />
+                                                <TextBlock
+                                                    Text="{Binding}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="8"
+                                                    Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </materialDesign:RatingBar.ValueItemTemplate>-->
+                                </materialDesign:RatingBar>
+
+
+
+
+
+
+
+                            </Grid>
+                            <StackPanel Grid.Row="1" Margin="8 50 0 0" >
+                                <StackPanel  Margin="1">
+
+                                    <materialDesign:PackIcon  Kind="Person" Height="50" Width="50" />
+
+                                    <TextBlock Text="Binding Name}" FontWeight="Bold" Margin="1" >
+
+                                    </TextBlock>
+                                </StackPanel>
+
+
+
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Right" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0 0 10 25" >
+                                <TextBlock Text="{Binding Description}" FontWeight="Bold" Margin="5" VerticalAlignment="Top"/>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
 
         <materialDesign:Snackbar Grid.Row="2" Grid.ColumnSpan="4"
   HorizontalAlignment="Stretch" MessageQueue="{Binding SnackbarMessageQueue}" Margin="0,0,0,-0.4">
