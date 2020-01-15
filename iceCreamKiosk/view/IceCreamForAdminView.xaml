@@ -93,7 +93,7 @@
 
                                     <materialDesign:PackIcon  Kind="Person" Height="50" Width="50" />
 
-                                    <TextBlock Text="Binding Name}" FontWeight="Bold" Margin="1" >
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="1" >
 
                                     </TextBlock>
                                 </StackPanel>

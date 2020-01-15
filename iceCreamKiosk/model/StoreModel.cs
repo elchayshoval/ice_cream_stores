@@ -14,7 +14,7 @@ namespace iceCreamKiosk.model
     public class StoreModel : ObservableObject
     {
         private string name;
-        private Byte[] image;
+        private string image;
         private string location;
         private string phone;
         private ObservableCollection<IceCream> iceCreams;
@@ -23,7 +23,7 @@ namespace iceCreamKiosk.model
 
         public Store Store { get; set; }
         public string Name { get => name; set => Set(ref name, value); }
-        public Byte[] Image { get => image; set => Set(ref image, value); }
+        public string Image { get => image; set => Set(ref image, value); }
         public string Location
         {
             get => location;
@@ -51,7 +51,6 @@ namespace iceCreamKiosk.model
         public Byte[] Map { get { return map; } set { Set(ref map, value); } }
 
 
-        //public List<IceCream> iceCreams { get; set; } = new List<IceCream>();
         public ObservableCollection<IceCream> IceCreams { get => iceCreams; set => Set(ref iceCreams, value); }
 
         public StoreModel(Store store = null)
@@ -75,7 +74,6 @@ namespace iceCreamKiosk.model
         {
             if (!string.IsNullOrWhiteSpace(Name))
             {
-                //add other validations !!!!!
                 return true;
             }
             return false;
@@ -103,7 +101,8 @@ namespace iceCreamKiosk.model
         public bool IsAllFeildsClear()
         {
             Boolean result = false;
-            if (String.IsNullOrWhiteSpace(Name) && String.IsNullOrWhiteSpace(Location) && String.IsNullOrWhiteSpace(Phone) && Image == null)
+            if (String.IsNullOrWhiteSpace(Name) && String.IsNullOrWhiteSpace(Location) 
+                && String.IsNullOrWhiteSpace(Phone) && string.IsNullOrEmpty(Image))
             {
                 result = true;
             }

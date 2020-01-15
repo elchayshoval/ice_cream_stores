@@ -150,7 +150,7 @@ namespace iceCreamKiosk.ViewModel
             if (d.ShowDialog() == true)
             {
                 var path = d.FileName;
-                IceCreamModel.Image = File.ReadAllBytes(path);
+                IceCreamModel.Image = FileManager.AddIceCreamImage(path);
             }
         }
     }

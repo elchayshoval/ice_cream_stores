@@ -39,7 +39,7 @@ namespace iceCreamKiosk.ViewModel
 
         public async void UpdateStoresCollection(string search = null)
         {
-            if (search == null)
+            if (search == null || allStores == null)
             {
                 allStores = await storeLogic.GetStores();
                 Stores = new ObservableCollection<Store>(allStores);

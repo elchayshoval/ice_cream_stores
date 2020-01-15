@@ -20,5 +20,15 @@ namespace TestIceCream
             result =await ImageAnlyzer.IsIceCreamConfident("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/easiest-ever-fruit-ice-cream-ghk-1532637317.jpg");
             Assert.AreEqual(true, result, "success");
         }
-    }
+
+        [TestMethod]
+        public async Task TestIsIceCreamConfidentUrl()
+        {
+            Boolean result = await ImageAnlyzer.IsIceCreamConfident("https://drive.google.com/uc?export=view&id=1TBtVfEBr_02FRRW2HJCDAuOU0kioTvBy");
+            Assert.AreEqual(true, result, "success");
+
+            result = await ImageAnlyzer.IsIceCreamConfident("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/easiest-ever-fruit-ice-cream-ghk-1532637317.jpg");
+            Assert.AreEqual(true, result, "success");
+        }
+        }
 }

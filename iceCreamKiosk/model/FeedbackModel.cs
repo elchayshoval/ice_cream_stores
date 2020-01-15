@@ -15,9 +15,11 @@ namespace iceCreamKiosk.model
         private Enums.Stars stars;
         private string description;
         private string image;
+        private string name;
 
         public string Description { get => description; set => Set(ref description, value); }
         public string Image { get => image; set => Set(ref image, value); }
+        public string Name { get => name; set => Set(ref name, value); }
         public Enums.Stars Stars { get => stars; set => Set(ref stars, value); }
 
         public FeedbackModel(FeedBack feedBack = null)
@@ -48,6 +50,7 @@ namespace iceCreamKiosk.model
             feedBack.IceCreamID = this.FeedBack.IceCreamID;
             feedBack.Image = this.Image;
             feedBack.Stars = this.Stars;
+            feedBack.Name = this.Name;
             return feedBack;
         }
     }

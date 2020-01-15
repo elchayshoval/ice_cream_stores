@@ -15,7 +15,7 @@ namespace iceCreamKiosk.model
 
         private string name;
         private string description;        
-        private Byte[] image;
+        private string image;
         private Enums.Stars score;
         private int nutritionalID;
         private int? sumCal;
@@ -24,7 +24,7 @@ namespace iceCreamKiosk.model
 
         public string Name { get=> name; set => Set(ref name, value); }
         public string Description { get => description; set => Set(ref description, value); }
-        public Byte[] Image { get => image; set => Set(ref image, value); }
+        public string Image { get => image; set => Set(ref image, value); }
         public Enums.Stars Score { get => score; set => Set(ref score, value); }
         public int NutritionalID { get => nutritionalID; set => Set(ref nutritionalID, value); }
         public ObservableCollection<FeedBack> Feedbacks { get; set; }
@@ -74,7 +74,7 @@ namespace iceCreamKiosk.model
         {
             bool result = false;
             if (string.IsNullOrEmpty(Name)&& string.IsNullOrEmpty(Description)
-                && Image==null && Score==Enums.Stars.one
+                && string.IsNullOrEmpty(Image) && Score==Enums.Stars.one
                 &&SumCal!=null&&SumProtein!=null&&SumFat!=null)
             {
                 result = true;

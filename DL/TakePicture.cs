@@ -37,6 +37,7 @@ namespace DL
                     if (File.Exists(checkPath))
                     {
                         path = checkPath;
+                        Thread.Sleep(100);
                         foreach (var pros in Process.GetProcessesByName("WindowsCamera"))
                         {
                             pros.Kill();

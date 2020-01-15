@@ -34,15 +34,19 @@ namespace iceCreamKiosk.ViewModel
 
         public IceCreamsCollectionForUserVM()
         {
-            UpdateIceCreamCollection();
+            //UpdateIceCreamCollection();
             ShowSelectedCommand = new RelayCommand<IceCream>(ExecuteShowSelectedCommand);
-            SearchCommand = new RelayCommand<string>(UpdateIceCreamCollection);
+            SearchCommand = new RelayCommand<string>(WraperUpdateIceCreamCollection);
         }
 
-
-        public async void UpdateIceCreamCollection(string search = null)
+        private async void WraperUpdateIceCreamCollection(string obj)
         {
-            if (search == null)
+            await UpdateIceCreamCollection(obj);
+        }
+
+        public async Task UpdateIceCreamCollection(string search = null)
+        {
+            if (search == null|| allIceCreams==null)
             {
                 allIceCreams =await iceCreamLogic.GetIceCreams();
                 IceCreams = new ObservableCollection<IceCream>(allIceCreams);

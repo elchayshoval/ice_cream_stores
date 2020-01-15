@@ -17,7 +17,7 @@ namespace BE
         public int NtritionalId { get; set; }
 
         public Nutrition Nutrient { get; set; } = new Nutrition();
-        public Byte[] Image { get; set; }
+        public string Image { get; set; }
         public Enums.Stars Score { get; set; }
         public Guid StoreId { get; set; }
 

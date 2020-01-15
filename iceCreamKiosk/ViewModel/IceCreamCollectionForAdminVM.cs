@@ -56,7 +56,7 @@ namespace iceCreamKiosk.ViewModel
 
         public async void UpdateIceCreamCollection(string search = null)
         {
-            if (search == null)
+            if (search == null|| allIceCreams == null)
             {
                 allIceCreams = await iceCreamLogic.GetIceCreams();
                 IceCreams = new ObservableCollection<IceCream>(allIceCreams);

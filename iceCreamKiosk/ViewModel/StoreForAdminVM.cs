@@ -87,7 +87,7 @@ namespace iceCreamKiosk.ViewModel
             if (d.ShowDialog() == true)
             {
                 var path = d.FileName;
-                StoreModel.Image = File.ReadAllBytes(path);
+                StoreModel.Image = FileManager.AddStoreImage(path, StoreModel.Name);
             }
         }
         private void ExecuteRemoveCommand(IceCream iceCream)

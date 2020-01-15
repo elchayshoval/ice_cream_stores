@@ -75,6 +75,7 @@
                         <!-- description -->
                         <materialDesign:ColorZone Mode="PrimaryLight" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2"  >
                             <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                     IsReadOnly="True"
                             Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                             Margin="2"
                                      
@@ -154,7 +155,7 @@
                                                           x:Name="CustomRatingBar"
                                                           Max="3"
                                                           IsReadOnly="True"
-                                                          Value="{Binding IceCreamModel.Score, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
+                                                          Value="{Binding IceCream.Score, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
                                                           Orientation="Horizontal">
                                     <materialDesign:RatingBar.ValueItemTemplate>
                                         <DataTemplate DataType="system:Int32">
@@ -302,7 +303,7 @@
 
                                     <materialDesign:PackIcon  Kind="Person" Height="50" Width="50" />
 
-                                    <TextBlock Text="Binding Name}" FontWeight="Bold" Margin="1" >
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="1" >
 
                                     </TextBlock>
                                 </StackPanel>

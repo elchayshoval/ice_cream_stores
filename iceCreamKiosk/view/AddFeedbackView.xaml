@@ -156,7 +156,8 @@
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <TextBox  Text="{Binding text}" materialDesign:HintAssist.Hint="Your Name" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto">
+                            <TextBox  Text="{Binding FeedbackModel.Name}" materialDesign:HintAssist.Hint="Your Name" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                      Width="auto" Height="auto">
 
                             </TextBox>
                             <materialDesign:PackIcon  Grid.Row="1"  Width="35" Height="35" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="Face" />

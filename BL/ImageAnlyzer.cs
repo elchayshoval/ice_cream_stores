@@ -20,10 +20,10 @@ namespace BL
     public static class ImageAnlyzer
     {
         private static readonly string imaggaUrl = "https://api.imagga.com/v2/";
-        private static readonly string apiKey = "acc_eed74da3ce61108";
-        private static readonly string apiSecret = "0f47674d79b58a8a615d82b4d84e967e";
+        private static readonly string apiKey = "acc_8f3efbf4260c34e";
+        private static readonly string apiSecret = "0927265845ef5f3054ad127cd261b19d";
         //private static readonly string authorization = "YWNjX2VlZDc0ZGEzY2U2MTEwODowZjQ3Njc0ZDc5YjU4YThhNjE1ZDgyYjRkODRlOTY3ZQ==";
-        private static readonly double CONFIDENT_VALUE = 80;
+        private static readonly double CONFIDENT_VALUE = 7;
         private static string basicAuthValue = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(String.Format("{0}:{1}", apiKey, apiSecret)));
 
 
@@ -36,17 +36,17 @@ namespace BL
         public static async Task<Boolean> CheckIceCreamConfidentByPath(string fileName)
         {
             string requestURL = "https://api.imagga.com/v2/tags";
-            
+
             byte[] bytes = File.ReadAllBytes(fileName);
 
             Dictionary<string, FileParameter> postParameters = new Dictionary<string, FileParameter>();
 
             postParameters.Add("image", new FileParameter(bytes, Path.GetFileName(fileName), "image/jpeg"));
 
-            HttpWebResponse webResponse =  FileUpload.MultipartFormPost(requestURL, postParameters, basicAuthValue);
+            HttpWebResponse webResponse = FileUpload.MultipartFormPost(requestURL, postParameters, basicAuthValue);
 
             StreamReader responseReader = new StreamReader(webResponse.GetResponseStream());
-            var returnResponseText =await responseReader.ReadToEndAsync();
+            var returnResponseText = await responseReader.ReadToEndAsync();
 
             webResponse.Close();
             return fetchResponse(returnResponseText);
@@ -78,7 +78,7 @@ namespace BL
             JObject jobject = JObject.Parse(response);
 
             var selectedTages = (from t in jobject["result"]["tags"]
-                                 where (string)t["tag"]["en"] == "ice cream"|| (string)t["tag"]["en"]=="ice" //i have to check the tag iceceream is corect
+                                 where (string)t["tag"]["en"] == "ice cream" || (string)t["tag"]["en"] == "ice" //i have to check the tag iceceream is corect
                                  select new { confidence = (double)t["confidence"], tag = (string)t["tag"]["en"] });
 
 
@@ -129,7 +129,9 @@ namespace BL
                     requestStream.Close();
                 }
 
-                return request.GetResponse() as HttpWebResponse;
+
+                var res = request.GetResponse() as HttpWebResponse;
+                return res;
             }
 
             private static byte[] GetMultipartFormData(Dictionary<string, FileParameter> postParameters, string boundary)

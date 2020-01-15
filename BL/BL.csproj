@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="FeedBackLogic.cs" />
+    <Compile Include="FileManager.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="IBL_Imlementation.cs" />

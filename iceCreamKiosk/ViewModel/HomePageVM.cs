@@ -107,11 +107,11 @@ namespace iceCreamKiosk.ViewModel
             }
         }
 
-        private void ExecutePageRequires(ViewModelBase currentPage)
+        private async void ExecutePageRequires(ViewModelBase currentPage)
         {
             if (currentPage is StoresCollectionForAdminVM)
             {
-                (currentPage as StoresCollectionForAdminVM).UpdateStoresCollection();
+                 (currentPage as StoresCollectionForAdminVM).UpdateStoresCollection();
             }
             if (currentPage is IceCreamCollectionForAdminVM)
             {
@@ -120,6 +120,18 @@ namespace iceCreamKiosk.ViewModel
             if (currentPage is StoreForAdminVM)
             {
                 (currentPage as StoreForAdminVM).UpdateIceCreamsCollection();
+            }
+            if (currentPage is StoresCollectionForUserVM)
+            {
+                 (currentPage as StoresCollectionForUserVM).UpdateStoresCollection();
+            }
+            if (currentPage is IceCreamsCollectionForUserVM)
+            {
+                await (currentPage as IceCreamsCollectionForUserVM).UpdateIceCreamCollection();
+            }
+            if (currentPage is StoreForUserVM)
+            {
+                (currentPage as StoreForUserVM).UpdateIceCreamsCollection();
             }
         }
 
@@ -160,7 +172,7 @@ namespace iceCreamKiosk.ViewModel
 
         private bool CanExecuteBackCommand()
         {
-            return true;
+            return IsNavigationEnabled;
         }
 
         private void ExecuteBackCommand()

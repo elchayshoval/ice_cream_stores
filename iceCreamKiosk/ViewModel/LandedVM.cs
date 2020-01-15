@@ -22,7 +22,7 @@ namespace iceCreamKiosk.ViewModel
         public ICommand GoToAddAdminCommand { get; set; }
 
         public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
-        public LoginVM LoginDialog { get { return loinDialog; } private set { Set(ref loinDialog,value); } }
+        public LoginVM LoginDialog { get { return loinDialog; } private set { Set(ref loinDialog, value); } }
 
         public LandedVM()
         {

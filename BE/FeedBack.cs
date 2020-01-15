@@ -12,6 +12,7 @@ namespace BE
         public Guid FeedbackId { get; set; } = Guid.NewGuid();
         public Guid IceCreamID { get; set; }
         public string Description { get; set; }
+        public string Name { get; set; }
         public string Image { get; set; }
         public Enums.Stars Stars { get; set; }
     }

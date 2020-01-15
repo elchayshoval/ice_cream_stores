@@ -137,7 +137,7 @@ namespace iceCreamKiosk.ViewModel
                 }
 
             }
-            catch
+            catch(Exception e)
             {
                 SnackbarMessageQueue.Enqueue("Sorry, it is impossible to add image now");
                 FeedbackModel.Image = "";
