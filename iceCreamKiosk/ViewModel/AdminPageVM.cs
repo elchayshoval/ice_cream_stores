@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using iceCreamKiosk.model;
 using System;
 using System.Collections.Generic;
@@ -13,82 +14,29 @@ namespace iceCreamKiosk.ViewModel
     {
         private ViewModelBase currentPage;
 
-        public ICommand BackCommand { get; set; }
-        public ICommand NextCommand { get; set; }
-        public Stack<ViewModelBase> PreviousPages { get; set; } = new Stack<ViewModelBase>();
-        public Stack<ViewModelBase> NextPages { get; set; } = new Stack<ViewModelBase>();
+        
+        public ICommand GoToSearchStoreCommand { get; set; } 
+        public ICommand GoToSearchIceCreamCommand { get; set; }
+        public ICommand GoToAddStoreCommand { get; set; }
+        public ICommand LogoutCommand { get; set; }
+
         public ViewModelBase CurrentPage { get => currentPage; set => Set(ref currentPage, value); }
 
         public AdminPageVM()
         {
-            CurrentPage = new StoresCollectionForAdminVM();//temp
-            BackCommand = new MyCommand(ExecuteBackCommand, CanExecuteBackCommand);
-            NextCommand = new MyCommand(ExecuteNextCommand, CanExecuteNextCommand);
+            GoToSearchStoreCommand = new RelayCommand(() => MessengerInstance.Send<ViewModelBase>(new StoresCollectionForAdminVM()));
+            GoToSearchIceCreamCommand = new RelayCommand(() => MessengerInstance.Send<ViewModelBase>(new IceCreamCollectionForAdminVM()));
+            GoToAddStoreCommand = new RelayCommand(() => MessengerInstance.Send<ViewModelBase>(new AddStoreVM()));
+            LogoutCommand = new RelayCommand(logout);
 
-            MessengerInstance.Register<ViewModelBase>(this, GoNewPage);
-
+             
         }
 
-        private void GoNewPage(ViewModelBase VM)
+        private void logout()
         {
-            NextPages.Clear();
-            if (VM != null)
-            {
-                PreviousPages.Push(CurrentPage);
-                CurrentPage = VM;
-
-            }
-            else
-            {
-                NextPages.Push(CurrentPage);
-                if (PreviousPages.Count > 0)
-                {
-                    CurrentPage = PreviousPages.Pop();
-                }
-            }
-            ExecutePageRequires(CurrentPage);
+            MessengerInstance.Send<ViewModelBase>(new LandedVM());
         }
 
-        private void ExecutePageRequires(ViewModelBase currentPage)
-        {
-            if (currentPage is StoresCollectionForAdminVM)
-            {
-                (currentPage as StoresCollectionForAdminVM).UpdateStoresCollection();
-            }
-            if (currentPage is StoreForAdminVM)
-            {
-                (currentPage as StoreForAdminVM).UpdateIceCreamsCollection();
-            }
-        }
-
-        private bool CanExecuteNextCommand()
-        {
-            return NextPages.Count > 0;
-        }
-
-        private void ExecuteNextCommand()
-        {
-            if (NextPages.Count > 0)
-            {
-                PreviousPages.Push(CurrentPage);
-                CurrentPage = NextPages.Pop();
-                ExecutePageRequires(CurrentPage);
-            }
-        }
-
-        private bool CanExecuteBackCommand()
-        {
-            return PreviousPages.Count > 0;
-        }
-
-        private void ExecuteBackCommand()
-        {
-            if (PreviousPages.Count > 0)
-            {
-                NextPages.Push(CurrentPage);
-                CurrentPage = PreviousPages.Pop();
-                ExecutePageRequires(CurrentPage);
-            }
-        }
+        
     }
 }

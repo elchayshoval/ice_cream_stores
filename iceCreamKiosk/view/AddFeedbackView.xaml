@@ -1,0 +1,223 @@
+﻿<UserControl x:Class="iceCreamKiosk.view.AddFeedbackView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:iceCreamKiosk.view"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:localConverter="clr-namespace:iceCreamKiosk.converters"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <localConverter:StarConverter x:Key="StarConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid Margin="0,0,0,-0.4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="9*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Image Source="{Binding store.Image}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Cursor="Hand" >
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="leftclick" Command="{Binding GoToStore}"/>
+                    </Image.InputBindings>
+                </Image>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="24" Orientation="Horizontal">
+                <TextBlock Text="{Binding store.Name}"  FontSize="48"  FontWeight="Light"/>
+
+                    <TextBlock Text="  Store" FontSize="48"  FontWeight="Light" />
+                </StackPanel>
+                <Image Source="{Binding iceCream.Image}" Stretch="Uniform" Grid.Row="1" Cursor="Hand" >
+                    <Image.InputBindings>
+                    <MouseBinding Gesture="leftclick" Command="{Binding GoToIceCream}"/>
+                    </Image.InputBindings>
+                </Image>
+                <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock Text="{Binding iceCream.Name}" FontSize="48"  FontWeight="Light"/>
+                </StackPanel>
+            </Grid>
+
+
+            <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65*"/>
+                    <ColumnDefinition Width="35*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <materialDesign:ColorZone Margin="1"
+        Mode="PrimaryLight"
+        VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <materialDesign:ColorZone.InputBindings>
+                        <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding OpenPictureDialog}" ></MouseBinding>
+                    </materialDesign:ColorZone.InputBindings>
+                    <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                        <materialDesign:PackIcon
+          Kind="CameraWirelessOutline"
+          Height="128"
+          Width="128"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                        <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Background="Transparent" BorderThickness="0">Dobble Click To Select A Picture</Button>
+                    </Grid>
+                </materialDesign:ColorZone>
+                <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Uniform" Source="{Binding FeedbackModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="-1"
+                                             IsIndeterminate="{Binding IsUploadImageExecuted}"   Height="200" Width="200"/>
+
+
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <materialDesign:ColorZone Mode="Light" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        
+                    <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                        Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                                     materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                                     
+                        Margin="2"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Auto"
+                        Text="{Binding FeedbackModel.Description, UpdateSourceTrigger=PropertyChanged}"
+                        materialDesign:HintAssist.Hint="Enter feedback details" />
+
+                    </materialDesign:ColorZone>
+
+                    
+
+                            <Button Command="{Binding AddFeadback}" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Width="auto" Height="auto">
+                                Add Feedback
+                                <!--not finnaly-->
+                            </Button>
+                        
+
+                </Grid>
+                <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                        <Grid>
+                            <Button Command="{Binding OpenPictureDialog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto">
+                                pick an image
+                            </Button>
+                        </Grid>
+
+                    </materialDesign:Card>
+                    <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" >
+
+                        <Grid >
+
+                            <materialDesign:RatingBar Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                          x:Name="CustomRatingBar"
+                                                          Max="5"
+                                                          Value="{Binding FeedbackModel.Stars, Mode=TwoWay, Converter={StaticResource StarConverter}, UpdateSourceTrigger=PropertyChanged }"
+                                                          Orientation="Horizontal">
+
+                            </materialDesign:RatingBar>
+
+                        </Grid>
+                    </materialDesign:Card>
+
+
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card Margin="1" Background="Pink" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" >
+
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBox  Text="{Binding FeedbackModel.Name}" materialDesign:HintAssist.Hint="Your Name" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                      Width="auto" Height="auto">
+
+                            </TextBox>
+                            <materialDesign:PackIcon  Grid.Row="1"  Width="35" Height="35" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="Face" />
+
+                        </Grid>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.RowSpan="2">
+                        <Button Grid.Row="1"
+          Style="{StaticResource MaterialDesignFlatButton}"
+          Command="{Binding CancelCommand}">
+                            Cancel
+                        </Button>
+
+                    </materialDesign:Card>
+                </Grid>
+            </Grid>
+
+
+            <materialDesign:DialogHost Grid.RowSpan="3" Grid.ColumnSpan="3" IsOpen="{Binding ThereWasADialog}"
+                                       
+  Style="{StaticResource MaterialDesignEmbeddedDialogHost}"
+  DialogMargin="8">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel
+      Margin="16">
+                        <TextBlock>
+      Do You Have Your Ice Cream Here?<LineBreak/>Maby Take A Live Picture.                           
+                        </TextBlock>
+
+                        <StackPanel
+        Orientation="Horizontal"
+        HorizontalAlignment="Right">
+                            <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsDefault="True"
+                                
+          Margin="0 8 8 0"
+          Command="{Binding TakePictureCommand}">
+                                                                Yes, Take A Live Picture
+                            </Button>
+                            <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsCancel="True"
+          Margin="0 8 8 0"
+          Command="{Binding PickImage}">
+                                No, Thanks
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+                
+            </materialDesign:DialogHost>
+
+
+            <materialDesign:Snackbar Grid.ColumnSpan="2"
+  HorizontalAlignment="Stretch" MessageQueue="{Binding SnackbarMessageQueue}">
+
+            </materialDesign:Snackbar>
+        </Grid>
+
+    </Grid>
+</UserControl>

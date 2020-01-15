@@ -67,6 +67,11 @@
                 <DataTemplate>
                     <materialDesign:Card Margin="5 0 5 5" Width="300"   UniformCornerRadius="10" >
 
+                        <materialDesign:Card.InputBindings>
+                            <MouseBinding MouseAction="leftClick" Command="{Binding DataContext.ShowSelectedCommand,
+                                    RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding }"
+                                        ></MouseBinding>
+                        </materialDesign:Card.InputBindings>
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="250" />
@@ -74,7 +79,7 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Image Source="{Binding Image}" Stretch="Fill" Margin="2,0,6.8,0" />
+                            <Image Source="{Binding Image}" Stretch="Uniform" Margin="2,0,6.8,0" />
                             <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20">
                                 $12
                             </Button>
@@ -132,15 +137,7 @@
 
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" >
-                                <Button Command="{Binding DataContext.ShowSelectedCommand,
-                                    RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding }"
-                                        Style="{StaticResource MaterialDesignToolButton}"
-                                        Width="30"
-                                        Padding="2 0 2 0" 
-                                        materialDesign:RippleAssist.IsCentered="True">
-                                    <materialDesign:PackIcon Kind="OpenInNew" />
-                                </Button>
-
+                                
                                 <Button Command="{Binding DataContext.OpenRemoveDialog,
          RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding }"
                                             
@@ -178,8 +175,32 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    
+                    <materialDesign:ColorZone Margin="1"
+        Mode="PrimaryLight"
+        VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                            <materialDesign:PackIcon
+          Kind="CameraWirelessOutline"
+          Height="128"
+          Width="128"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                            </Grid>
+                    </materialDesign:ColorZone>
+
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image}"/>
+
+                    <materialDesign:ColorZone Margin="1" Grid.Row="1"
+        Mode="PrimaryLight"
+        VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <materialDesign:PackIcon
+          Kind="MapSearch"
+          Height="128"
+          Width="128"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                    </materialDesign:ColorZone>
 
                     <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Map}"/>
 
@@ -296,8 +317,38 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
+                    <materialDesign:ColorZone Margin="1"
+        Mode="PrimaryLight"
+        VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <materialDesign:ColorZone.InputBindings>
+                            <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding OpenFileCommand}" ></MouseBinding>
+                        </materialDesign:ColorZone.InputBindings>
+                        <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                            <materialDesign:PackIcon
+          Kind="CameraWirelessOutline"
+          Height="128"
+          Width="128"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8" Background="Transparent" BorderThickness="0">Dobble Click To Select A Picture</Button>
+                        </Grid>
+                    </materialDesign:ColorZone>
+
                     <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding StoreModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="C:\Users\elchay\Desktop\שנה ד\אלול\הנדסת תוכנה לאינטרנט חלק א\תרגילים\my_t_2\t2\public\vered.jpg" /> <!-- sorce = "image.jpg"-->
+
+                    <materialDesign:ColorZone Margin="1" Grid.Row="1"
+        Mode="PrimaryLight"
+        VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <materialDesign:PackIcon
+          Kind="MapSearch"
+          Height="128"
+          Width="128"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                    </materialDesign:ColorZone>
+
+                    <Image HorizontalAlignment="Stretch"  Grid.Row="1" Margin="1" VerticalAlignment="Stretch" Stretch="Fill"  /> <!-- sorce = "image.jpg"-->
                     <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5*"/>

@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="iceCreamKiosk.view.StoresCollectionForUserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:iceCreamKiosk.view"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="77*"/>
+        </Grid.RowDefinitions>
+        <StackPanel  HorizontalAlignment="Stretch" Width="auto" VerticalAlignment="Bottom" Orientation="Vertical" Grid.ColumnSpan="2">
+            <TextBox Background="DeepPink" Foreground="DeepPink" FontSize="48" x:Name="autocomplete1"  Height="auto" Margin="0,16,0,10" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                        Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
+                                                    >
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Magnify" Width="50" Height="50" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="64,0,0,0" />
+                        <TextBlock Text="Select a store, Type to search" FontSize="{Binding Path=FontSize, ElementName=autocomplete1}"
+                                       Margin="16,0,0,0" VerticalAlignment="Center" />
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+
+            </TextBox>
+        </StackPanel>
+        <!--<TextBlock HorizontalAlignment="Left" Margin="68 0 0 0" VerticalAlignment="Bottom" 
+            Style="{StaticResource MaterialDesignDisplay3TextBlock}" >
+             <Hyperlink
+                IsEnabled="False">
+                Please, Select A Store...
+            </Hyperlink>
+        </TextBlock>-->
+        <ListView Background="Transparent" Style="{StaticResource MaterialDesignGridList}" materialDesign:ShadowAssist.ShadowDepth="Depth5" ItemsSource="{Binding Stores}"   Grid.Row="1" Grid.ColumnSpan="2" 
+                  HorizontalAlignment="Stretch" VerticalAlignment="Top"  >
+
+            <!-- make margin off-->
+            <!--
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>-->
+
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <materialDesign:Card  Width="450" MinHeight="500" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth5" materialDesign:ShadowAssist.ShadowEdges="All"  UniformCornerRadius="10" >
+                        <materialDesign:Card.InputBindings>
+                            <MouseBinding Gesture="LeftClick" Command="{Binding DataContext.ShowSelectedCommand,
+                                    RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding }" ></MouseBinding>
+                        </materialDesign:Card.InputBindings>
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="250" />
+
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding Image}" Stretch="Uniform" Margin="24" VerticalAlignment="Center" />
+                            <Button Command="{Binding DataContext.ShowSelectedCommand,
+                                    RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding }" Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20">
+                                Open
+                            </Button>
+                            <StackPanel Grid.Row="1" Margin="8 24 0 0" >
+                                <StackPanel Orientation="Horizontal" Margin="1">
+
+                                    <materialDesign:PackIcon  Kind="Store" />
+
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5" >
+
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="1">
+
+                                    <materialDesign:PackIcon  Kind="Location"/>
+
+                                    <TextBlock Text="{Binding Address}" FontWeight="Bold" Margin="5">
+
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="1">
+
+                                    <materialDesign:PackIcon  Kind="Phone"/>
+
+                                    <TextBlock Text="{Binding Phone}" FontWeight="Bold" Margin="5">
+
+                                    </TextBlock>
+                                </StackPanel>
+
+                            </StackPanel>
+                            <materialDesign:ColorZone Mode="PrimaryMid" Height="120" Grid.Row="2">
+                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                           FontSize="50" FontWeight="Light" FontStyle="Oblique" ></TextBlock>
+                            </materialDesign:ColorZone>
+                        </Grid>
+                    </materialDesign:Card>
+
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <materialDesign:Snackbar
+  HorizontalAlignment="Stretch" MessageQueue="{Binding SnackbarMessageQueue}">
+
+        </materialDesign:Snackbar>
+
+    </Grid>
+</UserControl>

@@ -64,9 +64,9 @@ namespace TestIceCream
                     // Create and save a new Blog
                     // Console.Write("Enter a name for a new Blog: ");
                     //var name = Console.ReadLine();
-                    Store store = new Store() { Address = "a", Image = "b" };
-                    db.Stores.Add(store);
-                    db.SaveChanges();
+                    //Store store = new Store() { Address = "a", Image = "b" };
+                    //db.Stores.Add(store);
+                    //db.SaveChanges();
 
                 }
             

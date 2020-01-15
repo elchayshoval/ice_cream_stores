@@ -8,6 +8,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,28 +18,19 @@ namespace iceCreamKiosk.ViewModel
 {
     class StoreForAdminVM : ViewModelBase
     {
-        //private IceCream selectedIceCream;
-        //currently not in use
-        private ViewModelBase addVM;
         private IceCreamLogic IceCreamLogic = new IceCreamLogic();
 
         public StoreModel StoreModel { get; set; }
         public ICommand OpenFileCommand { get;  set; }
-        //public IceCream SelectedIceCream { get => selectedIceCream; set => Set(ref selectedIceCream, value); }
-
+        
         public ICommand AddCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
         public ICommand ShowSelectedCommand { get; set; }
         public ICommand OpenRemoveDialog { get; set; }
         public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
 
-
-        //currently not in use
-        public ViewModelBase AddVM { get => addVM; set => Set(ref addVM, value); }
-
         public StoreForAdminVM(Store store)
         {
-            //init storeModel with store
             AddCommand = new MyCommand(ExecuteAddCommand);
             ShowSelectedCommand = new RelayCommand<IceCream>(ExecuteShowSelectedCommand);
             StoreModel = new StoreModel(store);
@@ -90,13 +82,12 @@ namespace iceCreamKiosk.ViewModel
 
         void ExcuteBrowseFile()
         {
-            //Add code here
             OpenFileDialog d = new OpenFileDialog();
 
             if (d.ShowDialog() == true)
             {
                 var path = d.FileName;
-                StoreModel.Image = path;
+                StoreModel.Image = FileManager.AddStoreImage(path, StoreModel.Name);
             }
         }
         private void ExecuteRemoveCommand(IceCream iceCream)
@@ -106,10 +97,10 @@ namespace iceCreamKiosk.ViewModel
                 IceCreamLogic.RemoveIceCream(iceCream);
 
                 UpdateIceCreamsCollection();
-                SnackbarMessageQueue.Enqueue(string.Format("Successful remove {0} .", iceCream.Name), "UNDO", () =>
+                SnackbarMessageQueue.Enqueue(string.Format("Successful remove {0} .", iceCream.Name), "UNDO",async () =>
                 {
                 //Notjice!! dont add back the icecreams and feedbacks!!!!
-                var status = IceCreamLogic.AddIceCream(iceCream);
+                var status =await IceCreamLogic.AddIceCream(iceCream);
                 if (status == IceCreamLogic.Status.Success)
                 {
 
@@ -143,11 +134,6 @@ namespace iceCreamKiosk.ViewModel
         {
             StoreModel.UpdateIceCreamCollection();
         }
-
-        //curently not in use
-        private void closeAddVM() { AddVM = null; }//I have to generate event that when invoke will close addvm with this function
-
-
 
         
     }

@@ -1,16 +1,23 @@
 ﻿
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\App.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\MainWindow.xaml;;
+FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\AddFeedbackView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\AddIceCreamView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\AddStoreView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\AdminPageView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\FeedbackView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\HomePageView.xaml;;
+FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\IceCreamCollectionForAdminView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\IceCreamForAdminView.xaml;;
+FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\IceCreamsCollectionForUserView.xaml;;
+FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\LandedView.xaml;;
+FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\LoginView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\MyFeedbackView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\MyFilterView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\StoreAndIceCreamView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\StoreForAdminView.xaml;;
+FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\StoreForUserView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\StoresCollectionForAdminView.xaml;;
+FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\StoresCollectionForUserView.xaml;;
 FC:\Users\Chayim\Documents\KioskInformation\NewICK\ice_cream_stores\iceCreamKiosk\view\UserPageView.xaml;;
 

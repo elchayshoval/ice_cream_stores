@@ -8,9 +8,10 @@ namespace BE
 {
     public class Nutrition
     {
-        public int Energy { get; set; }
-        public int Protein { get; set; }
-        public int Fat { get; set; }
+        public int? Energy { get; set; }
+        public int? Protein { get; set; }
+        public int? Fat { get; set; }
 
+        
     }
 }

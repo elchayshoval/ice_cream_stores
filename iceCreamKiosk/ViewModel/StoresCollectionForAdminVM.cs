@@ -16,28 +16,28 @@ namespace iceCreamKiosk.ViewModel
 {
     class StoresCollectionForAdminVM : ViewModelBase
     {
-        private Store selectedStore;
-        private ViewModelBase addVM;//currrently not in use
         private StoreLogic storeLogic = new StoreLogic();
         private ObservableCollection<Store> stores;
+        private string search;
+        private IEnumerable<Store> allStores;
 
+        public string Search { get => search; set { Set(ref search, value); UpdateStoresCollection(value); } }
+        public ObservableCollection<Store> Stores { get => stores; set => Set(ref stores, value); }
+        
         public ICommand AddCommand { get; set; }
         public ICommand ShowSelectedCommand { get; set; }
-
         public ICommand OpenRemoveDialog { get; set; }
 
-        public Store SelectedStore { get => selectedStore; set => Set(ref selectedStore, value); }
-        public ObservableCollection<Store> Stores { get => stores; set => Set(ref stores, value); }
+
         public SnackbarMessageQueue SnackbarMessageQueue { get; set; } = new SnackbarMessageQueue();
 
-        //currently not in use
-        public ViewModelBase AddVM { get => addVM; set => Set(ref addVM, value); }
 
         public StoresCollectionForAdminVM()
         {
-            Stores = new ObservableCollection<Store>(storeLogic.GetStores());
+            UpdateStoresCollection();
             AddCommand = new MyCommand(ExecuteAddCommand);
-            ShowSelectedCommand = new RelayCommand<Store>(executeShowSelectedCommand);
+            ShowSelectedCommand = new RelayCommand<Store>(ExecuteShowSelectedCommand);
+
 
             OpenRemoveDialog = new RelayCommand<Store>((s) =>
             {
@@ -59,12 +59,20 @@ namespace iceCreamKiosk.ViewModel
             MessengerInstance.Send<ViewModelBase>(new AddStoreVM());
         }
 
-        internal void UpdateStoresCollection()
+        public async void UpdateStoresCollection(string search = null)
         {
-            Stores = new ObservableCollection<Store>(storeLogic.GetStores());
+            if (search == null || allStores == null)
+            {
+                allStores = await storeLogic.GetStores();
+                Stores = new ObservableCollection<Store>(allStores);
+            }
+            else
+            {
+                Stores = new ObservableCollection<Store>(allStores.Where(s => s.Name.Contains(search)));
+            }
         }
 
-        private void executeShowSelectedCommand(Object store)
+        private void ExecuteShowSelectedCommand(Object store)
         {
 
             if (store is Store)
@@ -81,17 +89,17 @@ namespace iceCreamKiosk.ViewModel
                 UpdateStoresCollection();
 
 
-                SnackbarMessageQueue.Enqueue(string.Format("Successful remove {0} .", store.Name), "UNDO", () =>
-                {
+                SnackbarMessageQueue.Enqueue(string.Format("Successful remove {0} .", store.Name), "UNDO", async () =>
+                 {
                     //Notjice!! dont add back the icecreams and feedbacks!!!!
-                    var status = storeLogic.AddStore(store);
-                    if (status == StoreLogic.Status.Success)
-                    {
+                    var status = await storeLogic.AddStore(store);
+                     if (status == StoreLogic.Status.Success)
+                     {
 
-                        SnackbarMessageQueue.Enqueue(string.Format("Successful Undo removing {0} .", store.Name));
-                        UpdateStoresCollection();
-                    }
-                }
+                         SnackbarMessageQueue.Enqueue(string.Format("Successful Undo removing {0} .", store.Name));
+                         UpdateStoresCollection();
+                     }
+                 }
                 );
 
 
@@ -99,8 +107,6 @@ namespace iceCreamKiosk.ViewModel
 
         }
 
-        //currently not in use
-        private void closeAddVM() { AddVM = null; }//I have to generate event that when invoke will close addvm with this function
 
 
 

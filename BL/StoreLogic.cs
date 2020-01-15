@@ -13,16 +13,16 @@ namespace BL
     {
         public enum Status { Success, NoInternetConnection, DBError, InvalidNameOrLocation }
         private StoreService storeService = new StoreService();
-        public Status AddStore(Store store)
+        public async Task<Status> AddStore(Store store)
         {
             StoreValidation storeValidation = new StoreValidation();
             Status status = Status.Success;
             store.StoreId = Guid.NewGuid();
             try
             {
-                if (storeValidation.IsStoreValid(store))
+                if (await storeValidation.IsStoreValid(store))
                 {
-                    storeService.AddStore(store);
+                    await storeService.AddStore(store);
 
                 }
                 else
@@ -44,9 +44,12 @@ namespace BL
             return storeService.GetStoreByID(id);
         }
 
-        public IEnumerable<Store> GetStores()
+        public async Task<IEnumerable<Store>> GetStores()
         {
-            return storeService.GetStores();
+            //if (search == null) search = string.Empty;
+             
+            var result =await storeService.GetStores();
+            return result;
         }
 
         public bool RemoveStore(Store store)

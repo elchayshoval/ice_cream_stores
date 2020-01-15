@@ -27,15 +27,30 @@ namespace iceCreamKiosk.model
         public string Location
         {
             get => location;
-            set { Set(ref location, value); Map = new MapService().GetMap(value); }
+            set { Set(ref location, value); UpdateMap(value); }
         }
+
+        private void UpdateMap(string location)
+        {
+            try
+            {
+                if (location != Store.Address)
+                {
+                    Map = new MapService().GetMap(location);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         public string Phone { get => phone; set => Set(ref phone, value); }
 
 
         public Byte[] Map { get { return map; } set { Set(ref map, value); } }
 
 
-        //public List<IceCream> iceCreams { get; set; } = new List<IceCream>();
         public ObservableCollection<IceCream> IceCreams { get => iceCreams; set => Set(ref iceCreams, value); }
 
         public StoreModel(Store store = null)
@@ -59,7 +74,6 @@ namespace iceCreamKiosk.model
         {
             if (!string.IsNullOrWhiteSpace(Name))
             {
-                //add other validations !!!!!
                 return true;
             }
             return false;
@@ -77,25 +91,28 @@ namespace iceCreamKiosk.model
 
         public void ClearAllFeilds()
         {
-            Name = string.Empty;
-            Location = string.Empty;
-            Phone = string.Empty;
-            Image = string.Empty;
+            Name = Store.Name;
+            Location = Store.Address;
+            Phone = Store.Phone;
+            Image = Store.Image;
+            Map = Store.Map;
         }
 
         public bool IsAllFeildsClear()
         {
             Boolean result = false;
-            if (String.IsNullOrWhiteSpace(Name) && String.IsNullOrWhiteSpace(Location) && String.IsNullOrWhiteSpace(Phone) && String.IsNullOrWhiteSpace(Image))
+            if (String.IsNullOrWhiteSpace(Name) && String.IsNullOrWhiteSpace(Location) 
+                && String.IsNullOrWhiteSpace(Phone) && string.IsNullOrEmpty(Image))
             {
                 result = true;
             }
             return result;//I have to change and improve the code!!! 
         }
 
-        public void UpdateIceCreamCollection()
+        public async void UpdateIceCreamCollection()
         {
-            IceCreams = new ObservableCollection<IceCream>(new IceCreamLogic().GetIceCreamsByStoreId(Store.StoreId));
+            IceCreamLogic iceCreamLogic = new IceCreamLogic();
+            IceCreams = new ObservableCollection<IceCream>(await iceCreamLogic.GetIceCreamsByStoreId(Store.StoreId));
         }
     }
 }

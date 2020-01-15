@@ -15,33 +15,40 @@ namespace iceCreamKiosk.ViewModel
 {
     public class StoreAndIceCreamVM : ViewModelBase
     {
-        
-        public ICommand ShowFeedbacks { get; set; }
-        public StoreModel StoreModel { get; set; }
-        public IceCreamLogic IceCreamLogic { get; set; } = new IceCreamLogic();
         public StoreLogic StoreLogic { get; set; } = new StoreLogic();
-        public IceCreamModel IceCreamModel { get; set; }
+
+        public Store Store { get; set; }
+        public IceCream IceCream { get; private set; }
+        public ICommand AddFeesbackCommand { get; set; }
+        public ICommand GoToStoreCommand { get; set; }
 
         private ObservableCollection<FeedBack> feedBacks;
         public ObservableCollection<FeedBack> FeedBacks { get => feedBacks; set => Set(ref feedBacks, value); }
 
-        public StoreAndIceCreamVM(IceCream iceCream)
+        public StoreAndIceCreamVM(IceCream iceCream, Store store = null)
         {
-            Store store = StoreLogic.GetStoreByID(iceCream.StoreId); // null
-           // Store store = IceCreamLogic.GetStoreById(iceCream.StoreId);
-            StoreModel = new StoreModel(store);
-            IceCreamModel = new IceCreamModel(iceCream);
-            ShowFeedbacks = new RelayCommand<IceCream>(ShowFeedbacksCommand);
+             Store = store;
+            if (Store == null)
+            {
+                Store = StoreLogic.GetStoreByID(iceCream.StoreId);
+            }
+            IceCream = iceCream;
+            AddFeesbackCommand = new RelayCommand(ShowFeedbacksCommand);
+            GoToStoreCommand = new RelayCommand(() => { NavigateTo(new StoreForUserVM(Store)); });
 
-            
 
         }
-       
 
-        public void ShowFeedbacksCommand(IceCream iceCream)
+
+        public void ShowFeedbacksCommand()
         {
-            MessengerInstance.Send<ViewModelBase>(new FeedbackForUserVM(iceCream));
+            NavigateTo(new FeedbackForUserVM(IceCream,Store));
 
+        }
+
+        private void NavigateTo(ViewModelBase vm)
+        {
+            MessengerInstance.Send<ViewModelBase>(vm);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BE;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,12 @@ namespace DL
 {
     public class IceCreamService
     {
-        public IEnumerable<IceCream> GetIceCreams()
+        public async Task<IEnumerable<IceCream>> GetIceCreams()
         {
             using (var db = new StoreContext())
             {
                 //I have to add to include path the follow ".Feedbacks"
-                return db.IceCreams.Include("Feedbacks").ToList();
+                return await db.IceCreams.Include("Feedbacks").ToListAsync();
 
             }
 
@@ -32,12 +33,12 @@ namespace DL
             }
         }
 
-        public bool AddIceCream(IceCream iceCream)
+        public async Task<bool> AddIceCream(IceCream iceCream)
         {
             using (var db = new StoreContext())
             {
                 db.IceCreams.Add(iceCream);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return true;
             }
         }

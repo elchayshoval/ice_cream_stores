@@ -33,9 +33,9 @@ namespace iceCreamKiosk.ViewModel
             ShowIceCreams = new RelayCommand<IceCream>(ExecuteShowICream); //MyCommand(ExecuteShowICream);
         }
 
-        public void ExecuteSearch()
+        public async void ExecuteSearch()
         {
-            iceCreams = new ObservableCollection<IceCream>(iceCreamLogic.getFilteredIceCreams(Filter.getAsFilter()));
+            iceCreams = new ObservableCollection<IceCream>(await iceCreamLogic.getFilteredIceCreams(null,Filter.getAsFilter()));
         }
         public void ExecuteShowICream(IceCream iceCream)
         {

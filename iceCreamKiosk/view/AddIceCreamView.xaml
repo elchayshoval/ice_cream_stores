@@ -6,7 +6,7 @@
              xmlns:localConverter="clr-namespace:iceCreamKiosk.converters"
              xmlns:local="clr-namespace:iceCreamKiosk.view"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -23,6 +23,7 @@
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
+
         <materialDesign:Flipper HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch"  >
             <materialDesign:Flipper.FrontContent>
                 <Grid HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
@@ -34,8 +35,33 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Fill" Source="{Binding IceCreamModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"
+
+                    <materialDesign:ColorZone Margin="1"
+        Mode="PrimaryLight"
+        VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <materialDesign:ColorZone.InputBindings>
+                            <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding OpenFileCommand}" ></MouseBinding>
+                        </materialDesign:ColorZone.InputBindings>
+                        <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                            <materialDesign:PackIcon
+          Kind="CameraWirelessOutline"
+          Height="128"
+          Width="128"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Background="Transparent" BorderThickness="0">Dobble Click To Select A Picture</Button>
+                        </Grid>
+                    </materialDesign:ColorZone>
+                    <Image HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch" Stretch="Uniform"  Source="{Binding IceCreamModel.Image, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                         Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                         Margin="2"
                         AcceptsReturn="True"
@@ -43,8 +69,31 @@
                         VerticalScrollBarVisibility="Auto"
                         Text="{Binding IceCreamModel.Description, UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Hint="Enter description of the ice cream" />
-                    
-                    
+
+                        <materialDesign:Card Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Grid.Row="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock>Sum of Caloreis :</TextBlock>
+                                <TextBlock Grid.Row="1" Text="Sum of Proteins:"/>
+                                <TextBlock Grid.Row="2">Sum of Fats:</TextBlock>
+                                <TextBlock Grid.Column="1" Text="{Binding IceCreamModel.SumCal}"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding IceCreamModel.SumProtein}"/>
+                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding IceCreamModel.SumFat}"/>
+                                <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0"
+                                             IsIndeterminate="{Binding IsGetNutrienCommandBusy}" Grid.RowSpan="3" Grid.ColumnSpan="2"  Height="75" Width="75"/>
+                                
+                                </Grid>
+                        </materialDesign:Card>
+
+                    </Grid>
                     <Grid Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5*"/>
@@ -105,9 +154,13 @@
                                     <RowDefinition Height="2*"/>
                                     <RowDefinition Height="1*"/>
                                 </Grid.RowDefinitions>
-                                <TextBox Text="{Binding IceCreamModel.NutritionalID, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Nutritional id for API"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" />
-
-                                <materialDesign:PackIcon Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="Nutrition" />
+                                <Button Grid.RowSpan="2" VerticalAlignment="Stretch" Width="auto" Height="auto"
+                                        Command="{Binding GetNutrientCommand}">
+                                    <StackPanel>
+                                        <TextBlock>Click To Get Nutrien Value</TextBlock>
+                                        <materialDesign:PackIcon  Width="35" Height="35" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Kind="Nutrition" />
+                                    </StackPanel>
+                                </Button>
 
                             </Grid>
                         </materialDesign:Card>

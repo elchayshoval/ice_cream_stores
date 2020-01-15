@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:iceCreamKiosk.view"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -21,14 +22,28 @@
             <RowDefinition Height="23*"/>
             <RowDefinition Height="77*"/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="68 0 0 0" VerticalAlignment="Bottom" 
+        <StackPanel  HorizontalAlignment="Stretch" Width="auto" VerticalAlignment="Bottom" Orientation="Vertical" Grid.ColumnSpan="2">
+            <TextBox Background="MediumPurple" Foreground="MediumPurple" FontSize="48" x:Name="autocomplete1"  Height="auto" Margin="0,16,0,10" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                        Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
+                                                    >
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Magnify" Width="50" Height="50" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="64,0,0,0" />
+                        <TextBlock Text="Select a store, Type to search" FontSize="{Binding Path=FontSize, ElementName=autocomplete1}"
+                                       Margin="16,0,0,0" VerticalAlignment="Center" />
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+
+            </TextBox>
+        </StackPanel>
+        <!--<TextBlock HorizontalAlignment="Left" Margin="68 0 0 0" VerticalAlignment="Bottom" 
             Style="{StaticResource MaterialDesignDisplay3TextBlock}" >
              <Hyperlink
                 IsEnabled="False">
                 Please, Select A Store...
             </Hyperlink>
-        </TextBlock>
-        <Button Command="{Binding AddCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"  Margin="38.6,4,33,4.8" Width="62"  >
+        </TextBlock>-->
+        <Button Command="{Binding AddCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"  Margin="38.6,4,33,4.8" Width="62"   >
             <materialDesign:PackIcon
                 Kind="Add"
                 Width="24"
@@ -52,9 +67,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <materialDesign:Card  Width="450" Margin="1" materialDesign:ShadowAssist.ShadowDepth="Depth5" materialDesign:ShadowAssist.ShadowEdges="All"  UniformCornerRadius="10" >
+                        <materialDesign:Card.InputBindings>
+                            <MouseBinding Gesture="LeftClick" Command="{Binding DataContext.ShowSelectedCommand,
+                                    RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding }" ></MouseBinding>
+                        </materialDesign:Card.InputBindings>
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="250" />
+
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>

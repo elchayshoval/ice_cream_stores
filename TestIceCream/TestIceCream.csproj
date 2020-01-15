@@ -90,6 +90,7 @@
     <Compile Include="ImageAnalyzerTest.cs" />
     <Compile Include="NutritionalTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TakePictureTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

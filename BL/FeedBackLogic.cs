@@ -10,12 +10,35 @@ namespace BL
 {
     public class FeedBackLogic
     {
+        public enum Status { Success, NoInternetConnection, DBError, ExistError }
+
         public FeedBackService feedBackService = new FeedBackService();
 
 
-        public bool addFeedBack(FeedBack feedback)
+        public Status addFeedBack(FeedBack feedback)
         {
-            return feedBackService.AddFeedback(feedback);
+            var status = Status.Success;
+            try
+            {
+
+
+                var existFeedback = feedBackService.GetFeedbackByID(feedback.FeedbackId);
+                if (existFeedback != null)
+                {
+                    status = Status.ExistError;
+                }
+                else
+                {
+                    feedBackService.AddFeedback(feedback);
+                }
+            }
+            catch (Exception)
+            {
+
+                status = Status.DBError;
+            }
+            return status;
+
         }
     }
 }

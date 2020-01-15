@@ -3,18 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:localConverter="clr-namespace:iceCreamKiosk.converters"
              xmlns:local="clr-namespace:iceCreamKiosk.view"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"     
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
+    <UserControl.Resources>
+        <localConverter:BoolToIntConverter x:Key="BooleanConverter"/>
+    </UserControl.Resources>
+
     <Grid>
-        <Grid.RowDefinitions>
-            
-        </Grid.RowDefinitions>
+        
         <Grid.Background>
-            <ImageBrush  Opacity="0.5" />
+            <ImageBrush  ImageSource="/photos/background/ToffeePattern.jpg" Opacity="0.2" Stretch="Fill"/>
         </Grid.Background>
-        <UserControl Grid.Row="1" Content="{Binding MainPage}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></UserControl>
-        <Button Content="Admin Page" Command="{Binding NavigateToAdmin}" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Usre Page" Command="{Binding NavigateToUser}" HorizontalAlignment="Left" Margin="400,0,0,0" VerticalAlignment="Top" Width="75"/>
+        
+        <UserControl Panel.ZIndex="{Binding IsNavigationEnabled, Converter={StaticResource BooleanConverter}, UpdateSourceTrigger=PropertyChanged}"  Content="{Binding CurrentPage}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></UserControl>
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Horizontal" >
+            <Button Command="{Binding BackCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="10 10 10 0" Width="62"  >
+                <materialDesign:PackIcon
+                Kind="NavigateBefore"
+                Width="24"
+                Height="24"/>
+            </Button>
+            <Button Command="{Binding NextCommand}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="10 10 10 0" Width="62"  >
+                <materialDesign:PackIcon
+                Kind="NavigateNext"
+                Width="24"
+                Height="24"/>
+            </Button>
+
+        </StackPanel>
+
+        
     </Grid>
 </UserControl>
